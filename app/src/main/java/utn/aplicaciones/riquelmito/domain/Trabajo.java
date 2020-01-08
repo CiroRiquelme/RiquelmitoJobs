@@ -5,19 +5,19 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Trabajo {
-    Integer idTrabajo;
-    Rubro rubro;
-    String cargo;
-    String descripcionCargo;
-    String perfilEmpleado;
-    String experienciaEmpleado;
-    DiasLaborales dias;
-    HorarioLaboral horario;
-    Integer salario = 0;
-    Double lat = 0.0;
-    Double lng = 0.0;
-    Date fechaAlta;
-    Date fechaCierre;
+    private Integer idTrabajo;
+    private Rubro rubro;
+    private String cargo;
+    private String descripcionCargo;
+    private String perfilEmpleado;
+    private String experienciaEmpleado;
+    private DiasLaborales dias;
+    private HorarioLaboral horario;
+    private Integer salario = 0;
+    private Double lat = 0.0;
+    private Double lng = 0.0;
+    private Date fechaAlta;
+    private Date fechaCierre;
 
     public Date getFechaAlta() {
         return fechaAlta;
