@@ -35,7 +35,6 @@
     <string name="perfil_seleccionar_ubicacion">Seleccionár ubicación</string>
 
 
-
     <!--activity_perfil_profesional-->
     <string name="title_activity_perfil_profesional">Perfil profesional</string>
     <string name="perfil_prof_experiencia">Experiencia profesional</string>
@@ -82,6 +81,8 @@
 
     <string name="title_activity_trabajos_de_interes">Trabajos de interés</string>
 
+    <string name="title_activity_seleccionar_ubicacion_postulante">Seleccionar ubicación</string>
+
 
     <!--Menús de usuarios-->
     <string name="menu_editar_perfil_usuario">Editár perfil de usuario</string>
@@ -93,7 +94,12 @@
     <string name="menu_ofertas_activas">Ofertas activas</string>
     <string name="menu_ofertas_cerradas">Ofertas cerradas</string>
     <string name="menu_configurar_notificaciones">Configurár notificaciones</string>
+    <string name="menu_seleccionar_ubicacion_postulante">Seleccionar ubicación postulante</string>
     <string name="menu_cerrar_sesion">Cerrár sesión</string>
+
+    <!--***************OPCIONES***************-->
+    <string name="opcion_aceptar">Aceptar</string>
+    <string name="opcion_cancelar">Cancelar</string>
 
 
     <!--***************ARRAYS***************-->
@@ -149,7 +155,7 @@
     <string name="fila_anios_postulante">años.</string>
     <string name="fila_sexo_postulante">Sexo:</string>
     <string name="fila_ciudad_postulante">Ciudad:</string>
-    
+
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>

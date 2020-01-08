@@ -50,6 +50,13 @@
         android:text="@string/menu_configurar_notificaciones" />
 
     <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToSeleccionarUbicacionPostulante"
+        android:text="@string/title_activity_seleccionar_ubicacion_postulante" />
+
+    <Button
         android:id="@+id/button13"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

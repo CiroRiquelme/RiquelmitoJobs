@@ -45,6 +45,11 @@ public class MenuPostulanteTemporal extends AppCompatActivity {
         startActivity(activity);
     }
 
+    public void goToSeleccionarUbicacionPostulante(View view) {
+        Intent activity = new Intent(this, SeleccionarUbicacionPostulanteActivity.class);
+        startActivity(activity);
+    }
+
     public void goToIniciarSesion(View view) {
         Intent activity = new Intent(this, MainActivity.class);
         startActivity(activity);

@@ -27,17 +27,17 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <!--<meta-data android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />-->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".SeleccionarUbicacionPostulanteActivity"
+            android:label="@string/title_activity_seleccionar_ubicacion_postulante"></activity>
+        <activity
             android:name=".TrabajosDeInteresActivity"
             android:label="@string/title_activity_trabajos_de_interes" />
-        <activity
-            android:name=".MenuPostulanteTemporal"/>
+        <activity android:name=".MenuPostulanteTemporal" />
         <activity
             android:name=".PerfilUsuarioPostulanteActivity"
             android:label="@string/title_activity_perfil_usuario_postulante" />
@@ -55,12 +55,11 @@
             android:label="@string/title_activity_crear_cuenta" />
         <activity
             android:name=".TrabajosPostuladosActivity"
-            android:label="@string/title_activity_trabajos_postulados"/>
+            android:label="@string/title_activity_trabajos_postulados" />
         <activity
             android:name=".ConfiguracionNotificacionesPostulanteActivity"
             android:label="@string/title_activity_configuracion_notificaciones_postulante" />
-        <activity
-            android:name=".MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
