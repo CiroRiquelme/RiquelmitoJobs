@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MenuPostulanteTemporal">
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToEditarPerfilUsuario"
+        android:text="@string/menu_editar_perfil_usuario" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToEditarPerfilProfesional"
+        android:text="@string/menu_editar_perfil_profesional" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToBuscarTrabajo"
+        android:text="@string/menu_buscar_trabajo" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToTrabajosPostulados"
+        android:text="@string/menu_empleos_postulados" />
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToTrabajosDeInteres"
+        android:text="@string/menu_empleos_de_interes" />
+
+    <Button
+        android:id="@+id/button12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToConfigurarNotificaciones"
+        android:text="@string/menu_configurar_notificaciones" />
+
+    <Button
+        android:id="@+id/button13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToIniciarSesion"
+        android:text="@string/menu_cerrar_sesion" />
+</LinearLayout>

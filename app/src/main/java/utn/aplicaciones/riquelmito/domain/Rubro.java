@@ -1,0 +1,5 @@
+package utn.aplicaciones.riquelmito.domain;
+
+public enum Rubro {
+    ATENCION_AL_PUBLICO,COMUNICACIONES,CONSTRUCCION,ELECTRICIDAD,INFORMATICA,RRHH,SALUD,TRANSPORTE;
+}

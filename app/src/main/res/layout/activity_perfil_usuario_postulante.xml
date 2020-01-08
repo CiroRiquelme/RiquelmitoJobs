@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/perfil_nombre" />
+
+        <EditText
+            android:id="@+id/etPerfPostulNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/perfil_nombre"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/perfil_apellido" />
+
+        <EditText
+            android:id="@+id/etPerfPostulApellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/perfil_apellido"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/perfil_dni" />
+
+        <EditText
+            android:id="@+id/etPerfPostulDNI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/perfil_fecha_nacimiento" />
+
+        <EditText
+            android:id="@+id/etPerfPostulNacimiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date" />
+
+        <TextView
+            android:id="@+id/textView33"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/perfil_sexo" />
+
+        <Spinner
+            android:id="@+id/spnPerfPostulSexo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/sexo"
+            android:spinnerMode="dialog" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/perfil_provincia" />
+
+        <Spinner
+            android:id="@+id/spnPerfPostulProvincia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/provincias"
+            android:spinnerMode="dialog" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/perfil_ciudad" />
+
+        <EditText
+            android:id="@+id/etPerfPostulCiudad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/perfil_hint_ciudad"
+            android:inputType="textPersonName" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/perfil_telefono" />
+
+        <EditText
+            android:id="@+id/etPerfPostulTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/perfil_hint_telefono"
+            android:inputType="phone" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/perfil_mail_publico" />
+
+        <EditText
+            android:id="@+id/etPerfPostulEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/perfil_hint_mail_publico"
+            android:inputType="textEmailSubject" />
+
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <Button
+            android:id="@+id/btnPerfPostulUbicacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/perfil_seleccionar_ubicacion" />
+
+
+    </LinearLayout>
+</ScrollView>

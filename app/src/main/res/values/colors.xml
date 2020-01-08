@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <!--custom colors-->
+    <color name="subtituloActivity">#33BBFF</color>
+    <color name="tituloActionBar">#ffffff</color>
+    <color name="primarioActionBar">#0088cc</color>
+    <color name="secundarioActionBar">#6fa8dc</color>
+
+    <color name="trabjoPinMapa">#e06666</color>
+    <color name="usuarioPinMapa">#2b78e4</color>
+</resources>

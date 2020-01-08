@@ -1,0 +1,115 @@
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="reply_entries">
+        <item>Reply</item>
+        <item>Reply to all</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item>reply</item>
+        <item>reply_all</item>
+    </string-array>
+
+    <array name="sexo">
+        <item>@string/sexo_masculino</item>
+        <item>@string/sexo_femenino</item>
+        <item>@string/sexo_otro</item>
+    </array>
+
+    <string-array name="provincias">
+        <item>Buenos Aires</item>
+        <item>Catamarca</item>
+        <item>Chaco</item>
+        <item>Chubut</item>
+        <item>Córdoba</item>
+        <item>Corrientes</item>
+        <item>Entre Ríos</item>
+        <item>Formosa</item>
+        <item>Jujuy</item>
+        <item>La Pampa</item>
+        <item>La Rioja</item>
+        <item>Mendoza</item>
+        <item>Misiones</item>
+        <item>Neuquén</item>
+        <item>Río Negro</item>
+        <item>Salta</item>
+        <item>San Juan</item>
+        <item>Santa Cruz</item>
+        <item>Santa Fe</item>
+        <item>Santiago del Estero</item>
+        <item>Tierra del Fuego</item>
+        <item>Tucumán</item>
+    </string-array>
+
+    <string-array name="idiomas">
+        <item>@string/idiomas_aleman</item>
+        <item>@string/idiomas_chino</item>
+        <item>@string/idiomas_espaniol</item>
+        <item>@string/idiomas_frances</item>
+        <item>@string/idiomas_ingles</item>
+        <item>@string/idiomas_italiano</item>
+        <item>@string/idiomas_japones</item>
+        <item>@string/idiomas_portugues</item>
+        <item>@string/idiomas_ruso</item>
+    </string-array>
+
+    <string-array name="rubros">
+        <item>@string/rubro_atencion_al_publico</item>
+        <item>@string/rubro_comunicaciones</item>
+        <item>@string/rubro_construccion</item>
+        <item>@string/rubro_electricidad</item>
+        <item>@string/rubro_informatica</item>
+        <item>@string/rubro_rrhh</item>
+        <item>@string/rubro_salud</item>
+        <item>@string/rubro_transporte</item>
+    </string-array>
+
+    <string-array name="rubros_busqueda">
+        <item>@string/todos</item>
+        <item>@string/rubro_atencion_al_publico</item>
+        <item>@string/rubro_comunicaciones</item>
+        <item>@string/rubro_construccion</item>
+        <item>@string/rubro_electricidad</item>
+        <item>@string/rubro_informatica</item>
+        <item>@string/rubro_rrhh</item>
+        <item>@string/rubro_salud</item>
+        <item>@string/rubro_transporte</item>
+    </string-array>
+
+    <string-array name="salario">
+        <item>5000</item>
+        <item>10000</item>
+        <item>20000</item>
+        <item>30000</item>
+        <item>40000</item>
+        <item>50000</item>
+        <item>60000</item>
+        <item>80000</item>
+        <item>100000</item>
+        <item>125000</item>
+        <item>150000</item>
+        <item>200000</item>
+        <item>250000</item>
+    </string-array>
+
+    <string-array name="horario">
+        <item>@string/horario_diurno</item>
+        <item>@string/horario_nocturno</item>
+        <item>@string/horario_discontinuo</item>
+        <item>@string/horario_rotativo</item>
+        <item>@string/horario_media_matutina</item>
+        <item>@string/horario_media_vespertina</item>
+        <item>@string/horario_media_nocturna</item>
+        <item>@string/horario_media_rotativa</item>
+    </string-array>
+
+    <string-array name="dias_laborales">
+        <item>@string/dias_lab_lun_viern</item>
+        <item>@string/dias_lab_lun_sab</item>
+        <item>@string/dias_lab_mart_sab</item>
+        <item>@string/dias_lab_mart_domin</item>
+        <item>@string/dias_lab_feriad_domin</item>
+        <item>@string/dias_lab_feriad_find_seman</item>
+        <item>@string/dias_lab_a_turnos</item>
+    </string-array>
+</resources>

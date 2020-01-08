@@ -1,0 +1,167 @@
+<resources>
+    <string name="app_name">Riquelmito Jobs</string>
+
+    <!--***************ACTIVITIES***************-->
+    <!--activity_iniciar-sesion-->
+    <string name="login_iniciar_sesion">Iniciar Sesión</string>
+    <string name="login_email">E-mail</string>
+    <string name="login_contrasenia">Contraseña</string>
+    <string name="login_eres_nuevo">¿Eres nuevo?</string>
+
+    <!--activity_crear_cuenta-->
+    <string name="singup_crear_cuenta">Crear Cuenta</string>
+    <string name="singup_email">E-mail</string>
+    <string name="singup_contrasenia">Contraseña</string>
+    <string name="singup_reingrese_contrasenia">Reingrese la contraseña</string>
+    <string name="singup_tipo_usuario">Tipo de usuario</string>
+
+    <!--activity_perfil_usuario_postulante-->
+    <string name="perfil_nombre">Nombre</string>
+    <string name="perfil_apellido">Apellido</string>
+    <string name="perfil_dni">DNI</string>
+    <string name="perfil_fecha_nacimiento">Fecha de nacimiento</string>
+    <string name="perfil_sexo">Sexo</string>
+    <string name="perfil_provincia">Provincia</string>
+    <string name="perfil_hint_provincia">Provincia de residencia</string>
+    <string name="perfil_ciudad">Ciudad</string>
+    <string name="perfil_hint_ciudad">Ciudad de residencia</string>
+    <string name="perfil_telefono">Teléfono</string>
+    <string name="perfil_hint_telefono">Nro de teléfono</string>
+    <string name="perfil_mail_publico">E-mail público</string>
+    <string name="perfil_hint_mail_publico">mail@domain.com</string>
+    <string name="perfil_seleccionar_ubicacion">Seleccionár ubicación</string>
+
+
+    <string name="title_activity_configuracion_notificaciones_postulante">Settings</string>
+
+    <!--activity_perfil_profesional-->
+    <string name="perfil_prof_experiencia">Experiencia profesional</string>
+    <string name="perfil_prof_formacion">Formación</string>
+    <string name="perfil_prof_idiomas">Idiomas</string>
+    <string name="perfil_prof_adjuntar_cv">Adjuntar curriculum</string>
+    <string name="perfil_prof_hint_adjuntar_cv">Adjuntar curriculum</string>
+    <string name="perfil_prof_quien_ve_mi_cv">Quién puede ver mi Curriculum</string>
+
+    <!--activity_buscar_trabajo-->
+    <string name="buscar_traba_rubro">Rubro</string>
+    <string name="buscar_traba_distancia">Distancia máxima (en Km)</string>
+    <string name="buscar_traba_salario">Salario mínimo (en ARP)</string>
+
+    <!--activity_configuracion_notificaciones_postulante-->
+    <string name="settings_notificaciones_titulo_grupo">Notificar cuando</string>
+    <string name="settings_notificaciones_cierra_empleo_interes">Se cierra empleo de interés</string>
+    <string name="settings_notificaciones_cierra_empleo_postulado">Se cierra empleo en que estaba postulado</string>
+    <string name="settings_notificaciones_cambia_empleo_interes">Cambian condiciones de un empleo de interés</string>
+    <string name="settings_notificaciones_cambia_empleo_postulado">Cambian condiciones de un empleo en que estaba postulado</string>
+    <string name="settings_notificaciones_nuevo_postulante">Un usuario se postula en una de mis ofertas</string>
+    <string name="settings_notificaciones_ringtone">Tono de notificación</string>
+
+    <!--activity_crear_trabajo-->
+    <string name="crear_traba_rubro">Rubro</string>
+    <string name="crear_traba_cargo">Cargo</string>
+    <string name="crear_traba_hint_cargo">Nombre del cargo</string>
+    <string name="crear_traba_descripcion">Descripción del cargo</string>
+    <string name="crear_traba_hint_descripcion">Enuncie las responsabilidades más relevantes del cargo</string>
+    <string name="crear_traba_perfil_empleado">Perfil de empleado</string>
+    <string name="crear_traba_hint_perfil_empleado">Describa las caracteristicas buscadas en el postulante</string>
+    <string name="crear_traba_experiencia_empleado">Experiencia de empleado</string>
+    <string name="crear_traba_hint_experiencia_empleado">Describa la experiencia mínima que deberá tener en el postulante</string>
+    <string name="crear_traba_dias_laborables">Días</string>
+    <string name="crear_traba_horario">Horario</string>
+    <string name="crear_traba_salario">Salario estimado</string>
+    <string name="crear_traba_ubicacion">Seleccionar ubicación</string>
+
+    <!--Menús de usuarios-->
+    <string name="menu_editar_perfil_usuario">Editár perfil de usuario</string>
+    <string name="menu_editar_perfil_profesional">Editár perfil profesional</string>
+    <string name="menu_buscar_trabajo">Buscar empleo</string>
+    <string name="menu_empleos_postulados">Empleos postulados</string>
+    <string name="menu_empleos_de_interes">Empleos de interés</string>
+    <string name="menu_aniadir_empleo">Añadir empleo</string>
+    <string name="menu_ofertas_activas">Ofertas activas</string>
+    <string name="menu_ofertas_cerradas">Ofertas cerradas</string>
+    <string name="menu_configurar_notificaciones">Configurár notificaciones</string>
+    <string name="menu_cerrar_sesion">Cerrár sesión</string>
+
+
+    <!--***************ARRAYS***************-->
+    <string name="todos">Todos</string>
+    <string name="desconocido">.?????</string>
+
+    <string name="sexo_masculino">Masculino</string>
+    <string name="sexo_femenino">Femenino</string>
+    <string name="sexo_otro">Otro</string>
+
+    <string name="rubro_atencion_al_publico">Atención al público</string>
+    <string name="rubro_comunicaciones">Comunicaciones</string>
+    <string name="rubro_construccion">Construcción</string>
+    <string name="rubro_electricidad">Electricidad</string>
+    <string name="rubro_informatica">Informática</string>
+    <string name="rubro_rrhh">Recursos Humanos</string>
+    <string name="rubro_salud">Salud</string>
+    <string name="rubro_transporte">Transporte</string>
+
+    <string name="idiomas_aleman">Alemán</string>
+    <string name="idiomas_chino">Chino Mandarín</string>
+    <string name="idiomas_espaniol">Español</string>
+    <string name="idiomas_frances">Francés</string>
+    <string name="idiomas_ingles">Inglés</string>
+    <string name="idiomas_italiano">Italiano</string>
+    <string name="idiomas_japones">Japonés</string>
+    <string name="idiomas_portugues">Portugués</string>
+    <string name="idiomas_ruso">Ruso</string>
+
+    <string name="horario_diurno">Diurno</string>
+    <string name="horario_nocturno">Nocturno</string>
+    <string name="horario_discontinuo">Discontinuo</string>
+    <string name="horario_rotativo">Rotativo</string>
+    <string name="horario_media_matutina">Media jornada- Matutina</string>
+    <string name="horario_media_vespertina">Media jornada- Vespertina</string>
+    <string name="horario_media_nocturna">Media jornada- Nocturna</string>
+    <string name="horario_media_rotativa">Media jornada- Rotativo</string>
+
+    <string name="dias_lab_lun_viern">Lunes a Viernes</string>
+    <string name="dias_lab_lun_sab">Lunes a Sábados</string>
+    <string name="dias_lab_mart_sab">Martes a Sábado</string>
+    <string name="dias_lab_mart_domin">Martes a Domingo</string>
+    <string name="dias_lab_feriad_domin">Feriados y Domingos</string>
+    <string name="dias_lab_feriad_find_seman">Feriados y Fines de semana</string>
+    <string name="dias_lab_a_turnos">Trabajo a turnos</string>
+
+
+    <!--***************FILAS LISTVIEWS***************-->
+    <string name="fila_horario">Horario:</string>
+    <string name="fila_salario_estimado">Salario estimado:</string>
+    <string name="fila_fecha_publicacion">Publicado:</string>
+    
+    
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_activity_menu_postulante">MenuPostulanteActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+</resources>

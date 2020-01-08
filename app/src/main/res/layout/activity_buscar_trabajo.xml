@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/buscar_traba_rubro" />
+
+        <Spinner
+            android:id="@+id/spnBuscTrabRubro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/rubros_busqueda" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/buscar_traba_distancia" />
+
+        <SeekBar
+            android:id="@+id/sbBuscTrabDistancia"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="5" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/buscar_traba_salario" />
+
+        <Spinner
+            android:id="@+id/spnBuscTrabSalario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/salario" />
+    </LinearLayout>
+</ScrollView>

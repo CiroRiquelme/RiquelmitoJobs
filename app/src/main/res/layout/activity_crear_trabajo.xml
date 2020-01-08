@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crear_traba_rubro" />
+
+        <Spinner
+            android:id="@+id/spnCrearTrabRubro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/rubros" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crear_traba_cargo" />
+
+        <EditText
+            android:id="@+id/etCrearTrabCargo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/crear_traba_hint_cargo"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crear_traba_descripcion" />
+
+        <EditText
+            android:id="@+id/mltCrearTrabDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/crear_traba_hint_descripcion"
+            android:inputType="textMultiLine" />
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crear_traba_perfil_empleado" />
+
+        <EditText
+            android:id="@+id/mltCrearTrabPerfilEmpl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/crear_traba_hint_perfil_empleado"
+            android:inputType="textMultiLine" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crear_traba_experiencia_empleado" />
+
+        <EditText
+            android:id="@+id/mltCrearTrabExperiencia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/crear_traba_hint_experiencia_empleado"
+            android:inputType="textMultiLine" />
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crear_traba_dias_laborables" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etCrearTrabDias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <ImageButton
+                android:id="@+id/btnCrearTrabDiasSelecc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                app:srcCompat="@android:drawable/ic_menu_add" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crear_traba_horario" />
+
+        <Spinner
+            android:id="@+id/spnCrearTrabHorario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/horario" />
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crear_traba_salario" />
+
+        <EditText
+            android:id="@+id/etCrearTrabSalario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/btnCrearTrabUbicacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crear_traba_ubicacion" />
+
+    </LinearLayout>
+</ScrollView>

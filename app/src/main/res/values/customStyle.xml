@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="custom" parent="android:Theme.Black">
+        <item name="android:colorPrimary">@color/primarioActionBar</item>
+        <item name="android:colorPrimaryDark">@color/secundarioActionBar</item>
+        <item name="android:colorAccent">@color/subtituloActivity</item>
+        <item name="android:textColorPrimary">@color/tituloActionBar</item>
+        <item name="android:textColor">@color/subtituloActivity</item>
+        <item name="android:background">#EEEEEE</item>
+    </style>
+</resources>

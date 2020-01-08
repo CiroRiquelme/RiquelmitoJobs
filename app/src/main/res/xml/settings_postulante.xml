@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/settings_notificaciones_titulo_grupo">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="switch_preference_1"
+            android:title="@string/settings_notificaciones_cierra_empleo_interes" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="switch_preference_1"
+            android:title="@string/settings_notificaciones_cierra_empleo_postulado" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="switch_preference_1"
+            android:title="@string/settings_notificaciones_cambia_empleo_interes" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="switch_preference_1"
+            android:title="@string/settings_notificaciones_cambia_empleo_postulado" />
+        <RingtonePreference
+            android:defaultValue=""
+            android:key="ringtone_preference_1"
+            android:title="@string/settings_notificaciones_ringtone" />
+    </PreferenceCategory>
+</PreferenceScreen>
