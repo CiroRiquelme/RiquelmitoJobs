@@ -2,13 +2,15 @@
     <string name="app_name">Riquelmito Jobs</string>
 
     <!--***************ACTIVITIES***************-->
-    <!--activity_iniciar-sesion-->
+    <!--activity_iniciar_sesion-->
+    <string name="title_activity_iniciar_sesion">Iniciar sesión</string>
     <string name="login_iniciar_sesion">Iniciar Sesión</string>
     <string name="login_email">E-mail</string>
     <string name="login_contrasenia">Contraseña</string>
     <string name="login_eres_nuevo">¿Eres nuevo?</string>
 
     <!--activity_crear_cuenta-->
+    <string name="title_activity_crear_cuenta">Crear cuenta</string>
     <string name="singup_crear_cuenta">Crear Cuenta</string>
     <string name="singup_email">E-mail</string>
     <string name="singup_contrasenia">Contraseña</string>
@@ -16,6 +18,7 @@
     <string name="singup_tipo_usuario">Tipo de usuario</string>
 
     <!--activity_perfil_usuario_postulante-->
+    <string name="title_activity_perfil_usuario_postulante">Perfil de usuario</string>
     <string name="perfil_nombre">Nombre</string>
     <string name="perfil_apellido">Apellido</string>
     <string name="perfil_dni">DNI</string>
@@ -32,9 +35,8 @@
     <string name="perfil_seleccionar_ubicacion">Seleccionár ubicación</string>
 
 
-    <string name="title_activity_configuracion_notificaciones_postulante">Settings</string>
-
     <!--activity_perfil_profesional-->
+    <string name="title_activity_perfil_profesional">Perfil profesional</string>
     <string name="perfil_prof_experiencia">Experiencia profesional</string>
     <string name="perfil_prof_formacion">Formación</string>
     <string name="perfil_prof_idiomas">Idiomas</string>
@@ -43,11 +45,13 @@
     <string name="perfil_prof_quien_ve_mi_cv">Quién puede ver mi Curriculum</string>
 
     <!--activity_buscar_trabajo-->
+    <string name="title_activity_buscar_trabajo">Buscar trabajo</string>
     <string name="buscar_traba_rubro">Rubro</string>
     <string name="buscar_traba_distancia">Distancia máxima (en Km)</string>
     <string name="buscar_traba_salario">Salario mínimo (en ARP)</string>
 
     <!--activity_configuracion_notificaciones_postulante-->
+    <string name="title_activity_configuracion_notificaciones_postulante">Settings</string>
     <string name="settings_notificaciones_titulo_grupo">Notificar cuando</string>
     <string name="settings_notificaciones_cierra_empleo_interes">Se cierra empleo de interés</string>
     <string name="settings_notificaciones_cierra_empleo_postulado">Se cierra empleo en que estaba postulado</string>
@@ -57,6 +61,7 @@
     <string name="settings_notificaciones_ringtone">Tono de notificación</string>
 
     <!--activity_crear_trabajo-->
+    <string name="title_activity_crear_trabajo">Crear trabajo</string>
     <string name="crear_traba_rubro">Rubro</string>
     <string name="crear_traba_cargo">Cargo</string>
     <string name="crear_traba_hint_cargo">Nombre del cargo</string>
@@ -71,6 +76,16 @@
     <string name="crear_traba_salario">Salario estimado</string>
     <string name="crear_traba_ubicacion">Seleccionar ubicación</string>
 
+
+    <string name="title_activity_trabajos_postulados">Trabajos postulados</string>
+
+    <string name="title_activity_trabajos_de_interes">Trabajos de interés</string>
+
+    <string name="title_activity_seleccionar_ubicacion_postulante">Seleccionar ubicación</string>
+
+    <!--GoogleMaps-->
+    <string name="marker_detail_lating">(%1$.2f, %2$.2f)</string>
+
     <!--Menús de usuarios-->
     <string name="menu_editar_perfil_usuario">Editár perfil de usuario</string>
     <string name="menu_editar_perfil_profesional">Editár perfil profesional</string>
@@ -81,7 +96,12 @@
     <string name="menu_ofertas_activas">Ofertas activas</string>
     <string name="menu_ofertas_cerradas">Ofertas cerradas</string>
     <string name="menu_configurar_notificaciones">Configurár notificaciones</string>
+    <string name="menu_seleccionar_ubicacion_postulante">Seleccionar ubicación postulante</string>
     <string name="menu_cerrar_sesion">Cerrár sesión</string>
+
+    <!--***************OPCIONES***************-->
+    <string name="opcion_aceptar">Aceptar</string>
+    <string name="opcion_cancelar">Cancelar</string>
 
 
     <!--***************ARRAYS***************-->
@@ -133,8 +153,11 @@
     <string name="fila_horario">Horario:</string>
     <string name="fila_salario_estimado">Salario estimado:</string>
     <string name="fila_fecha_publicacion">Publicado:</string>
-    
-    
+    <string name="fila_edad_postulante">Edad:</string>
+    <string name="fila_anios_postulante">años.</string>
+    <string name="fila_sexo_postulante">Sexo:</string>
+    <string name="fila_ciudad_postulante">Ciudad:</string>
+
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
