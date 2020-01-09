@@ -9,9 +9,7 @@ import android.os.Bundle;
 import java.util.ArrayList;
 
 import utn.aplicaciones.riquelmito.domain.Postulante;
-import utn.aplicaciones.riquelmito.domain.Trabajo;
 import utn.aplicaciones.riquelmito.utilidades.PostulantesAdapter;
-import utn.aplicaciones.riquelmito.utilidades.TrabajoDesdeEmpleadorAdapter;
 
 public class UsuariosPostuladosATrabajoActivity extends AppCompatActivity {
     private RecyclerView recyclerView;

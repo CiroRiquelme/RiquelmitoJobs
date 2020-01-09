@@ -13,7 +13,6 @@ import utn.aplicaciones.riquelmito.domain.HorarioLaboral;
 import utn.aplicaciones.riquelmito.domain.Rubro;
 import utn.aplicaciones.riquelmito.domain.Trabajo;
 import utn.aplicaciones.riquelmito.utilidades.TrabajoDesdeEmpleadorAdapter;
-import utn.aplicaciones.riquelmito.utilidades.TrabajoDesdePostulanteAdapter;
 
 public class OfertasActivasActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
