@@ -23,13 +23,17 @@ public class Trabajo {
         return fechaAlta;
     }
 
+    public Trabajo(){
+        fechaAlta = Calendar.getInstance().getTime();
+    }
+
     public Trabajo(Rubro rubro, String cargo, DiasLaborales dias, HorarioLaboral horario, Integer salario) {
+        this();
         this.rubro = rubro;
         this.cargo = cargo;
         this.dias = dias;
         this.horario = horario;
         this.salario = salario;
-        this.fechaAlta = Calendar.getInstance().getTime();
     }
 
     public Integer getIdTrabajo() {

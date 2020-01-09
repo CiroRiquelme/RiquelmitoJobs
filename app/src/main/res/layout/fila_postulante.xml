@@ -20,7 +20,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvFilaNombre"
+            android:id="@+id/tvFilaPostulanteNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -31,66 +31,21 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView35"
+            android:id="@+id/tvFilaPostulanteDescripcion1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@string/fila_edad_postulante"
-            app:layout_constraintStart_toStartOf="@+id/tvFilaNombre"
-            app:layout_constraintTop_toBottomOf="@+id/tvFilaNombre" />
+            android:text="Edad: 46 años. Sexo: Masculino."
+            app:layout_constraintStart_toStartOf="@+id/tvFilaPostulanteNombre"
+            app:layout_constraintTop_toBottomOf="@+id/tvFilaPostulanteNombre" />
 
         <TextView
-            android:id="@+id/tvFilaEdad"
+            android:id="@+id/tvFilaPostulanteDescripcion2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            app:layout_constraintStart_toEndOf="@+id/textView35"
-            app:layout_constraintTop_toTopOf="@+id/textView35"
-            tools:text="46" />
-
-        <TextView
-            android:id="@+id/textView36"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:text="@string/fila_anios_postulante"
-            app:layout_constraintStart_toEndOf="@+id/tvFilaEdad"
-            app:layout_constraintTop_toTopOf="@+id/tvFilaEdad" />
-
-        <TextView
-            android:id="@+id/textView37"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/fila_sexo_postulante"
-            app:layout_constraintStart_toEndOf="@+id/textView36"
-            app:layout_constraintTop_toTopOf="@+id/textView36" />
-
-        <TextView
-            android:id="@+id/tvFilaSexo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="@string/sexo_masculino"
-            app:layout_constraintStart_toEndOf="@+id/textView37"
-            app:layout_constraintTop_toTopOf="@+id/textView37" />
-
-        <TextView
-            android:id="@+id/textView39"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fila_ciudad_postulante"
-            app:layout_constraintStart_toStartOf="@+id/textView35"
-            app:layout_constraintTop_toBottomOf="@+id/textView35" />
-
-        <TextView
-            android:id="@+id/tvFilaCiudad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="Constituyentes (Santa Fe)"
-            app:layout_constraintStart_toEndOf="@+id/textView39"
-            app:layout_constraintTop_toTopOf="@+id/textView39" />
+            android:text="Ciudad: Constituyentes (Santa Fe)."
+            app:layout_constraintStart_toStartOf="@+id/tvFilaPostulanteDescripcion1"
+            app:layout_constraintTop_toBottomOf="@+id/tvFilaPostulanteDescripcion1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -98,6 +53,7 @@
         android:id="@+id/divider7"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginTop="2dp"
         android:background="@drawable/separator_gradient" />
 
 </LinearLayout>

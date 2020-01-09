@@ -12,7 +12,7 @@
         android:layout_weight="0">
 
         <ImageView
-            android:id="@+id/ivFilaIconoTrabajo1"
+            android:id="@+id/ivFilaTrabEmpleadorIconoTrabajo"
             android:layout_width="52dp"
             android:layout_height="52dp"
             android:layout_marginStart="8dp"
@@ -22,22 +22,23 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvFilaRubro1"
+            android:id="@+id/tvFilaTrabEmpleadorRubro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
+            android:text="asdasdasd"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/ivFilaIconoTrabajo"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/ivFilaTrabEmpleadorIconoTrabajo"
+            app:layout_constraintTop_toTopOf="@+id/ivFilaTrabEmpleadorIconoTrabajo" />
 
         <TextView
-            android:id="@+id/tvFilaCargo1"
+            android:id="@+id/tvFilaTrabEmpleadorCargo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="@+id/tvFilaRubro1"
-            app:layout_constraintTop_toBottomOf="@+id/tvFilaRubro1" />
+            android:text="asdasd"
+            app:layout_constraintStart_toStartOf="@+id/tvFilaTrabEmpleadorRubro"
+            app:layout_constraintTop_toBottomOf="@+id/tvFilaTrabEmpleadorRubro" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
@@ -53,54 +54,32 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/tvFilaDiasLaborales1"
+            android:id="@+id/tvFilaTrabEmpleadorHorario"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="4dp"
+            android:text="Feriados y Fines de semana ; Horario: Media jornada- Vespertina"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView31"
+            android:id="@+id/tvFilaTrabEmpleadorPublicacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="; "
-            app:layout_constraintStart_toEndOf="@+id/tvFilaDiasLaborales1"
-            app:layout_constraintTop_toTopOf="@+id/tvFilaDiasLaborales1" />
-
-        <TextView
-            android:id="@+id/textView32"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fila_horario"
-            app:layout_constraintStart_toEndOf="@+id/textView31"
-            app:layout_constraintTop_toTopOf="@+id/textView31" />
-
-        <TextView
-            android:id="@+id/tvFilaHorario1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            app:layout_constraintStart_toEndOf="@+id/textView32"
-            app:layout_constraintTop_toTopOf="@+id/textView32" />
-
-        <TextView
-            android:id="@+id/textView34"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
-            android:text="@string/fila_fecha_publicacion"
-            app:layout_constraintEnd_toStartOf="@+id/tvFilaFechaPublicacion1"
-            app:layout_constraintTop_toBottomOf="@+id/tvFilaDiasLaborales1" />
-
-        <TextView
-            android:id="@+id/tvFilaFechaPublicacion1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Publicado: 24/12/1998 14:43 hs"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView34" />
+            app:layout_constraintTop_toBottomOf="@+id/tvFilaTrabEmpleadorHorario" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/divider8"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:layout_weight="0"
+        android:background="@drawable/separator_gradient" />
 
 </LinearLayout>

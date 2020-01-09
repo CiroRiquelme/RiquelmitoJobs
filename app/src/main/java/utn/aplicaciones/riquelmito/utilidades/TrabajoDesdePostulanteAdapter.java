@@ -38,111 +38,124 @@ public class TrabajoDesdePostulanteAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Trabajo trabajo = lstTrabajos.get(position);
         TrabajosDesdePostulanteHolder hold = (TrabajosDesdePostulanteHolder) holder;
+        StringBuffer filaHorario = new StringBuffer();
+        StringBuffer filaSalario = new StringBuffer();
+
         switch (trabajo.getRubro()){
             case ATENCION_AL_PUBLICO:
-                hold.ivFilaIconoTrabajo.setImageResource(R.drawable.atencion_al_publico);
-                hold.tvFilaRubro.setText(cont.getString(R.string.rubro_atencion_al_publico));
+                hold.ivFilaTrabPostulanteIconoTrabajo.setImageResource(R.drawable.atencion_al_publico);
+                hold.tvFilaTrabPostulanteRubro.setText(cont.getString(R.string.rubro_atencion_al_publico));
                 break;
             case COMUNICACIONES:
-                hold.ivFilaIconoTrabajo.setImageResource(R.drawable.comunicaciones);
-                hold.tvFilaRubro.setText(cont.getString(R.string.rubro_comunicaciones));
+                hold.ivFilaTrabPostulanteIconoTrabajo.setImageResource(R.drawable.comunicaciones);
+                hold.tvFilaTrabPostulanteRubro.setText(cont.getString(R.string.rubro_comunicaciones));
                 break;
             case CONSTRUCCION:
-                hold.ivFilaIconoTrabajo.setImageResource(R.drawable.construccion);
-                hold.tvFilaRubro.setText(cont.getString(R.string.rubro_construccion));
+                hold.ivFilaTrabPostulanteIconoTrabajo.setImageResource(R.drawable.construccion);
+                hold.tvFilaTrabPostulanteRubro.setText(cont.getString(R.string.rubro_construccion));
                 break;
             case ELECTRICIDAD:
-                hold.ivFilaIconoTrabajo.setImageResource(R.drawable.electricidad);
-                hold.tvFilaRubro.setText(cont.getString(R.string.rubro_electricidad));
+                hold.ivFilaTrabPostulanteIconoTrabajo.setImageResource(R.drawable.electricidad);
+                hold.tvFilaTrabPostulanteRubro.setText(cont.getString(R.string.rubro_electricidad));
                 break;
             case INFORMATICA:
-                hold.ivFilaIconoTrabajo.setImageResource(R.drawable.informatica);
-                hold.tvFilaRubro.setText(cont.getString(R.string.rubro_informatica));
+                hold.ivFilaTrabPostulanteIconoTrabajo.setImageResource(R.drawable.informatica);
+                hold.tvFilaTrabPostulanteRubro.setText(cont.getString(R.string.rubro_informatica));
                 break;
             case RRHH:
-                hold.ivFilaIconoTrabajo.setImageResource(R.drawable.rrhh);
-                hold.tvFilaRubro.setText(cont.getString(R.string.rubro_rrhh));
+                hold.ivFilaTrabPostulanteIconoTrabajo.setImageResource(R.drawable.rrhh);
+                hold.tvFilaTrabPostulanteRubro.setText(cont.getString(R.string.rubro_rrhh));
                 break;
             case SALUD:
-                hold.ivFilaIconoTrabajo.setImageResource(R.drawable.salud);
-                hold.tvFilaRubro.setText(cont.getString(R.string.rubro_salud));
+                hold.ivFilaTrabPostulanteIconoTrabajo.setImageResource(R.drawable.salud);
+                hold.tvFilaTrabPostulanteRubro.setText(cont.getString(R.string.rubro_salud));
                 break;
             case TRANSPORTE:
-                hold.ivFilaIconoTrabajo.setImageResource(R.drawable.transporte);
-                hold.tvFilaRubro.setText(cont.getString(R.string.rubro_transporte));
+                hold.ivFilaTrabPostulanteIconoTrabajo.setImageResource(R.drawable.transporte);
+                hold.tvFilaTrabPostulanteRubro.setText(cont.getString(R.string.rubro_transporte));
                 break;
             default:
-                hold.ivFilaIconoTrabajo.setImageResource(R.drawable.desconocido);
-                hold.tvFilaRubro.setText(cont.getString(R.string.desconocido));
+                hold.ivFilaTrabPostulanteIconoTrabajo.setImageResource(R.drawable.desconocido);
+                hold.tvFilaTrabPostulanteRubro.setText(cont.getString(R.string.desconocido));
                 break;
         }
 
         if(trabajo.getCargo()!=null)
-            hold.tvFilaCargo.setText(trabajo.getCargo());
+            hold.tvFilaTrabPostulanteCargo.setText(trabajo.getCargo());
         else
-            hold.tvFilaCargo.setText(cont.getString(R.string.desconocido));
+            hold.tvFilaTrabPostulanteCargo.setText(cont.getString(R.string.desconocido));
 
+        //Fila horario "Lun - Vie; Horario: Diurno"
         switch (trabajo.getDias()) {
             case LUN_VIE:
-                hold.tvFilaDiasLaborales.setText(R.string.dias_lab_lun_viern);
+                filaHorario.append(cont.getString(R.string.dias_lab_lun_viern));
                 break;
             case LUN_SAB:
-                hold.tvFilaDiasLaborales.setText(R.string.dias_lab_lun_sab);
+                filaHorario.append(cont.getString(R.string.dias_lab_lun_sab));
                 break;
             case MART_SAB:
-                hold.tvFilaDiasLaborales.setText(R.string.dias_lab_mart_sab);
+                filaHorario.append(cont.getString(R.string.dias_lab_mart_sab));
                 break;
             case MART_DOM:
-                hold.tvFilaDiasLaborales.setText(R.string.dias_lab_mart_domin);
+                filaHorario.append(cont.getString(R.string.dias_lab_mart_domin));
                 break;
             case FERIAD_DOM:
-                hold.tvFilaDiasLaborales.setText(R.string.dias_lab_feriad_domin);
+                filaHorario.append(cont.getString(R.string.dias_lab_feriad_domin));
                 break;
             case FERIAD_FINSEMANA:
-                hold.tvFilaDiasLaborales.setText(R.string.dias_lab_feriad_find_seman);
+                filaHorario.append(cont.getString(R.string.dias_lab_feriad_find_seman));
                 break;
             case A_TURNOS:
-                hold.tvFilaDiasLaborales.setText(R.string.dias_lab_a_turnos);
+                filaHorario.append(cont.getString(R.string.dias_lab_a_turnos));
                 break;
             default:
-                hold.tvFilaDiasLaborales.setText(R.string.desconocido);
+                filaHorario.append(cont.getString(R.string.desconocido));
                 break;
         }
 
+        filaHorario.append(" ; ");
+        filaHorario.append(cont.getString(R.string.fila_horario));
+        filaHorario.append(' ');
         switch(trabajo.getHorario()){
             case DIURNO:
-                hold.tvFilaHorario.setText(R.string.horario_diurno);
+                filaHorario.append(cont.getString(R.string.horario_diurno));
                 break;
             case NOCTURNO:
-                hold.tvFilaHorario.setText(R.string.horario_nocturno);
+                filaHorario.append(cont.getString(R.string.horario_nocturno));
                 break;
             case DISCONTINUO:
-                hold.tvFilaHorario.setText(R.string.horario_discontinuo);
+                filaHorario.append(cont.getString(R.string.horario_discontinuo));
                 break;
             case ROTATIVO:
-                hold.tvFilaHorario.setText(R.string.horario_rotativo);
+                filaHorario.append(cont.getString(R.string.horario_rotativo));
                 break;
             case MEDIA_MATUTINA:
-                hold.tvFilaHorario.setText(R.string.horario_media_matutina);
+                filaHorario.append(cont.getString(R.string.horario_media_matutina));
                 break;
             case MEDIA_VESPERTINA:
-                hold.tvFilaHorario.setText(R.string.horario_media_vespertina);
+                filaHorario.append(cont.getString(R.string.horario_media_vespertina));
                 break;
             case MEDIA_NOCTURNA:
-                hold.tvFilaHorario.setText(R.string.horario_media_nocturna);
+                filaHorario.append(cont.getString(R.string.horario_media_nocturna));
                 break;
             case MEDIA_ROTATIVA:
-                hold.tvFilaHorario.setText(R.string.horario_media_rotativa);
+                filaHorario.append(cont.getString(R.string.horario_media_rotativa));
                 break;
             default:
-                hold.tvFilaHorario.setText(R.string.desconocido);
+                filaHorario.append(cont.getString(R.string.desconocido));
                 break;
         }
+        hold.tvFilaTrabPostulanteHorario.setText(filaHorario);
 
+        //Fila salario "Sueldo estimado: $xxxxx"
+        filaSalario.append(cont.getString(R.string.fila_salario_estimado));
+        filaSalario.append(' ');
+        filaSalario.append('$');
         if(trabajo.getSalario()!=null)
-            hold.tvFilaSalario.setText("$" + trabajo.getSalario().toString());
+            filaSalario.append(trabajo.getSalario().toString());
         else
-            hold.tvFilaSalario.setText(cont.getString(R.string.desconocido));
+            filaHorario.append(cont.getString(R.string.desconocido));
+        hold.tvFilaTrabPostulanteSalario.setText(filaSalario);
     }
 
     @Override
@@ -151,21 +164,19 @@ public class TrabajoDesdePostulanteAdapter extends RecyclerView.Adapter {
     }
 
     public static class TrabajosDesdePostulanteHolder extends RecyclerView.ViewHolder {
-        private ImageView ivFilaIconoTrabajo;
-        private TextView tvFilaRubro;
-        private TextView tvFilaCargo;
-        private TextView tvFilaDiasLaborales;
-        private TextView tvFilaHorario;
-        private TextView tvFilaSalario;
+        private ImageView ivFilaTrabPostulanteIconoTrabajo;
+        private TextView tvFilaTrabPostulanteRubro;
+        private TextView tvFilaTrabPostulanteCargo;
+        private TextView tvFilaTrabPostulanteHorario;
+        private TextView tvFilaTrabPostulanteSalario;
 
         public TrabajosDesdePostulanteHolder(@NonNull View itemView) {
             super(itemView);
-            ivFilaIconoTrabajo = itemView.findViewById(R.id.ivFilaIconoTrabajo);
-            tvFilaRubro = itemView.findViewById(R.id.tvFilaRubro);
-            tvFilaCargo = itemView.findViewById(R.id.tvFilaCargo);
-            tvFilaDiasLaborales = itemView.findViewById(R.id.tvFilaDiasLaborales);
-            tvFilaHorario = itemView.findViewById(R.id.tvFilaHorario);
-            tvFilaSalario = itemView.findViewById(R.id.tvFilaSueldo);
+            ivFilaTrabPostulanteIconoTrabajo = itemView.findViewById(R.id.ivFilaTrabPostulanteIconoTrabajo);
+            tvFilaTrabPostulanteRubro = itemView.findViewById(R.id.tvFilaTrabPostulanteRubro);
+            tvFilaTrabPostulanteCargo = itemView.findViewById(R.id.tvFilaTrabPostulanteCargo);
+            tvFilaTrabPostulanteHorario = itemView.findViewById(R.id.tvFilaTrabPostulanteHorario);
+            tvFilaTrabPostulanteSalario = itemView.findViewById(R.id.tvFilaTrabPostulanteSalario);
         }
     }
 }
