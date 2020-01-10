@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     public void goToSingUp(View view) {
         Intent singUp = new Intent(this, CrearCuentaActivity.class);
         startActivity(singUp);
+        finish();
     }
 
     public void goToMenu(View view){
