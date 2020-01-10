@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,8 @@ public class UsuariosPostuladosATrabajoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuarios_postulados_a_trabajo);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         recyclerView = (RecyclerView) findViewById(R.id.rvUsuariosPostuladosATrabajo);
         manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
@@ -36,5 +39,16 @@ public class UsuariosPostuladosATrabajoActivity extends AppCompatActivity {
         //TODO: cargar para hacer pruebas
 
         return arre;
+    }
+
+
+    //Esta función permite que el botón de 'volver atrás' de la barra superior funcione
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

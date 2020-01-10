@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -31,6 +32,9 @@ public class SeleccionarUbicacionPostulanteActivity extends AppCompatActivity im
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seleccionar_ubicacion_postulante);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -100,5 +104,16 @@ public class SeleccionarUbicacionPostulanteActivity extends AppCompatActivity im
     public void cancelarCambios(View view){
         Intent activity = new Intent(this, MenuPostulanteTemporal.class);
         startActivity(activity);
+    }
+
+
+    //Esta función permite que el botón de 'volver atrás' de la barra superior funcione
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

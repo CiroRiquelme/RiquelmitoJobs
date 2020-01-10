@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,8 @@ public class OfertasActivasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ofertas_activas);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         recyclerView = (RecyclerView) findViewById(R.id.rvOfertasActivas);
         manager = new LinearLayoutManager(this);
@@ -46,5 +49,15 @@ public class OfertasActivasActivity extends AppCompatActivity {
         arre.add( new Trabajo(Rubro.TRANSPORTE,"Recepcionista",DiasLaborales.LUN_VIE,HorarioLaboral.MEDIA_NOCTURNA,17000));
 
         return arre;
+    }
+
+    //Esta función permite que el botón de 'volver atrás' de la barra superior funcione
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
