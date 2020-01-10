@@ -10,6 +10,11 @@
         <item>reply_all</item>
     </string-array>
 
+    <array name="tipo_usuario">
+        <item>@string/tipo_usuario_postulante</item>
+        <item>@string/tipo_usuario_empleador</item>
+    </array>
+
     <array name="sexo">
         <item>@string/sexo_masculino</item>
         <item>@string/sexo_femenino</item>

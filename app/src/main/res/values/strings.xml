@@ -83,6 +83,9 @@
 
     <string name="title_activity_seleccionar_ubicacion_postulante">Seleccionar ubicación</string>
 
+    <string name="title_dialogo_campos_invalidos">Campos invalidos</string>
+    <string name="title_dialogo_seleccionar_idiomas">Seleccionár Idiomas</string>
+
     <!--GoogleMaps-->
     <string name="marker_detail_lating">(%1$.2f, %2$.2f)</string>
 
@@ -102,11 +105,15 @@
     <!--***************OPCIONES***************-->
     <string name="opcion_aceptar">Aceptar</string>
     <string name="opcion_cancelar">Cancelar</string>
+    <string name="opcion_ok">Ok</string>
 
 
     <!--***************ARRAYS***************-->
     <string name="todos">Todos</string>
     <string name="desconocido">.?????</string>
+
+    <string name="tipo_usuario_empleador">Empleador</string>
+    <string name="tipo_usuario_postulante">Postulante</string>
 
     <string name="sexo_masculino">Masculino</string>
     <string name="sexo_femenino">Femenino</string>
@@ -157,6 +164,14 @@
     <string name="fila_anios_postulante">años.</string>
     <string name="fila_sexo_postulante">Sexo:</string>
     <string name="fila_ciudad_postulante">Ciudad:</string>
+
+
+    <!--***************DIALOGOS DE ERROR***************-->
+    <string name="dialogo_error_formato_email_invalido">-El formato de Email no es valido.</string>
+    <string name="dialogo_error_contrasenias_distintas">-Las contraseñas ingresadas deben ser iguales</string>
+    <string name="dialogo_error_longitud_contrasenia_insuficiente1">-La contraseña debe tener al menos</string>
+    <string name="dialogo_error_longitud_contrasenia_insuficiente2">caracteres.</string>
+    <string name="dialogo_error_email_ya_registrado">-Ya existe una cuenta asociada al Email ingresado.</string>
 
 
     <!-- Preference Titles -->

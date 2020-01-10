@@ -56,13 +56,16 @@
         <Spinner
             android:id="@+id/spnSingUpTipoUser"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:entries="@array/tipo_usuario"
+            android:spinnerMode="dialog" />
 
         <Button
             android:id="@+id/btnSingUpCrear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
+            android:onClick="crearCuentaClick"
             android:text="@string/singup_crear_cuenta" />
     </LinearLayout>
 </ScrollView>
