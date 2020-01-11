@@ -11,8 +11,8 @@
 
         <ImageView
             android:id="@+id/ivFilaIconoUser"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="@dimen/image_view_square_icon"
+            android:layout_height="@dimen/image_view_square_icon"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:src="@drawable/sexo_masculino"
@@ -26,7 +26,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:text="Argento, José"
-            android:textSize="24sp"
+            android:textSize="@dimen/label_title"
             app:layout_constraintStart_toEndOf="@+id/ivFilaIconoUser"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Edad: 46 años. Sexo: Masculino."
+            android:textSize="@dimen/label_text"
             app:layout_constraintStart_toStartOf="@+id/tvFilaPostulanteNombre"
             app:layout_constraintTop_toBottomOf="@+id/tvFilaPostulanteNombre" />
 
@@ -44,6 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ciudad: Constituyentes (Santa Fe)."
+            android:textSize="@dimen/label_text"
             app:layout_constraintStart_toStartOf="@+id/tvFilaPostulanteDescripcion1"
             app:layout_constraintTop_toBottomOf="@+id/tvFilaPostulanteDescripcion1" />
 

@@ -83,7 +83,23 @@
 
     <string name="title_activity_seleccionar_ubicacion_postulante">Seleccionar ubicación</string>
 
-    <string name="title_dialogo_campos_invalidos">Campos invalidos</string>
+    <string name="title_activity_ofertas_activas">Ofertas activas</string>
+
+    <string name="title_activity_usuarios_postulados_a_trabajo">Usuarios postulados</string>
+
+    <!--actividades de información de trabajo-->
+    <string name="title_activity_info_trabajo_desde_postulante">Detalles de trabajo</string>
+    <string name="info_trabajo_consultar_ubicacion">Consultár ubicación</string>
+    <string name="info_trabajo_marcar_de_interes">Marcar de Interés</string>
+    <string name="info_trabajo_desmarcar_de_interes">Desmarcar Interés</string>
+    <string name="info_trabajo_postular">Postular</string>
+    <string name="info_trabajo_despostular">Des-postular</string>
+    <string name="info_trabajo_editar_oferta">Editar oferta</string>
+    <string name="info_trabajo_cerrar_oferta">Cerrar oferta</string>
+    <string name="info_trabajo_ver_postulantes">Ver postulantes</string>
+
+    <!--Titulos de dialogos-->
+    <string name="title_dialogo_campos_invalidos">Campos inválidos</string>
     <string name="title_dialogo_seleccionar_idiomas">Seleccionár Idiomas</string>
 
     <!--GoogleMaps-->
@@ -201,4 +217,7 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

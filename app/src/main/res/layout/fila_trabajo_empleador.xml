@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/ivFilaTrabEmpleadorIconoTrabajo"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="@dimen/image_view_square_icon"
+            android:layout_height="@dimen/image_view_square_icon"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:contentDescription="Icono de rubro del trabajo"
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="asdasdasd"
-            android:textSize="24sp"
+            android:textSize="@dimen/label_title"
             app:layout_constraintStart_toEndOf="@+id/ivFilaTrabEmpleadorIconoTrabajo"
             app:layout_constraintTop_toTopOf="@+id/ivFilaTrabEmpleadorIconoTrabajo" />
 
@@ -37,6 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="asdasd"
+            android:textSize="@dimen/label_text"
             app:layout_constraintStart_toStartOf="@+id/tvFilaTrabEmpleadorRubro"
             app:layout_constraintTop_toBottomOf="@+id/tvFilaTrabEmpleadorRubro" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -57,9 +58,10 @@
             android:id="@+id/tvFilaTrabEmpleadorHorario"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:text="Feriados y Fines de semana ; Horario: Media jornada- Vespertina"
+            android:textSize="@dimen/label_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,6 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="Publicado: 24/12/1998 14:43 hs"
+            android:textSize="@dimen/label_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvFilaTrabEmpleadorHorario" />
 

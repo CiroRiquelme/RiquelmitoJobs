@@ -6,6 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import utn.aplicaciones.riquelmito.domain.DiasLaborales;
+import utn.aplicaciones.riquelmito.domain.HorarioLaboral;
+import utn.aplicaciones.riquelmito.domain.Rubro;
+import utn.aplicaciones.riquelmito.domain.Trabajo;
+
 public class MenuPostulanteTemporal extends AppCompatActivity {
 
     @Override
@@ -50,8 +55,25 @@ public class MenuPostulanteTemporal extends AppCompatActivity {
         startActivity(activity);
     }
 
+    public void goToInfoTrabajoDesdePostulante(View view){
+        Intent intent = new Intent(this, InfoTrabajoDesdePostulanteActivity.class);
+
+        //Pasa una instancia de Trabajo a la actividad
+        Bundle bundle = new Bundle();
+        Trabajo t = new Trabajo(
+                Rubro.TRANSPORTE, "Chofer de colectivos",
+                "Conducir colectivo de pasajeros de 1 y 2 pisos (de 35 y 50 pasajeros) de media distancia (50 km).",
+                "Puntual, responsable, buen trato con personas", "Conductor de colectivos de media o larga distancia con al menos 1 año de experiencia. Sin accidentes graves.",
+                DiasLaborales.A_TURNOS, HorarioLaboral.MEDIA_ROTATIVA, 35000, -34.6080556,-58.3702778);
+        bundle.putSerializable("trabajo",t);
+        intent.putExtras(bundle);
+
+        startActivity(intent);
+    }
+
     public void goToIniciarSesion(View view) {
         Intent activity = new Intent(this, MainActivity.class);
         startActivity(activity);
+        finish();
     }
 }

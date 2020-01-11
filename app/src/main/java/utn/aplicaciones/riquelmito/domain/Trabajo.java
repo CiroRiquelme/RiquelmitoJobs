@@ -1,10 +1,11 @@
 package utn.aplicaciones.riquelmito.domain;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Trabajo {
+public class Trabajo implements Serializable {
     private Integer idTrabajo;
     private Rubro rubro;
     private String cargo;
@@ -34,6 +35,20 @@ public class Trabajo {
         this.dias = dias;
         this.horario = horario;
         this.salario = salario;
+    }
+
+    public Trabajo(Rubro rubro, String cargo, String descripcionCargo, String perfilEmpleado, String experienciaEmpleado, DiasLaborales dias, HorarioLaboral horario, Integer salario, Double lat, Double lng) {
+        this();
+        this.rubro = rubro;
+        this.cargo = cargo;
+        this.descripcionCargo = descripcionCargo;
+        this.perfilEmpleado = perfilEmpleado;
+        this.experienciaEmpleado = experienciaEmpleado;
+        this.dias = dias;
+        this.horario = horario;
+        this.salario = salario;
+        this.lat = lat;
+        this.lng = lng;
     }
 
     public Integer getIdTrabajo() {

@@ -16,10 +16,11 @@ import utn.aplicaciones.riquelmito.R;
 import utn.aplicaciones.riquelmito.domain.Rubro;
 import utn.aplicaciones.riquelmito.domain.Trabajo;
 
-public class TrabajoDesdePostulanteAdapter extends RecyclerView.Adapter {
+public class TrabajoDesdePostulanteAdapter extends RecyclerView.Adapter implements View.OnClickListener {
 
     private Context cont;
     private ArrayList <Trabajo> lstTrabajos;
+    private View.OnClickListener itemClickListener;
 
     public TrabajoDesdePostulanteAdapter(Context context, ArrayList<Trabajo> listaTrabajos) {
         this.cont = context;
@@ -30,6 +31,8 @@ public class TrabajoDesdePostulanteAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View contentView = LayoutInflater.from(cont).inflate(R.layout.fila_trabajo_postulante,null);
+
+        contentView.setOnClickListener(this);
 
         return new TrabajosDesdePostulanteHolder(contentView);
     }
@@ -154,13 +157,27 @@ public class TrabajoDesdePostulanteAdapter extends RecyclerView.Adapter {
         if(trabajo.getSalario()!=null)
             filaSalario.append(trabajo.getSalario().toString());
         else
-            filaHorario.append(cont.getString(R.string.desconocido));
+            filaSalario.append(cont.getString(R.string.desconocido));
         hold.tvFilaTrabPostulanteSalario.setText(filaSalario);
     }
 
     @Override
     public int getItemCount() {
         return lstTrabajos.size();
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        itemClickListener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(itemClickListener!=null)
+            itemClickListener.onClick(view);
+    }
+
+    public ArrayList<Trabajo> getListaTrabajos() {
+        return lstTrabajos;
     }
 
     public static class TrabajosDesdePostulanteHolder extends RecyclerView.ViewHolder {

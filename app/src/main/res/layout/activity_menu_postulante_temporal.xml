@@ -57,9 +57,17 @@
         android:text="@string/title_activity_seleccionar_ubicacion_postulante" />
 
     <Button
+        android:id="@+id/button14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToInfoTrabajoDesdePostulante"
+        android:text="@string/title_activity_info_trabajo_desde_postulante" />
+
+    <Button
         android:id="@+id/button13"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:onClick="goToIniciarSesion"
         android:text="@string/menu_cerrar_sesion" />
 </LinearLayout>
