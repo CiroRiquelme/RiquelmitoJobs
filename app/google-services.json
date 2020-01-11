@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1030715993258",
+    "firebase_url": "https://riquelmito-jobs.firebaseio.com",
+    "project_id": "riquelmito-jobs",
+    "storage_bucket": "riquelmito-jobs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1030715993258:android:ffb4a297d2a3f0dc8e34d3",
+        "android_client_info": {
+          "package_name": "utn.aplicaciones.riquelmito"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1030715993258-03po49v1emtp4sv4jqbm7gv8o7spa4fd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "utn.aplicaciones.riquelmito",
+            "certificate_hash": "0251de08544dbe3201b573d155ed1c2dddc3e872"
+          }
+        },
+        {
+          "client_id": "1030715993258-8ocni38l48tdtrq07keflagc64j1ok02.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoP5Ul-jJfxh8W3IQEW98Vmv_aEsWOjWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1030715993258-8ocni38l48tdtrq07keflagc64j1ok02.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
