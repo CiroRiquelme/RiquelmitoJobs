@@ -17,8 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UsuariosPostuladosATrabajoActivity"></activity>
-        <activity android:name=".OfertasActivasActivity" />
+        <activity android:name=".InfoTrabajoDesdePostulanteActivity" android:label="@string/title_activity_info_trabajo_desde_postulante" android:screenOrientation="portrait"/>
+        <activity android:name=".UsuariosPostuladosATrabajoActivity" android:label="@string/title_activity_usuarios_postulados_a_trabajo" android:screenOrientation="portrait"/>
+        <activity android:name=".OfertasActivasActivity" android:label="@string/title_activity_ofertas_activas" android:screenOrientation="portrait"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -33,33 +34,44 @@
 
         <activity
             android:name=".SeleccionarUbicacionPostulanteActivity"
-            android:label="@string/title_activity_seleccionar_ubicacion_postulante" />
+            android:label="@string/title_activity_seleccionar_ubicacion_postulante"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".TrabajosDeInteresActivity"
-            android:label="@string/title_activity_trabajos_de_interes" />
-        <activity android:name=".MenuPostulanteTemporal" />
+            android:label="@string/title_activity_trabajos_de_interes"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MenuPostulanteTemporal"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PerfilUsuarioPostulanteActivity"
-            android:label="@string/title_activity_perfil_usuario_postulante" />
+            android:label="@string/title_activity_perfil_usuario_postulante"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PerfilProfesionalActivity"
-            android:label="@string/title_activity_perfil_profesional" />
+            android:label="@string/title_activity_perfil_profesional"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".CrearTrabajoActivity"
-            android:label="@string/title_activity_crear_trabajo" />
+            android:label="@string/title_activity_crear_trabajo"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".BuscarTrabajoActivity"
-            android:label="@string/title_activity_buscar_trabajo" />
+            android:label="@string/title_activity_buscar_trabajo"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".CrearCuentaActivity"
-            android:label="@string/title_activity_crear_cuenta" />
+            android:label="@string/title_activity_crear_cuenta"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".TrabajosPostuladosActivity"
-            android:label="@string/title_activity_trabajos_postulados" />
+            android:label="@string/title_activity_trabajos_postulados"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ConfiguracionNotificacionesPostulanteActivity"
-            android:label="@string/title_activity_configuracion_notificaciones_postulante" />
-        <activity android:name=".MainActivity">
+            android:label="@string/title_activity_configuracion_notificaciones_postulante"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
