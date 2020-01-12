@@ -1,17 +1,33 @@
 package utn.aplicaciones.riquelmito;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import utn.aplicaciones.riquelmito.domain.Sexo;
+import utn.aplicaciones.riquelmito.domain.Usuario;
 
 public class CrearCuentaActivity extends AppCompatActivity {
     private final int LONG_MIN_PASS = 2;    //Longitud mínima de la contraseña
@@ -19,6 +35,13 @@ public class CrearCuentaActivity extends AppCompatActivity {
     private EditText etSingUpEmail;
     private EditText etSingUpPassword;
     private EditText etSingUpPasswordRe;
+
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+
+    private List<Integer> listIdUsuario = new ArrayList<Integer>();
+    ArrayAdapter<Integer> arrayAdapterIdUsuario;
+    private Integer id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +53,8 @@ public class CrearCuentaActivity extends AppCompatActivity {
         etSingUpEmail = (EditText) findViewById(R.id.etSingUpEmail);
         etSingUpPassword = (EditText) findViewById(R.id.etSingUpPassword);
         etSingUpPasswordRe = (EditText) findViewById(R.id.etSingUpPasswordRe);
+
+        inicializarFirebase();
     }
 
     public void crearCuentaClick(View view){
@@ -70,7 +95,30 @@ public class CrearCuentaActivity extends AppCompatActivity {
 
         if(operacionValida){
             //Si no hubieron errores
-            registrarUsuario();
+            final Context cont = this;
+            //TODO autogenerar idPostulante
+            databaseReference.child("IdUsuario").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    listIdUsuario.clear();
+                    for(DataSnapshot objSnapshot : dataSnapshot.getChildren()){
+                        id = objSnapshot.getValue(Integer.class);
+                        //listIdUsuario.add(id);
+                        Toast.makeText(cont, id.toString(),Toast.LENGTH_LONG).show();
+                    }
+
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+            Usuario usuario = new Usuario(id, etSingUpEmail.getText().toString(), etSingUpPassword.getText().toString(), null, null, null, null, null, null, null, null, null, null, null, null, null);
+            //TODO agregar valores ingresados por el ususario
+            registrarUsuario(usuario);
         }
         else{
             //Mostrar dialogo de advertencias
@@ -100,8 +148,15 @@ public class CrearCuentaActivity extends AppCompatActivity {
         return false;
     }
 
-    private void registrarUsuario(){
+    private void inicializarFirebase(){
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
+    }
+
+    private void registrarUsuario(Usuario usuario){
         //TODO Añadir el nuevo usuario a la base de datos
+        databaseReference.child("Usuario").child(usuario.getIdPostulante().toString()).setValue(usuario);
     }
 
     //Esta función permite que el botón de 'volver atrás' de la barra superior funcione

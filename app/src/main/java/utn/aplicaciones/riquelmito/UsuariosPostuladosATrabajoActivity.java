@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 
-import utn.aplicaciones.riquelmito.domain.Postulante;
+import utn.aplicaciones.riquelmito.domain.Usuario;
 import utn.aplicaciones.riquelmito.utilidades.PostulantesAdapter;
 
 public class UsuariosPostuladosATrabajoActivity extends AppCompatActivity {
@@ -33,8 +33,8 @@ public class UsuariosPostuladosATrabajoActivity extends AppCompatActivity {
     }
 
     //TODO: Eliminar este método una vez que se termine de probar
-    private ArrayList<Postulante> cargarPostulantes() {
-        ArrayList<Postulante> arre = new ArrayList<Postulante>();
+    private ArrayList<Usuario> cargarPostulantes() {
+        ArrayList<Usuario> arre = new ArrayList<Usuario>();
 
         //TODO: cargar para hacer pruebas
 

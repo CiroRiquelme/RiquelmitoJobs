@@ -13,14 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import utn.aplicaciones.riquelmito.R;
-import utn.aplicaciones.riquelmito.domain.Postulante;
+import utn.aplicaciones.riquelmito.domain.Usuario;
 
 public class PostulantesAdapter extends RecyclerView.Adapter {
 
     private Context cont;
-    private ArrayList <Postulante> lstPostulantes;
+    private ArrayList <Usuario> lstPostulantes;
 
-    public PostulantesAdapter(Context context, ArrayList<Postulante> listaPostulantes) {
+    public PostulantesAdapter(Context context, ArrayList<Usuario> listaPostulantes) {
         this.cont = context;
         this.lstPostulantes = listaPostulantes;
     }
@@ -35,7 +35,7 @@ public class PostulantesAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Postulante postulante = lstPostulantes.get(position);
+        Usuario postulante = lstPostulantes.get(position);
         PostulanteHolder hold = (PostulanteHolder) holder;
         String separadorAtributo = ", ";
         String delimitadorAtributo = ". ";
