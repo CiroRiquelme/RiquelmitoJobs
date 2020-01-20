@@ -39,14 +39,14 @@ public class OfertasActivasActivity extends AppCompatActivity {
     private ArrayList<Trabajo> cargarTrabajosDePrueba(){
         ArrayList<Trabajo> arre = new ArrayList<Trabajo>();
 
-        arre.add( new Trabajo(Rubro.ATENCION_AL_PUBLICO,"Recepcionista", DiasLaborales.LUN_VIE, HorarioLaboral.DISCONTINUO,17000));
-        arre.add( new Trabajo(Rubro.COMUNICACIONES,"Asdsasd asdsa assda as",DiasLaborales.LUN_SAB,HorarioLaboral.DIURNO,35000));
-        arre.add( new Trabajo(Rubro.CONSTRUCCION,"Albañil",DiasLaborales.MART_SAB,HorarioLaboral.ROTATIVO,17000));
-        arre.add( new Trabajo(Rubro.ELECTRICIDAD,"Electricista ...",DiasLaborales.MART_DOM,HorarioLaboral.MEDIA_ROTATIVA,17000));
-        arre.add( new Trabajo(Rubro.INFORMATICA,"Recepcionista",DiasLaborales.FERIAD_DOM,HorarioLaboral.NOCTURNO,17000));
-        arre.add( new Trabajo(Rubro.RRHH,"Recepcionista",DiasLaborales.FERIAD_FINSEMANA,HorarioLaboral.MEDIA_MATUTINA,17000));
-        arre.add( new Trabajo(Rubro.SALUD,"Recepcionista",DiasLaborales.A_TURNOS,HorarioLaboral.MEDIA_VESPERTINA,17000));
-        arre.add( new Trabajo(Rubro.TRANSPORTE,"Recepcionista",DiasLaborales.LUN_VIE,HorarioLaboral.MEDIA_NOCTURNA,17000));
+        arre.add( new Trabajo(1,Rubro.ATENCION_AL_PUBLICO,"Recepcionista", DiasLaborales.LUN_VIE, HorarioLaboral.DISCONTINUO,17000));
+        arre.add( new Trabajo(1,Rubro.COMUNICACIONES,"Asdsasd asdsa assda as",DiasLaborales.LUN_SAB,HorarioLaboral.DIURNO,35000));
+        arre.add( new Trabajo(1,Rubro.CONSTRUCCION,"Albañil",DiasLaborales.MART_SAB,HorarioLaboral.ROTATIVO,17000));
+        arre.add( new Trabajo(1,Rubro.ELECTRICIDAD,"Electricista ...",DiasLaborales.MART_DOM,HorarioLaboral.MEDIA_ROTATIVA,17000));
+        arre.add( new Trabajo(1,Rubro.INFORMATICA,"Recepcionista",DiasLaborales.FERIAD_DOM,HorarioLaboral.NOCTURNO,17000));
+        arre.add( new Trabajo(1,Rubro.RRHH,"Recepcionista",DiasLaborales.FERIAD_FINSEMANA,HorarioLaboral.MEDIA_MATUTINA,17000));
+        arre.add( new Trabajo(1,Rubro.SALUD,"Recepcionista",DiasLaborales.A_TURNOS,HorarioLaboral.MEDIA_VESPERTINA,17000));
+        arre.add( new Trabajo(1,Rubro.TRANSPORTE,"Recepcionista",DiasLaborales.LUN_VIE,HorarioLaboral.MEDIA_NOCTURNA,17000));
 
         return arre;
     }

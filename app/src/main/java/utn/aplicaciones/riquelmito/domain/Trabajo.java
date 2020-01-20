@@ -28,8 +28,9 @@ public class Trabajo implements Serializable {
         fechaAlta = Calendar.getInstance().getTime();
     }
 
-    public Trabajo(Rubro rubro, String cargo, DiasLaborales dias, HorarioLaboral horario, Integer salario) {
+    public Trabajo(Integer idTrabajo, Rubro rubro, String cargo, DiasLaborales dias, HorarioLaboral horario, Integer salario) {
         this();
+        this.idTrabajo = idTrabajo;
         this.rubro = rubro;
         this.cargo = cargo;
         this.dias = dias;
@@ -94,6 +95,12 @@ public class Trabajo implements Serializable {
     public Double getLng() {
         return lng;
     }
+
+    public void setCargo(String cargo) { this.cargo = cargo; }
+
+    public void setLat(Double lat) { this.lat = lat; }
+
+    public void setLng(Double lng) { this.lng = lng; }
 
     public String getFechaAltaString () {
         if (fechaAlta == null)

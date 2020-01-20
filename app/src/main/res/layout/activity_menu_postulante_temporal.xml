@@ -64,6 +64,20 @@
         android:text="@string/title_activity_info_trabajo_desde_postulante" />
 
     <Button
+        android:id="@+id/button143"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToCrearTrabajo"
+        android:text="@string/title_activity_crear_trabajo" />
+
+    <Button
+        android:id="@+id/button999"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToTrabajosCercanosAUsuarioActivity"
+        android:text="Buscar Trabajos Cercanos" />
+
+    <Button
         android:id="@+id/button13"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

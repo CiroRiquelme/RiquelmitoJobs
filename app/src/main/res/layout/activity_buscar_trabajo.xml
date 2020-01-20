@@ -45,5 +45,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/salario" />
+
+        <Button
+            android:id="@+id/btnBuscarTrabajos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:onClick="buscarTrabajo"
+            android:text="Buscar" />
     </LinearLayout>
 </ScrollView>

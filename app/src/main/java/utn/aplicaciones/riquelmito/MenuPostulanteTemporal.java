@@ -10,6 +10,7 @@ import utn.aplicaciones.riquelmito.domain.DiasLaborales;
 import utn.aplicaciones.riquelmito.domain.HorarioLaboral;
 import utn.aplicaciones.riquelmito.domain.Rubro;
 import utn.aplicaciones.riquelmito.domain.Trabajo;
+import utn.aplicaciones.riquelmito.TrabajosCercanosAUsuarioActivity;
 
 public class MenuPostulanteTemporal extends AppCompatActivity {
 
@@ -55,6 +56,11 @@ public class MenuPostulanteTemporal extends AppCompatActivity {
         startActivity(activity);
     }
 
+    public void goToCrearTrabajo(View view) {
+        Intent activity = new Intent(this, CrearTrabajoActivity.class);
+        startActivity(activity);
+    }
+
     public void goToInfoTrabajoDesdePostulante(View view){
         Intent intent = new Intent(this, InfoTrabajoDesdePostulanteActivity.class);
 
@@ -76,4 +82,10 @@ public class MenuPostulanteTemporal extends AppCompatActivity {
         startActivity(activity);
         finish();
     }
+
+    public void goToTrabajosCercanosAUsuarioActivity(View view) {
+        Intent activity = new Intent(this, TrabajosCercanosAUsuarioActivity.class);
+        startActivity(activity);
+    }
+
 }

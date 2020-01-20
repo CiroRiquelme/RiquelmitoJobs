@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="utn.aplicaciones.riquelmito">
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -17,9 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InfoTrabajoDesdePostulanteActivity" android:label="@string/title_activity_info_trabajo_desde_postulante" android:screenOrientation="portrait"/>
-        <activity android:name=".UsuariosPostuladosATrabajoActivity" android:label="@string/title_activity_usuarios_postulados_a_trabajo" android:screenOrientation="portrait"/>
-        <activity android:name=".OfertasActivasActivity" android:label="@string/title_activity_ofertas_activas" android:screenOrientation="portrait"/>
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -33,6 +32,27 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".TrabajosCercanosAUsuarioActivity"
+            android:label="@string/title_activity_trabajos_cercanos_ausuario"></activity>
+        <activity
+            android:name=".utilidades.TrabajosCercanosAUsuarioActivity"
+            android:label="@string/title_activity_trabajos_cercanos_ausuario" />
+        <activity
+            android:name=".utilidades.TrabajosCercanosAUsuario"
+            android:label="@string/title_activity_trabajos_cercanos_ausuario" />
+        <activity
+            android:name=".InfoTrabajoDesdePostulanteActivity"
+            android:label="@string/title_activity_info_trabajo_desde_postulante"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UsuariosPostuladosATrabajoActivity"
+            android:label="@string/title_activity_usuarios_postulados_a_trabajo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OfertasActivasActivity"
+            android:label="@string/title_activity_ofertas_activas"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".SeleccionarUbicacionPostulanteActivity"
             android:label="@string/title_activity_seleccionar_ubicacion_postulante"
             android:screenOrientation="portrait" />
@@ -40,7 +60,8 @@
             android:name=".TrabajosDeInteresActivity"
             android:label="@string/title_activity_trabajos_de_interes"
             android:screenOrientation="portrait" />
-        <activity android:name=".MenuPostulanteTemporal"
+        <activity
+            android:name=".MenuPostulanteTemporal"
             android:screenOrientation="portrait" />
         <activity
             android:name=".PerfilUsuarioPostulanteActivity"
@@ -70,7 +91,8 @@
             android:name=".ConfiguracionNotificacionesPostulanteActivity"
             android:label="@string/title_activity_configuracion_notificaciones_postulante"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
