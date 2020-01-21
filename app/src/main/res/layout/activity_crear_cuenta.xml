@@ -57,7 +57,6 @@
             android:id="@+id/spnSingUpTipoUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/tipo_usuario"
             android:spinnerMode="dialog" />
 
         <Button

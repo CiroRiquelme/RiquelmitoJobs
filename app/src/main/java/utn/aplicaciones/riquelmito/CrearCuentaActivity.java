@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
@@ -28,7 +29,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import utn.aplicaciones.riquelmito.domain.Sexo;
+import utn.aplicaciones.riquelmito.domain.TipoDeUsuario;
 import utn.aplicaciones.riquelmito.domain.Usuario;
 
 public class CrearCuentaActivity extends AppCompatActivity {
@@ -37,6 +38,7 @@ public class CrearCuentaActivity extends AppCompatActivity {
     private EditText etSingUpEmail;
     private EditText etSingUpPassword;
     private EditText etSingUpPasswordRe;
+    private Spinner spnSingUpTipoUser;
 
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
@@ -55,6 +57,8 @@ public class CrearCuentaActivity extends AppCompatActivity {
         etSingUpEmail = (EditText) findViewById(R.id.etSingUpEmail);
         etSingUpPassword = (EditText) findViewById(R.id.etSingUpPassword);
         etSingUpPasswordRe = (EditText) findViewById(R.id.etSingUpPasswordRe);
+        spnSingUpTipoUser = (Spinner) findViewById(R.id.spnSingUpTipoUser);
+        spnSingUpTipoUser.setAdapter(new ArrayAdapter(this, android.R.layout.simple_selectable_list_item, TipoDeUsuario.values() ));
 
         inicializarFirebase();
 

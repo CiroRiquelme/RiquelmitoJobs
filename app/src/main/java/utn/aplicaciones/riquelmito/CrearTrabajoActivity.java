@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -33,6 +34,7 @@ public class CrearTrabajoActivity extends AppCompatActivity {
     private EditText mltCrearTrabExperiencia;
     //private EditText etCrearTrabDias;
     private Spinner spnCrearTrabHorario;
+    private Spinner spnCrearTrabDiasSelecc;
     private EditText etCrearTrabSalario;
 
     private FirebaseDatabase firebaseDatabase;
@@ -52,9 +54,13 @@ public class CrearTrabajoActivity extends AppCompatActivity {
         mltCrearTrabDescripcion = (EditText) findViewById(R.id.mltCrearTrabDescripcion);
         mltCrearTrabPerfilEmpl = (EditText) findViewById(R.id.mltCrearTrabPerfilEmpl);
         mltCrearTrabExperiencia = (EditText) findViewById(R.id.mltCrearTrabExperiencia);
-        //etCrearTrabDias;
         spnCrearTrabHorario = (Spinner) findViewById(R.id.spnCrearTrabHorario);
+        spnCrearTrabDiasSelecc = (Spinner) findViewById(R.id.spnCrearTrabDiasSelecc);
         etCrearTrabSalario = (EditText) findViewById(R.id.etCrearTrabSalario);
+
+        spnCrearTrabRubro.setAdapter(new ArrayAdapter(this, android.R.layout.simple_selectable_list_item, Rubro.values() ));
+        spnCrearTrabHorario.setAdapter(new ArrayAdapter(this, android.R.layout.simple_selectable_list_item, HorarioLaboral.values() ));
+        spnCrearTrabDiasSelecc.setAdapter(new ArrayAdapter(this, android.R.layout.simple_selectable_list_item, DiasLaborales.values() ));
 
         inicializarFirebase();
 

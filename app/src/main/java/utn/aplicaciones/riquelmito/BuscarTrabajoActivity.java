@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.ChildEventListener;
@@ -19,14 +21,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-
 import utn.aplicaciones.riquelmito.DTO.DatosTrabajosCercanosAUsuarioDTO;
 import utn.aplicaciones.riquelmito.domain.AdministradorDeSesion;
+import utn.aplicaciones.riquelmito.domain.Rubro;
 import utn.aplicaciones.riquelmito.domain.Trabajo;
 
 public class BuscarTrabajoActivity extends AppCompatActivity {
 
+    private Spinner spnBuscTrabRubro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,8 @@ public class BuscarTrabajoActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        spnBuscTrabRubro = findViewById(R.id.spnBuscTrabRubro);
+        spnBuscTrabRubro.setAdapter(new ArrayAdapter(this, android.R.layout.simple_selectable_list_item, Rubro.values() ));
     }
 
     public void buscarTrabajo(View view){

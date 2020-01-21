@@ -19,7 +19,7 @@
             android:id="@+id/spnCrearTrabRubro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/rubros" />
+            android:spinnerMode="dialog" />
 
         <TextView
             android:id="@+id/textView24"
@@ -86,26 +86,11 @@
             android:layout_height="wrap_content"
             android:text="@string/crear_traba_dias_laborables" />
 
-        <LinearLayout
+        <Spinner
+            android:id="@+id/spnCrearTrabDiasSelecc"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/etCrearTrabDias"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName" />
-
-            <ImageButton
-                android:id="@+id/btnCrearTrabDiasSelecc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                app:srcCompat="@android:drawable/ic_menu_add" />
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
 
         <TextView
             android:id="@+id/textView29"
@@ -117,7 +102,8 @@
             android:id="@+id/spnCrearTrabHorario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/horario" />
+            android:entries="@array/horario"
+            android:spinnerMode="dialog" />
 
         <TextView
             android:id="@+id/textView30"
