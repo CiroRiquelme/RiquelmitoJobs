@@ -17,9 +17,12 @@ import androidx.core.app.NotificationCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+
+import utn.aplicaciones.riquelmito.domain.AdministradorDeSesion;
 
 public class FirebaseServicioDeMensajes extends FirebaseMessagingService {
 
@@ -113,10 +116,10 @@ public class FirebaseServicioDeMensajes extends FirebaseMessagingService {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (!task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Suscrito a tópico", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AdministradorDeSesion.context, "Suscrito a tópico", Toast.LENGTH_SHORT).show();
                         }
                         else{
-                            Toast.makeText(getApplicationContext(), "Suscripción fallida", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AdministradorDeSesion.context, "Suscripción fallida", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -129,14 +132,20 @@ public class FirebaseServicioDeMensajes extends FirebaseMessagingService {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (!task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Desuscrito a tópico", Toast.LENGTH_SHORT).show();;
+                            Toast.makeText(AdministradorDeSesion.context, "Desuscrito a tópico", Toast.LENGTH_SHORT).show();;
                             //Toast.makeText(this, "Desuscrito a tópico", Toast.LENGTH_SHORT).show();
                         }
                         else{
-                            Toast.makeText(getApplicationContext(), "Desuscripción fallida", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AdministradorDeSesion.context, "Desuscripción fallida", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+    }
+
+    public String obtenerToken(){
+        String token = FirebaseInstanceId.getInstance().getToken();
+
+        return token;
     }
 
 }

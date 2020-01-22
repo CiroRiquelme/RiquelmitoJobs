@@ -16,8 +16,8 @@
         <ImageView
             android:id="@+id/ivSignInLogoApp"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:src="@drawable/comunicaciones" />
+            android:layout_height="150dp"/>
+            <!--android:src="@drawable/comunicaciones" />-->
 
         <TextView
             android:id="@+id/textView"
