@@ -18,7 +18,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <service android:name=".FirebaseServicioDeMensajes">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -33,12 +37,6 @@
 
         <activity
             android:name=".TrabajosCercanosAUsuarioActivity"
-            android:label="@string/title_activity_trabajos_cercanos_ausuario"></activity>
-        <activity
-            android:name=".utilidades.TrabajosCercanosAUsuarioActivity"
-            android:label="@string/title_activity_trabajos_cercanos_ausuario" />
-        <activity
-            android:name=".utilidades.TrabajosCercanosAUsuario"
             android:label="@string/title_activity_trabajos_cercanos_ausuario" />
         <activity
             android:name=".InfoTrabajoDesdePostulanteActivity"
