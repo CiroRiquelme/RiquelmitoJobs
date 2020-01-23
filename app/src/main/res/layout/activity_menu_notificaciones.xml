@@ -30,4 +30,21 @@
         android:layout_weight="1"
         android:onClick="botonEnviarNotificacion"
         android:text="Enviar notificación" />
+
+
+    <Button
+        android:id="@+id/button18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="botonSeleccionarDocumento"
+        android:text="Seleccionar documento" />
+
+    <Button
+        android:id="@+id/button19"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="botonMostrarDocumento"
+        android:text="Mostrar documento" />
 </LinearLayout>
