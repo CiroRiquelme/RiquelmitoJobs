@@ -17,7 +17,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MenuNotificacionesActivity"></activity>
+        <activity android:name=".SeleccionarUbicacionTrabajoActivity"></activity>
+        <activity
+            android:name=".InfoPostulanteActivity"
+            android:label="@string/title_activity_info_postulante" />
+        <activity
+            android:name=".InfoTrabajoDesdeEmpleadorActivity"
+            android:label="@string/title_activity_info_trabajo" />
+        <activity android:name=".MenuNotificacionesActivity" />
 
         <service android:name=".FirebaseServicioDeMensajes">
             <intent-filter>
@@ -41,14 +48,14 @@
             android:label="@string/title_activity_trabajos_cercanos_ausuario" />
         <activity
             android:name=".InfoTrabajoDesdePostulanteActivity"
-            android:label="@string/title_activity_info_trabajo_desde_postulante"
+            android:label="@string/title_activity_info_trabajo"
             android:screenOrientation="portrait" />
         <activity
             android:name=".UsuariosPostuladosATrabajoActivity"
             android:label="@string/title_activity_usuarios_postulados_a_trabajo"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".OfertasActivasActivity"
+            android:name=".TrabajosCreadosActivosActivity"
             android:label="@string/title_activity_ofertas_activas"
             android:screenOrientation="portrait" />
         <activity

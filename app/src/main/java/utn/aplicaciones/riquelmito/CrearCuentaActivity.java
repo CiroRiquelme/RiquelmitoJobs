@@ -107,6 +107,7 @@ public class CrearCuentaActivity extends AppCompatActivity {
         }
 
         //Verifica que el email no esté siendo usado por un usuario ya registrado
+        //TODO
         if( userEmailYaRegistrado(etSingUpEmail.getText().toString()) ){
             mensajeError.append(this.getString(R.string.dialogo_error_email_ya_registrado));
             mensajeError.append( '\n' );

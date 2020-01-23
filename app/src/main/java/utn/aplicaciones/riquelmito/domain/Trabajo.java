@@ -2,12 +2,15 @@ package utn.aplicaciones.riquelmito.domain;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class Trabajo implements Serializable {
     private Integer idTrabajo;
-    private Rubro rubro;
+    public Integer idEmpleador;
+    public Rubro rubro;
     private String cargo;
     private String descripcionCargo;
     private String perfilEmpleado;
@@ -19,6 +22,7 @@ public class Trabajo implements Serializable {
     private Double lng = 0.0;
     private Date fechaAlta;
     private Date fechaCierre;
+    public List<Integer> idsPostulantes;
 
     public Date getFechaAlta() {
         return fechaAlta;
@@ -36,7 +40,13 @@ public class Trabajo implements Serializable {
         this.dias = dias;
         this.horario = horario;
         this.salario = salario;
+        idsPostulantes = new ArrayList<>();
+        //TODO: sacar los ids de postulantes por defecto
+        idsPostulantes.add(22);
+        idsPostulantes.add(11);
     }
+
+
 
     public Trabajo(Rubro rubro, String cargo, String descripcionCargo, String perfilEmpleado, String experienciaEmpleado, DiasLaborales dias, HorarioLaboral horario, Integer salario, Double lat, Double lng) {
         this();
@@ -52,9 +62,31 @@ public class Trabajo implements Serializable {
         this.lng = lng;
     }
 
+    public Trabajo(Integer idTrabajo, Rubro rubro, String cargo, String descripcionCargo, String perfilEmpleado, String experienciaEmpleado, DiasLaborales dias, HorarioLaboral horario, Integer salario, Double lat, Double lng) {
+        this();
+        this.idTrabajo = idTrabajo;
+        this.idEmpleador = idEmpleador;
+        this.rubro = rubro;
+        this.cargo = cargo;
+        this.descripcionCargo = descripcionCargo;
+        this.perfilEmpleado = perfilEmpleado;
+        this.experienciaEmpleado = experienciaEmpleado;
+        this.dias = dias;
+        this.horario = horario;
+        this.salario = salario;
+        this.lat = lat;
+        this.lng = lng;
+    }
+
+    public List<Integer> getIdsPostulantes() {
+        return idsPostulantes;
+    }
+
     public Integer getIdTrabajo() {
         return idTrabajo;
     }
+
+    public Integer getIdEmpleador() { return idEmpleador; }
 
     public Rubro getRubro() {
         return rubro;
@@ -94,6 +126,12 @@ public class Trabajo implements Serializable {
 
     public Double getLng() {
         return lng;
+    }
+
+    public void setIdEmpleador(Integer idEmpleador) { this.idEmpleador = idEmpleador; }
+
+    public void setIdsPostulantes(List<Integer> idsPostulantes) {
+        this.idsPostulantes = idsPostulantes;
     }
 
     public void setCargo(String cargo) { this.cargo = cargo; }

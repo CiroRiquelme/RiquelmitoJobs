@@ -88,7 +88,7 @@
     <string name="title_activity_usuarios_postulados_a_trabajo">Usuarios postulados</string>
 
     <!--actividades de información de trabajo-->
-    <string name="title_activity_info_trabajo_desde_postulante">Detalles de trabajo</string>
+    <string name="title_activity_info_trabajo">Detalles de trabajo</string>
     <string name="info_trabajo_consultar_ubicacion">Consultár ubicación</string>
     <string name="info_trabajo_marcar_de_interes">Marcar de Interés</string>
     <string name="info_trabajo_desmarcar_de_interes">Desmarcar Interés</string>
@@ -97,6 +97,10 @@
     <string name="info_trabajo_editar_oferta">Editar oferta</string>
     <string name="info_trabajo_cerrar_oferta">Cerrar oferta</string>
     <string name="info_trabajo_ver_postulantes">Ver postulantes</string>
+
+    <!--actividades de información de trabajo-->
+    <string name="title_activity_info_postulante">Información de postulante</string>
+    <string name="info_postulante_descargar_cv">Descargar Curriculum Vitae</string>
 
     <!--Titulos de dialogos-->
     <string name="title_dialogo_campos_invalidos">Campos inválidos</string>
@@ -184,10 +188,16 @@
 
     <!--***************DIALOGOS DE ERROR***************-->
     <string name="dialogo_error_formato_email_invalido">-El formato de Email no es valido.</string>
-    <string name="dialogo_error_contrasenias_distintas">-Las contraseñas ingresadas deben ser iguales</string>
-    <string name="dialogo_error_longitud_contrasenia_insuficiente1">-La contraseña debe tener al menos</string>
+    <string name="dialogo_error_contrasenias_distintas">-Las contraseñas ingresadas deben ser iguales.</string>
+    <string name="dialogo_error_longitud_contrasenia_insuficiente1">-La contraseña debe tener al menos.</string>
     <string name="dialogo_error_longitud_contrasenia_insuficiente2">caracteres.</string>
     <string name="dialogo_error_email_ya_registrado">-Ya existe una cuenta asociada al Email ingresado.</string>
+    <string name="dialogo_error_no_indico_rubro">-No se indicó el rubro del trabajo.</string>
+    <string name="dialogo_error_no_indico_dias_laborales">-No se indicaron los días laborales del trabajo.</string>
+    <string name="dialogo_error_no_indico_horario_laboral">-No se indicó el horario laboral del trabajo.</string>
+    <string name="dialogo_error_longitud_minima_campo_1">-El campo </string>
+    <string name="dialogo_error_longitud_minima_campo_2"> debe ser de al menos </string>
+    <string name="dialogo_error_longitud_minima_campo_3"> caracteres.</string>
 
 
     <!-- Preference Titles -->
