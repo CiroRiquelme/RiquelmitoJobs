@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".InfoTrabajoDesdeEmpleadorActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivInfoTrabEmpleadorIconoTrabajo"
+                android:layout_width="@dimen/image_view_square_icon"
+                android:layout_height="@dimen/image_view_square_icon"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/atencion_al_publico"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvInfoTrabEmpleadorRubro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="TextView"
+                android:textSize="@dimen/label_title"
+                app:layout_constraintStart_toEndOf="@+id/ivInfoTrabEmpleadorIconoTrabajo"
+                app:layout_constraintTop_toTopOf="@+id/ivInfoTrabEmpleadorIconoTrabajo" />
+
+            <TextView
+                android:id="@+id/tvInfoTrabEmpleadorCargo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                android:textSize="@dimen/label_text"
+                app:layout_constraintStart_toStartOf="@+id/tvInfoTrabEmpleadorRubro"
+                app:layout_constraintTop_toBottomOf="@+id/tvInfoTrabEmpleadorRubro" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/divider22"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:id="@+id/tvInfoTrabEmpleadorHorario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:text="Lunes - Viernes; Horario: Diurno"
+            android:textSize="@dimen/label_text" />
+
+        <TextView
+            android:id="@+id/tvInfoTrabEmpleadorSueldo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:layout_marginBottom="@dimen/margin_bottom_label_dato"
+            android:text="Sueldo Mínimo: $15000"
+            android:textSize="@dimen/label_text" />
+
+        <TextView
+            android:id="@+id/textView36"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_subtible_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:text="@string/crear_traba_descripcion"
+            android:textSize="@dimen/label_subtitle" />
+
+        <TextView
+            android:id="@+id/tvInfoTrabEmpleadorDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:layout_marginBottom="@dimen/margin_bottom_label_dato"
+            android:text="Asistente de enfermería en centro de recuperación de victimas de accidentes vehiculares."
+            android:textSize="@dimen/label_text" />
+
+        <TextView
+            android:id="@+id/textView38"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_subtible_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:text="@string/crear_traba_perfil_empleado"
+            android:textSize="@dimen/label_subtitle" />
+
+        <TextView
+            android:id="@+id/tvInfoTrabEmpleadorPerfilEmpleado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:layout_marginBottom="@dimen/margin_bottom_label_dato"
+            android:text="Tolerante, amable, responsable, capaz de levantar pesos elevados."
+            android:textSize="@dimen/label_text" />
+
+        <TextView
+            android:id="@+id/textView40"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_subtible_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:text="@string/crear_traba_experiencia_empleado"
+            android:textSize="@dimen/label_subtitle" />
+
+        <TextView
+            android:id="@+id/tvInfoTrabEmpleadorExperiencia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:layout_marginBottom="@dimen/margin_bottom_label_dato"
+            android:text="1 año de trabajo previo como enfermero de cuidados médicos o quirúrgicos."
+            android:textSize="@dimen/label_text" />
+
+        <Button
+            android:id="@+id/button408"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/info_trabajo_consultar_ubicacion" />
+
+        <View
+            android:id="@+id/divider23"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/separator_gradient" />
+
+        <Button
+            android:id="@+id/button410"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:onClick="goToUsuariosPostuladosAltrabajo"
+            android:text="@string/info_trabajo_ver_postulantes"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+</ScrollView>

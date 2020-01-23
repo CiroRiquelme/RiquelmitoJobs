@@ -71,27 +71,12 @@
             android:layout_height="wrap_content"
             android:text="@string/perfil_prof_adjuntar_cv" />
 
-        <LinearLayout
+        <Button
+            android:id="@+id/button22"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/etPerfProfCurriculum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="@string/perfil_prof_hint_adjuntar_cv"
-                android:inputType="none" />
-
-            <ImageButton
-                android:id="@+id/btnPerfProfCurriculumSelec"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                app:srcCompat="@android:drawable/ic_menu_search" />
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:onClick="goToSubirCV"
+            android:text="@string/perfil_prof_adjuntar_cv" />
 
         <Button
             android:id="@+id/btnPerfProfQuienVeMiCV"

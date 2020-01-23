@@ -32,6 +32,7 @@ public class TrabajoDesdePostulanteAdapter extends RecyclerView.Adapter implemen
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View contentView = LayoutInflater.from(cont).inflate(R.layout.fila_trabajo_postulante,null);
 
+        //Sin esto no se va a relacionar el OnClickListener de este Adapter
         contentView.setOnClickListener(this);
 
         return new TrabajosDesdePostulanteHolder(contentView);

@@ -88,4 +88,9 @@ public class MenuPostulanteTemporal extends AppCompatActivity {
         startActivity(activity);
     }
 
+    public void goToTrabajosCreadosActivosActivity(View view) {
+        Intent activity = new Intent(this, TrabajosCreadosActivosActivity.class);
+        startActivity(activity);
+    }
+
 }

@@ -1,20 +1,36 @@
 package utn.aplicaciones.riquelmito;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import utn.aplicaciones.riquelmito.domain.AdministradorDeSesion;
 
 public class PerfilProfesionalActivity extends AppCompatActivity {
+    private final int REQUEST_UPLOAD_CV = 1;
+
     private EditText etPerfProfIdiomas;
-    private EditText etPerfProfCurriculum;
 
     private String[] idiomasArray;
     private boolean[] idiomasSeleccionados;
     private boolean[] idiomasSeleccionadosTemp;
+
+    private StorageReference mStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +40,6 @@ public class PerfilProfesionalActivity extends AppCompatActivity {
 
         etPerfProfIdiomas = (EditText) findViewById(R.id.etPerfProfIdiomas);
         etPerfProfIdiomas.setKeyListener(null);
-        etPerfProfCurriculum = (EditText) findViewById((R.id.etPerfProfCurriculum));
-        etPerfProfCurriculum.setKeyListener(null);
 
         //Define listas necesarias para trabajar con la lista de idiomas
         idiomasArray = getResources().getStringArray(R.array.idiomas);
@@ -64,6 +78,43 @@ public class PerfilProfesionalActivity extends AppCompatActivity {
                 });
         builder.create().show();
     }
+
+    public void goToSubirCV(View view){
+        mStorage = FirebaseStorage.getInstance().getReference();
+
+        //Intent intent = new Intent(Intent.ACTION_PICK);
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("application/pdf");
+        startActivityForResult(intent, REQUEST_UPLOAD_CV);
+
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == this.REQUEST_UPLOAD_CV && resultCode==RESULT_OK){
+            Uri uri = data.getData();
+
+            StorageReference filePath = mStorage.child("cv").child(AdministradorDeSesion.postulante.getIdPostulante().toString());
+
+            filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>(){
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot){
+                    Toast.makeText(AdministradorDeSesion.context, "Se subió exitosamente el CV", Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(PerfilProfesionalActivity.this,"No se ha podido conectar con el servidor", Toast.LENGTH_LONG).show();
+                }
+            });
+
+        }
+
+    }
+
 
     //Esta función permite que el botón de 'volver atrás' de la barra superior funcione
     public boolean onOptionsItemSelected(MenuItem item) {

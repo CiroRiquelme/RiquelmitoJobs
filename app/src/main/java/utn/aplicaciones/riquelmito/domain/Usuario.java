@@ -1,9 +1,10 @@
 package utn.aplicaciones.riquelmito.domain;
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class Usuario {
+public class Usuario implements Serializable {
     private Integer idPostulante;
     private String email;
     private String contraseña;
@@ -72,7 +73,7 @@ public class Usuario {
 
     public Integer getEdad(){
         return 1000;
-    }
+    }   //TODO Devolver la edad real
 
     public Sexo getSexo() {
         return sexo;

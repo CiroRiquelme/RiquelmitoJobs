@@ -15,10 +15,11 @@ import java.util.ArrayList;
 import utn.aplicaciones.riquelmito.R;
 import utn.aplicaciones.riquelmito.domain.Usuario;
 
-public class PostulantesAdapter extends RecyclerView.Adapter {
+public class PostulantesAdapter extends RecyclerView.Adapter implements View.OnClickListener {
 
     private Context cont;
     private ArrayList <Usuario> lstPostulantes;
+    private View.OnClickListener itemClickListener;
 
     public PostulantesAdapter(Context context, ArrayList<Usuario> listaPostulantes) {
         this.cont = context;
@@ -29,6 +30,9 @@ public class PostulantesAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View contentView = LayoutInflater.from(cont).inflate(R.layout.fila_postulante,null);
+
+        //Sin esto no se va a relacionar el OnClickListener de este Adapter
+        contentView.setOnClickListener(this);
 
         return new PostulanteHolder(contentView);
     }
@@ -50,31 +54,40 @@ public class PostulantesAdapter extends RecyclerView.Adapter {
             hold.tvFilaPostulanteNombre.setText( tituloFila );
         }
         else{
-            hold.tvFilaPostulanteNombre.setText(cont.getString(R.string.desconocido));
+            //TODO Descomentar la linea de abajo y eliminar la de más abajo
+            //hold.tvFilaPostulanteNombre.setText(cont.getString(R.string.desconocido));
+            hold.tvFilaPostulanteNombre.setText("Id usuario: " + postulante.getIdPostulante());
         }
 
         //Rellena linea 1: "Edad: xx. Sexo: xxxxxxx."
         lineaDescripcion1.append(cont.getString(R.string.fila_edad_postulante));
         lineaDescripcion1.append(' ');
         lineaDescripcion1.append(postulante.getEdad());
+        lineaDescripcion1.append(' ');
         lineaDescripcion1.append(cont.getString(R.string.fila_anios_postulante));
         lineaDescripcion1.append(delimitadorAtributo);
 
         lineaDescripcion1.append(cont.getString(R.string.fila_sexo_postulante));
         lineaDescripcion1.append(' ');
-        switch (postulante.getSexo()){
-            case FEMENINO:
-                hold.ivFilaIconoUser.setImageResource(R.drawable.sexo_femenino);
-                lineaDescripcion1.append(cont.getString(R.string.sexo_femenino));
-                break;
-            case MASCULINO:
-                hold.ivFilaIconoUser.setImageResource(R.drawable.sexo_masculino);
-                lineaDescripcion1.append(cont.getString(R.string.sexo_masculino));
-                break;
-            default:
-                hold.ivFilaIconoUser.setImageResource(R.drawable.sexo_otro);
-                lineaDescripcion1.append(cont.getString(R.string.sexo_otro));
-                break;
+        if( postulante.getSexo() == null ){
+            hold.ivFilaIconoUser.setImageResource(R.drawable.sexo_otro);
+            lineaDescripcion1.append(cont.getString(R.string.sexo_otro));
+        }
+        else {
+            switch (postulante.getSexo()){
+                case FEMENINO:
+                    hold.ivFilaIconoUser.setImageResource(R.drawable.sexo_femenino);
+                    lineaDescripcion1.append(cont.getString(R.string.sexo_femenino));
+                    break;
+                case MASCULINO:
+                    hold.ivFilaIconoUser.setImageResource(R.drawable.sexo_masculino);
+                    lineaDescripcion1.append(cont.getString(R.string.sexo_masculino));
+                    break;
+                default:
+                    hold.ivFilaIconoUser.setImageResource(R.drawable.sexo_otro);
+                    lineaDescripcion1.append(cont.getString(R.string.sexo_otro));
+                    break;
+            }
         }
         hold.tvFilaPostulanteDescripcion1.setText(lineaDescripcion1);
 
@@ -102,6 +115,21 @@ public class PostulantesAdapter extends RecyclerView.Adapter {
     public int getItemCount() {
         return lstPostulantes.size();
     }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        itemClickListener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(itemClickListener!=null)
+            itemClickListener.onClick(view);
+    }
+
+    public ArrayList<Usuario> getListaPostulantes() {
+        return lstPostulantes;
+    }
+
 
     public static class PostulanteHolder extends RecyclerView.ViewHolder {
         private ImageView ivFilaIconoUser;
