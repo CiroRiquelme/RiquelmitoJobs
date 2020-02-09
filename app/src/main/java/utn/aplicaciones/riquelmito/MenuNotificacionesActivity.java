@@ -80,7 +80,8 @@ public class MenuNotificacionesActivity extends AppCompatActivity {
             Uri uri = data.getData();
 
             //TODO en lugar de uri.getLasPathSegment poner id de usuarioq
-            StorageReference filePath = mStorage.child("cv").child(uri.getLastPathSegment());
+            //StorageReference filePath = mStorage.child("cv").child(uri.getLastPathSegment());
+            StorageReference filePath = mStorage.child("cv").child("7777777");
 
             filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>(){
                 @Override

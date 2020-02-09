@@ -96,4 +96,75 @@ public class Usuario implements Serializable {
     }
 
     public Integer getIdPostulante() { return idPostulante; }
+
+    public String getEmail() { return email; }
+
+    public String getContraseña() { return contraseña; }
+
+    public Integer getDni() { return dni; }
+
+    public String getTelefono() { return telefono; }
+
+    public String getExperiencia() { return experiencia; }
+
+    public String getFormacion() { return formacion; }
+
+    public String getIdiomas() { return idiomas; }
+
+    public void setIdPostulante(Integer idPostulante) {
+        this.idPostulante = idPostulante;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setDni(Integer dni) {
+        this.dni = dni;
+    }
+
+    public void setNacimiento(Date nacimiento) {
+        this.nacimiento = nacimiento;
+    }
+
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
+    }
+
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public void setExperiencia(String experiencia) {
+        this.experiencia = experiencia;
+    }
+
+    public void setFormacion(String formacion) {
+        this.formacion = formacion;
+    }
+
+    public void setIdiomas(String idiomas) {
+        this.idiomas = idiomas;
+    }
+
 }
