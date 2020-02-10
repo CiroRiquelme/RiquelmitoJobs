@@ -3,6 +3,7 @@ package utn.aplicaciones.riquelmito.domain;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.text.ParseException;
@@ -13,12 +14,13 @@ import utn.aplicaciones.riquelmito.utilidades.ConexionSQLiteHelper;
 
 public class AdministradorDeSesion {
 
-    ConexionSQLiteHelper conn;
+    private static ConexionSQLiteHelper conn;
 
     public static Usuario postulante;
     public static Context context;
 
-    public void buscarUsuario() throws ParseException {
+
+    public static void buscarUsuario() throws ParseException {
 
         conn = new ConexionSQLiteHelper(context, "bd_usuarios", null, 1);
         SQLiteDatabase db = conn.getReadableDatabase();
@@ -40,10 +42,10 @@ public class AdministradorDeSesion {
             postulante.setNacimiento(nacim);
 
             Sexo s;
-            if(cursor.getString(7).equals("FEMENINO")){
+            if(cursor.getString(7).equals("Femenino")){
                 s = Sexo.FEMENINO;
                 postulante.setSexo(s);
-            }else if((cursor.getString(7).equals("MASCULINO"))){
+            }else if((cursor.getString(7).equals("Masculino"))){
                 s = Sexo.MASCULINO;
                 postulante.setSexo(s);
             }
@@ -66,6 +68,11 @@ public class AdministradorDeSesion {
 
         db.close();
 
+    }
+
+
+    public static void cerrarSesion() {
+        //TODO: Este metodo debe borrar todos los datos de usuario guardados
     }
 
 }

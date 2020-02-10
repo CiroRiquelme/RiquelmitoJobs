@@ -17,7 +17,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SeleccionarUbicacionTrabajoActivity"></activity>
+        <activity
+            android:name=".MenuEmpleadorActivity"
+            android:label="@string/title_activity_menu_empleador"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".MenuPostulanteActivity"
+            android:label="@string/title_activity_menu_postulante"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SeleccionarUbicacionTrabajoActivity" />
         <activity
             android:name=".InfoPostulanteActivity"
             android:label="@string/title_activity_info_postulante" />

@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
@@ -35,6 +36,7 @@ public class BuscarTrabajoActivity extends AppCompatActivity {
 
     private Spinner spnBuscTrabRubro;
     private SeekBar sbBuscTrabDistancia;
+    private TextView tvBuscTrabDistancia;
 
     ConexionSQLiteHelper conn;
 
@@ -48,15 +50,28 @@ public class BuscarTrabajoActivity extends AppCompatActivity {
         spnBuscTrabRubro = findViewById(R.id.spnBuscTrabRubro);
         spnBuscTrabRubro.setAdapter(new ArrayAdapter(this, android.R.layout.simple_selectable_list_item, Rubro.values() ));
         sbBuscTrabDistancia = findViewById(R.id.sbBuscTrabDistancia);
+        tvBuscTrabDistancia = findViewById(R.id.tvBuscTrabDistancia);
 
+        sbBuscTrabDistancia.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+                tvBuscTrabDistancia.setText(progress + " Km");
+            }
+
+            @Override public void onStartTrackingTouch(SeekBar seekBar) { }
+
+            @Override public void onStopTrackingTouch(SeekBar seekBar) { }
+        });
+
+        //Carga últimos valores buscados
         conn = new ConexionSQLiteHelper(getApplicationContext(), "bd_usuarios", null, 1);
         SQLiteDatabase db = conn.getReadableDatabase();
 
         int longitud=0;
         Cursor cursor = db.rawQuery("SELECT longitud FROM DISTANCIA", null);
         if(cursor.moveToFirst()){
-            Toast.makeText(getApplicationContext(),"Valor de BD: " + cursor.getString(0), Toast.LENGTH_LONG).show();
             longitud= cursor.getInt(0);
+            sbBuscTrabDistancia.setProgress(cursor.getInt(0));
         }
         else{
             Toast.makeText(getApplicationContext(),"Perdedor!!!", Toast.LENGTH_LONG).show();

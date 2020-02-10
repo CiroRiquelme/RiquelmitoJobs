@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -29,6 +32,10 @@ public class PerfilProfesionalActivity extends AppCompatActivity {
     private String[] idiomasArray;
     private boolean[] idiomasSeleccionados;
     private boolean[] idiomasSeleccionadosTemp;
+
+    private final String CHANNEL_ID = "casandra";
+    private final int UPLOAD_CV_ID = 234;
+    private NotificationCompat.Builder uploadNoification;
 
     private StorageReference mStorage;
 
@@ -95,6 +102,17 @@ public class PerfilProfesionalActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == this.REQUEST_UPLOAD_CV && resultCode==RESULT_OK){
+            //Agrega una notificación indicando que se está subiendo el curriculum
+            uploadNoification = new NotificationCompat.Builder(this, CHANNEL_ID)
+                    .setSmallIcon(R.drawable.ic_menu_upload)
+                    .setContentTitle(this.getString(R.string.app_name))
+                    .setContentText(this.getString(R.string.perfil_prof_subiendo_cv))
+                    .setPriority(NotificationCompat.PRIORITY_LOW)
+                    .setAutoCancel(true);
+            final NotificationManagerCompat man = NotificationManagerCompat.from(this);
+            man.notify(UPLOAD_CV_ID, uploadNoification.build());
+
+            //Subir CV
             Uri uri = data.getData();
 
             StorageReference filePath = mStorage.child("cv").child(AdministradorDeSesion.postulante.getIdPostulante().toString());
@@ -103,13 +121,20 @@ public class PerfilProfesionalActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot){
                     Toast.makeText(AdministradorDeSesion.context, "Se subió exitosamente el CV", Toast.LENGTH_SHORT).show();
+
+                    uploadNoification.setContentTitle(PerfilProfesionalActivity.this.getString(R.string.perfil_prof_terminado_subir_cv));
+                    man.notify(UPLOAD_CV_ID, uploadNoification.build());
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(PerfilProfesionalActivity.this,"No se ha podido conectar con el servidor", Toast.LENGTH_LONG).show();
+
+                    uploadNoification.setContentTitle(PerfilProfesionalActivity.this.getString(R.string.perfil_prof_error_al_subir_cv));
+                    man.notify(UPLOAD_CV_ID, uploadNoification.build());
                 }
             });
+
 
         }
 

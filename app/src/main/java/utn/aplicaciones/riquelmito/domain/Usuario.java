@@ -13,8 +13,7 @@ public class Usuario implements Serializable {
     private Integer dni;
     private Date nacimiento;
     private Sexo sexo;
-
-    //TODO agregar tipo de usuario
+    private TipoDeUsuario tipoUsuario = TipoDeUsuario.EMPLEADO;
 
     String provincia;
     String ciudad;
@@ -26,7 +25,6 @@ public class Usuario implements Serializable {
     String experiencia;
     String formacion;
     String idiomas;
-    //TODO: guardar CV
     //TODO: Quién puede ver mi CV
 
     public Usuario() {
@@ -110,6 +108,8 @@ public class Usuario implements Serializable {
     public String getFormacion() { return formacion; }
 
     public String getIdiomas() { return idiomas; }
+
+    public TipoDeUsuario getTipoUsuario() { return tipoUsuario; }
 
     public void setIdPostulante(Integer idPostulante) {
         this.idPostulante = idPostulante;

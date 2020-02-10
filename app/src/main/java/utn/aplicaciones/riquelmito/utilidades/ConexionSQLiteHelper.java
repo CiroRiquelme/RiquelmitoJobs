@@ -11,7 +11,7 @@ import utn.aplicaciones.riquelmito.domain.AdministradorDeSesion;
 public class ConexionSQLiteHelper extends SQLiteOpenHelper {
 
     final String CREAR_TABLA_DISTANCIA = "CREATE TABLE DISTANCIA (id INTEGER, longitud INTEGER)";
-    final String CREAR_TABLA_USUARIO = "CREATE TABLE DISTANCIA (idPostulante INTEGER, email TEXT, contraseña TEXT," +
+    final String CREAR_TABLA_USUARIO = "CREATE TABLE USUARIO (idPostulante INTEGER, email TEXT, contraseña TEXT," +
             "nombre TEXT, apellido TEXT, dni INTEGER, nacimiento TEXT, sexo TEXT, provincia TEXT, ciudad TEXT, " +
             "telefono TEXT, lat DOUBLE, lng DOUBLE, experiencia TEXT, formacion TEXT, idiomas TEXT)";
 

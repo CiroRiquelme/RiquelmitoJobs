@@ -20,6 +20,20 @@
             android:layout_height="wrap_content"
             android:spinnerMode="dialog" />
 
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
+        <TextView
+            android:id="@+id/textView34"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
         <TextView
             android:id="@+id/textView21"
             android:layout_width="match_parent"
@@ -33,6 +47,13 @@
             android:layout_height="wrap_content"
             android:max="100"
             android:progress="5" />
+
+        <TextView
+            android:id="@+id/tvBuscTrabDistancia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="5 Km" />
 
         <TextView
             android:id="@+id/textView22"

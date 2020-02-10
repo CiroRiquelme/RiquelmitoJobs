@@ -1,6 +1,9 @@
 package utn.aplicaciones.riquelmito.utilidades;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import utn.aplicaciones.riquelmito.R;
 import utn.aplicaciones.riquelmito.domain.Trabajo;

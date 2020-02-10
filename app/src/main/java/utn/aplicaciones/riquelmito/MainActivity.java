@@ -44,15 +44,31 @@ public class MainActivity extends AppCompatActivity {
             //AdministradorDeSesion.postulante = new Usuario(7, "prpitoracing@gmail.com", "racing", "José", "Argento", 777777, nacimiento.parse("21/03/1962"), Sexo.MASCULINO, "Buenos Aires", "Capital Federal", "123456789", -34.7702, -58.4327, "Vendedor de zapatos hace 30 años", "Secundario completo", "Español y Guaraní antiguo");
             AdministradorDeSesion.postulante = new Usuario(7, "prpitoracing@gmail.com", "racing", "José", "Argento", 777777, nacimiento.parse("21/03/1962"), Sexo.MASCULINO, "Buenos Aires", "Capital Federal", "123456789", 0., 0., "Vendedor de zapatos hace 30 años", "Secundario completo", "Español y Guaraní antiguo");
             guardarUsuario(AdministradorDeSesion.postulante);
-            Intent menu = new Intent(this, MenuPostulanteTemporal.class);
             //Intent menu = new Intent(this, MenuNotificacionesActivity.class);
+            /*Intent menu = new Intent(this, MenuPostulanteTemporal.class);
             startActivity(menu);
+            finish();*/
+            //TODO: desmarcar lo siguiente. Verificar tambien que se setee el tipo de usuario
+            Intent menu;
+            switch(AdministradorDeSesion.postulante.getTipoUsuario()){
+                case EMPLEADO:
+                    menu = new Intent(this, MenuPostulanteActivity.class);
+                    startActivity(menu);
+                    finish();
+                    break;
+                case EMPLEADOR:
+                    menu = new Intent(this, MenuEmpleadorActivity.class);
+                    startActivity(menu);
+                    finish();
+                    break;
+            }
         } catch (ParseException e) {
             e.printStackTrace();
         }
     }
 
     public void guardarUsuario(Usuario usuario){
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         int idPostulante = usuario.getIdPostulante();
         String email = usuario.getEmail();
@@ -60,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         String nombre = usuario.getNombre();
         String apellido = usuario.getApellido();
         int dni = usuario.getDni();
-        String nacimiento = usuario.getNacimiento().toString();
+        String nacimiento = dateFormat.format(usuario.getNacimiento());
         String sexo = usuario.getSexo().toString();
         String provincia = usuario.getProvincia();
         String ciudad = usuario.getCiudad();
@@ -76,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
         String insertarUsuario = "INSERT INTO USUARIO (idPostulante, email, contraseña," +
                 "nombre, apellido, dni, nacimiento, sexo, provincia, ciudad," +
                 "telefono, lat, lng, experiencia, formacion, idiomas) " +
-                "VALUES ("+idPostulante+", '"+email+"', '"+contraseña+"', '"+nombre+"', '"+apellido+"', '"+
-        dni+"', '"+nacimiento+"', '"+sexo+"', '"+provincia+"', '"+ciudad+"', '"+telefono+", "+
+                "VALUES ("+idPostulante+", '"+email+"', '"+contraseña+"', '"+nombre+"', '"+apellido+"', "+
+        dni+", '"+nacimiento+"', '"+sexo+"', '"+provincia+"', '"+ciudad+"', '"+telefono+"', "+
         lat+", "+lng+", '"+experiencia+"', '"+formacion+"', '"+idiomas+"')";
         db.execSQL(insertarUsuario);
     }

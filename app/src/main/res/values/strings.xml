@@ -43,6 +43,9 @@
     <string name="perfil_prof_adjuntar_cv">Adjuntar curriculum</string>
     <string name="perfil_prof_hint_adjuntar_cv">Adjuntar curriculum</string>
     <string name="perfil_prof_quien_ve_mi_cv">Quién puede ver mi Curriculum</string>
+    <string name="perfil_prof_subiendo_cv">Subiendo Curriculum Vitae</string>
+    <string name="perfil_prof_terminado_subir_cv">Se subió el Curriculum con éxito</string>
+    <string name="perfil_prof_error_al_subir_cv">No se pudo terminar de subir el Curriculum</string>
 
     <!--activity_buscar_trabajo-->
     <string name="title_activity_buscar_trabajo">Buscar trabajo</string>
@@ -105,6 +108,7 @@
     <!--Titulos de dialogos-->
     <string name="title_dialogo_campos_invalidos">Campos inválidos</string>
     <string name="title_dialogo_seleccionar_idiomas">Seleccionár Idiomas</string>
+    <string name="title_dialogo_funcionalidad_no_desarrollada">Funcionalidad no desarrollada</string>
 
     <!--GoogleMaps-->
     <string name="marker_detail_lating">(%1$.2f, %2$.2f)</string>
@@ -119,8 +123,18 @@
     <string name="menu_ofertas_activas">Ofertas activas</string>
     <string name="menu_ofertas_cerradas">Ofertas cerradas</string>
     <string name="menu_configurar_notificaciones">Configurár notificaciones</string>
+    <string name="menu_preferencias">Preferencias</string>
     <string name="menu_seleccionar_ubicacion_postulante">Seleccionar ubicación postulante</string>
     <string name="menu_cerrar_sesion">Cerrár sesión</string>
+
+    <!--NavigationDrawers-->
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="fragment_home_texto_bienvenida1">¡Bienvenido!</string>
+    <string name="fragment_home_texto_bienvenida2">¡Te estábamos esperando!</string>
 
     <!--***************OPCIONES***************-->
     <string name="opcion_aceptar">Aceptar</string>
@@ -198,6 +212,7 @@
     <string name="dialogo_error_longitud_minima_campo_1">-El campo </string>
     <string name="dialogo_error_longitud_minima_campo_2"> debe ser de al menos </string>
     <string name="dialogo_error_longitud_minima_campo_3"> caracteres.</string>
+    <string name="dialogo_funcionalidad_no_desarrollada">Esta funcionalidad aún no ha sido desarrollada y talvez no sea desarrollada en el futuro</string>
 
 
     <!-- Preference Titles -->
@@ -221,14 +236,9 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_trabajos_cercanos_ausuario">Map</string>
+    <string name="title_activity_menu_empleador">MenuEmpleadorActivity</string>
 </resources>
