@@ -2,8 +2,10 @@ package utn.aplicaciones.riquelmito;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 public class PerfilUsuarioPostulanteActivity extends AppCompatActivity {
 
@@ -13,6 +15,12 @@ public class PerfilUsuarioPostulanteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_perfil_usuario_postulante);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+
+    public void goToSeleccionarUbicacionPostulante(View view) {
+        Intent activity = new Intent(this, SeleccionarUbicacionPostulanteActivity.class);
+        startActivity(activity);
     }
 
     //Esta función permite que el botón de 'volver atrás' de la barra superior funcione

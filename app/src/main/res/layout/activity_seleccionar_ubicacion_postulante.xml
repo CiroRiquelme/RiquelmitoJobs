@@ -14,18 +14,27 @@
         android:layout_weight="1"
         tools:context=".SeleccionarUbicacionPostulanteActivity" />
 
-    <Button
-        android:id="@+id/button"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="aceptarCambios"
-        android:text="@string/opcion_aceptar" />
+        android:layout_weight="0"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="cancelarCambios"
-        android:text="Cancelar" />
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="aceptarCambios"
+            android:text="@string/opcion_aceptar" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="cancelarCambios"
+            android:text="@string/opcion_cancelar" />
+    </LinearLayout>
 
 </LinearLayout>

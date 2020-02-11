@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_buscar_trabajo"
+            android:icon="@android:drawable/ic_menu_search"
+            android:title="@string/menu_buscar_trabajo" />
+        <item
+            android:id="@+id/nav_trabajos_postulados"
+            android:icon="@android:drawable/btn_star"
+            android:title="@string/menu_empleos_postulados" />
+        <item
+            android:id="@+id/nav_trabajos_de_interes"
+            android:icon="@android:drawable/ic_input_get"
+            android:title="@string/menu_empleos_de_interes" />
+    </group>
+
+    <item android:title="@string/menu_preferencias">
+        <menu>
+            <item
+                android:id="@+id/nav_edit_perfil_usuario"
+                android:icon="@android:drawable/ic_menu_my_calendar"
+                android:title="@string/menu_editar_perfil_usuario" />
+            <item
+                android:id="@+id/nav_edit_perfil_prof"
+                android:icon="@android:drawable/ic_menu_edit"
+                android:title="@string/menu_editar_perfil_profesional" />
+            <item
+                android:id="@+id/nav_preferencias_postulante"
+                android:icon="@android:drawable/ic_menu_preferences"
+                android:title="@string/menu_configurar_notificaciones" />
+        </menu>
+    </item>
+
+    <group>
+        <item
+            android:id="@+id/nav_cerrar_sesion"
+            android:icon="@android:drawable/ic_lock_power_off"
+            android:title="@string/menu_cerrar_sesion" />
+    </group>
+
+</menu>
