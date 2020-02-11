@@ -27,6 +27,8 @@ import utn.aplicaciones.riquelmito.domain.AdministradorDeSesion;
 public class PerfilProfesionalActivity extends AppCompatActivity {
     private final int REQUEST_UPLOAD_CV = 1;
 
+    private EditText mltPerfProfExperiencia;
+    private EditText mltPerfProfFormacion;
     private EditText etPerfProfIdiomas;
 
     private String[] idiomasArray;
@@ -45,6 +47,8 @@ public class PerfilProfesionalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_perfil_profesional);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        mltPerfProfExperiencia = (EditText) findViewById(R.id.mltPerfProfExperiencia);
+        mltPerfProfFormacion = (EditText) findViewById(R.id.mltPerfProfFormacion);
         etPerfProfIdiomas = (EditText) findViewById(R.id.etPerfProfIdiomas);
         etPerfProfIdiomas.setKeyListener(null);
 
@@ -52,6 +56,22 @@ public class PerfilProfesionalActivity extends AppCompatActivity {
         idiomasArray = getResources().getStringArray(R.array.idiomas);
         idiomasSeleccionados = new boolean[idiomasArray.length];
         idiomasSeleccionadosTemp = new boolean[idiomasArray.length];
+
+        llenarCampos();
+    }
+
+    private void llenarCampos(){
+        //Verifica que la variable global de usuario actual no nula
+        if(AdministradorDeSesion.postulante == null)
+            return;
+
+        //Verifica que los campos necesarios no sean nulos
+        if(AdministradorDeSesion.postulante.getExperiencia() != null)
+            mltPerfProfExperiencia.setText(AdministradorDeSesion.postulante.getExperiencia());
+        if(AdministradorDeSesion.postulante.getFormacion() != null)
+            mltPerfProfFormacion.setText(AdministradorDeSesion.postulante.getFormacion());
+        if(AdministradorDeSesion.postulante.getIdiomas() != null)
+            etPerfProfIdiomas.setText(AdministradorDeSesion.postulante.getIdiomas());
     }
 
     public void selectIdiomas(View view){
@@ -86,6 +106,7 @@ public class PerfilProfesionalActivity extends AppCompatActivity {
         builder.create().show();
     }
 
+    //Se debe ejecutar cuando se presione el botón de subir CV
     public void goToSubirCV(View view){
         mStorage = FirebaseStorage.getInstance().getReference();
 
@@ -98,6 +119,7 @@ public class PerfilProfesionalActivity extends AppCompatActivity {
 
 
     @Override
+    //Recibe los datos del explorador cuando se selecciona un PDF para subir como CV
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -138,6 +160,13 @@ public class PerfilProfesionalActivity extends AppCompatActivity {
 
         }
 
+    }
+
+
+    public void actualizarPerfilProfesional(View view){
+        //TODO: actualizar el 'quién puede ver mi CV'
+
+        //TODO: Actualizar los valores modificados (o en su defecto todos) de la DB interna, de firestore y de la variable global
     }
 
 

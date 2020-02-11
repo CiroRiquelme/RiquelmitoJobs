@@ -5,7 +5,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import utn.aplicaciones.riquelmito.R;
+import utn.aplicaciones.riquelmito.domain.AdministradorDeSesion;
 import utn.aplicaciones.riquelmito.domain.Trabajo;
 
 public class AdministradorDeCargaDeInterfaces {
@@ -162,6 +169,48 @@ public class AdministradorDeCargaDeInterfaces {
         filaFechaAlta.append("hs");
 
         return filaFechaAlta;
+    }
+
+    /***
+     * Verifica si un Email es valido
+     * @param email: String de la dirección de email
+     * @return true - si el formato de 'email' corresponde al de un email valido. false - en otro caso
+     */
+    public static boolean esEmailValido(String email){
+        String expression = "^[a-zA-Z0-9]([\\w\\.-]?[a-zA-Z0-9])*@[a-zA-Z0-9]([-_]?[a-zA-Z0-9])+\\.[A-Z]{2,4}$";
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    /***
+     * Convierte un Date en un String de formato 'dd/mm/yyyy'
+     * @param date: instancia de clase Date
+     * @return String correspondiente al Date pasado por valor. En caso de excepción retorna 'null'
+     */
+    public static String dateToString(Date date){
+        try{
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            return dateFormat.format(AdministradorDeSesion.postulante.getNacimiento());
+        }
+        catch (Exception e){
+            return null;
+        }
+    }
+
+    /***
+     * Convierte un String de fecha en formato 'dd/mm/yyyy' a instancia de clase Date
+     * @param fecha: String de fecha en formato 'dd/mm/yyyy'
+     * @return Instancia de Date correspondiente al String pasado por valor. Si el String no tiene el formato correcto retorna 'null'
+     */
+    public static Date stringToDate(String fecha){
+        try{
+            DateFormat fechaParser = new SimpleDateFormat("dd/mm/yyyy");
+            return fechaParser.parse(fecha);
+        }
+        catch(Exception e){
+            return null;
+        }
     }
 
 }

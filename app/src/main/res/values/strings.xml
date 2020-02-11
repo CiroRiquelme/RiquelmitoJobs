@@ -140,6 +140,7 @@
     <string name="opcion_aceptar">Aceptar</string>
     <string name="opcion_cancelar">Cancelar</string>
     <string name="opcion_ok">Ok</string>
+    <string name="opcion_actualizar">Actualizar</string>
 
 
     <!--***************ARRAYS***************-->
@@ -212,6 +213,7 @@
     <string name="dialogo_error_longitud_minima_campo_1">-El campo </string>
     <string name="dialogo_error_longitud_minima_campo_2"> debe ser de al menos </string>
     <string name="dialogo_error_longitud_minima_campo_3"> caracteres.</string>
+    <string name="dialogo_error_fecha_nacimiento_incorrecta">-La fecha de nacimiento debe tener el formato \'DD/MM/AAAA\'.</string>
     <string name="dialogo_funcionalidad_no_desarrollada">Esta funcionalidad aún no ha sido desarrollada y talvez no sea desarrollada en el futuro</string>
 
 

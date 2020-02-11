@@ -83,5 +83,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/perfil_prof_quien_ve_mi_cv" />
+
+        <Button
+            android:id="@+id/button25"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@color/colorAccent"
+            android:text="@string/opcion_actualizar" />
     </LinearLayout>
 </ScrollView>

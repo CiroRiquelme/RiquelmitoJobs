@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/black"
     tools:context=".MainActivity">
 
 
@@ -15,15 +16,18 @@
 
         <ImageView
             android:id="@+id/ivSignInLogoApp"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"/>
-            <!--android:src="@drawable/comunicaciones" />-->
+            android:layout_width="250dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/logo_7" />
+        <!--android:src="@drawable/comunicaciones" />-->
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login_email" />
+            android:text="@string/login_email"
+            android:textColor="@android:color/white" />
 
         <EditText
             android:id="@+id/etSignInEmail"
@@ -31,13 +35,15 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/login_email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColor="@android:color/darker_gray" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login_contrasenia" />
+            android:text="@string/login_contrasenia"
+            android:textColor="@android:color/white" />
 
         <EditText
             android:id="@+id/etSignInPassword"
@@ -45,7 +51,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/login_contrasenia"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColor="@android:color/darker_gray" />
 
         <Button
             android:id="@+id/btnSignInIniciar"
@@ -80,7 +87,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_weight="0"
-            android:text="@string/login_eres_nuevo" />
+            android:text="@string/login_eres_nuevo"
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/btnSigninCrear"

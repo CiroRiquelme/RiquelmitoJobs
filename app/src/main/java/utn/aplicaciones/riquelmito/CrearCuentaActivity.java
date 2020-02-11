@@ -31,6 +31,7 @@ import java.util.regex.Pattern;
 
 import utn.aplicaciones.riquelmito.domain.TipoDeUsuario;
 import utn.aplicaciones.riquelmito.domain.Usuario;
+import utn.aplicaciones.riquelmito.utilidades.AdministradorDeCargaDeInterfaces;
 
 public class CrearCuentaActivity extends AppCompatActivity {
     private final int LONG_MIN_PASS = 2;    //Longitud mínima de la contraseña
@@ -82,7 +83,7 @@ public class CrearCuentaActivity extends AppCompatActivity {
         StringBuffer mensajeError = new StringBuffer();
 
         //Verifica que el formato de email sea valido
-        if( !esEmailValido(etSingUpEmail.getText().toString()) ){
+        if( !AdministradorDeCargaDeInterfaces.esEmailValido(etSingUpEmail.getText().toString()) ){
             mensajeError.append(this.getString(R.string.dialogo_error_formato_email_invalido));
             mensajeError.append( '\n' );
             operacionValida = false;
@@ -141,13 +142,6 @@ public class CrearCuentaActivity extends AppCompatActivity {
 
     private Integer getUltimoIdUsuarioDB(){
         return  null;
-    }
-
-    private boolean esEmailValido(String email){
-        String expression = "^[a-zA-Z0-9]([\\w\\.-]?[a-zA-Z0-9])*@[a-zA-Z0-9]([-_]?[a-zA-Z0-9])+\\.[A-Z]{2,4}$";
-        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
     }
 
     private boolean userEmailYaRegistrado(String email){

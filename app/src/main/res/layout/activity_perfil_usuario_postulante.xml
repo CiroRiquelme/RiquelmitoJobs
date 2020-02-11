@@ -155,6 +155,14 @@
             android:onClick="goToSeleccionarUbicacionPostulante"
             android:text="@string/perfil_seleccionar_ubicacion" />
 
+        <Button
+            android:id="@+id/button24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@color/colorAccent"
+            android:text="@string/opcion_actualizar" />
+
 
     </LinearLayout>
 </ScrollView>
