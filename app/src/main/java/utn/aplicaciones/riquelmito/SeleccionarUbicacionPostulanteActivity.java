@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -16,11 +17,18 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import android.view.View;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import utn.aplicaciones.riquelmito.domain.AdministradorDeSesion;
+import utn.aplicaciones.riquelmito.domain.Usuario;
+import utn.aplicaciones.riquelmito.utilidades.ConexionSQLiteHelper;
 
 public class SeleccionarUbicacionPostulanteActivity extends AppCompatActivity implements GoogleMap.OnMarkerDragListener, OnMapReadyCallback {
 
@@ -28,6 +36,8 @@ public class SeleccionarUbicacionPostulanteActivity extends AppCompatActivity im
     public Double latActual;
     public Double lngActual;
     private Marker nuevaPosicion;
+
+    private ConexionSQLiteHelper conn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +50,10 @@ public class SeleccionarUbicacionPostulanteActivity extends AppCompatActivity im
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        //Carga últimos valores de ubicación
+        conn = new ConexionSQLiteHelper(getApplicationContext(), "bd_usuarios", null, 1);
+
     }
 
 
@@ -95,16 +109,23 @@ public class SeleccionarUbicacionPostulanteActivity extends AppCompatActivity im
     }
 
     public void aceptarCambios(View view){
+        //Actualiza la ubicación de usuario en la variable global
         AdministradorDeSesion.postulante.setLat(this.latActual);
         AdministradorDeSesion.postulante.setLng(this.lngActual);
 
-        Intent activity = new Intent(this, MenuPostulanteTemporal.class);
-        startActivity(activity);
+        //Actualiza la ubicación de usuario en la DB local
+        SQLiteDatabase dbb = conn.getWritableDatabase();
+        dbb.execSQL("UPDATE USUARIO SET lat="+latActual+", lng="+lngActual+" WHERE idPostulante="+AdministradorDeSesion.postulante.getIdPostulante());
+        dbb.close();
+
+        //Actualiza la ubicación de usuario en la DB de Firebase
+        AdministradorDeSesion.actualizarUsuarioActualFirebase();
+
+        finish();
     }
 
     public void cancelarCambios(View view){
-        Intent activity = new Intent(this, MenuPostulanteTemporal.class);
-        startActivity(activity);
+        finish();
     }
 
 

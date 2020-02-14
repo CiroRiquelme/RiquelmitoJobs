@@ -109,6 +109,8 @@
     <string name="title_dialogo_campos_invalidos">Campos inválidos</string>
     <string name="title_dialogo_seleccionar_idiomas">Seleccionár Idiomas</string>
     <string name="title_dialogo_funcionalidad_no_desarrollada">Funcionalidad no desarrollada</string>
+    <string name="title_dialog_no_hay_cambios">No se detectaron modificaciones</string>
+    <string name="title_dialog_cambios_guardados">Cambios guardados</string>
 
     <!--GoogleMaps-->
     <string name="marker_detail_lating">(%1$.2f, %2$.2f)</string>
@@ -153,6 +155,9 @@
     <string name="sexo_masculino">Masculino</string>
     <string name="sexo_femenino">Femenino</string>
     <string name="sexo_otro">Otro</string>
+
+    <string name="quienvemicv_solo_yo">Solo yo</string>
+    <string name="quienvemicv_todos">Todos</string>
 
     <string name="rubro_atencion_al_publico">Atención al público</string>
     <string name="rubro_comunicaciones">Comunicaciones</string>
@@ -215,6 +220,8 @@
     <string name="dialogo_error_longitud_minima_campo_3"> caracteres.</string>
     <string name="dialogo_error_fecha_nacimiento_incorrecta">-La fecha de nacimiento debe tener el formato \'DD/MM/AAAA\'.</string>
     <string name="dialogo_funcionalidad_no_desarrollada">Esta funcionalidad aún no ha sido desarrollada y talvez no sea desarrollada en el futuro</string>
+    <string name="dialogo_cambios_guardados">Los cambios se han guardado satisfactoriamente</string>
+    <string name="dialogo_no_hay_cambios">No se ha detectado ningún cambio en sus datos</string>
 
 
     <!-- Preference Titles -->

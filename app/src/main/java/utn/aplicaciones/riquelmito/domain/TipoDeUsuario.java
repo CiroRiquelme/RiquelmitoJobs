@@ -19,4 +19,27 @@ public enum TipoDeUsuario {
                 return AdministradorDeSesion.context.getString(R.string.desconocido);
         }
     }
+
+
+    public String tipoUsuarioAIdentificador(){
+        switch (this){
+            case EMPLEADO:
+                return "EMPLEADO";
+            case EMPLEADOR:
+                return "EMPLEADOR";
+            default:
+                return null;
+        }
+    }
+
+    public static TipoDeUsuario identificadorATipoUsuario(String identificador){
+        switch (identificador){
+            case "EMPLEADO":
+                return EMPLEADO;
+            case "EMPLEADOR":
+                return EMPLEADOR;
+            default:
+                return null;
+        }
+    }
 }

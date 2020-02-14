@@ -46,7 +46,7 @@ public class CrearCuentaActivity extends AppCompatActivity {
 
     private List<Integer> listIdUsuario = new ArrayList<Integer>();
     ArrayAdapter<Integer> arrayAdapterIdUsuario;
-    private Integer id = 99;
+    private Integer id = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,10 +116,14 @@ public class CrearCuentaActivity extends AppCompatActivity {
         }
 
         if(operacionValida){
+            if(id==-1){
+                Toast.makeText(this, "Espere hasta que la página inicie",Toast.LENGTH_LONG).show();
+                return;
+            }
+
             //Si no hubieron errores
             final Context cont = this;
 
-            //TODO verificar los campos que pudieran no ser null
             Usuario usuario = new Usuario(id+1, etSingUpEmail.getText().toString(), etSingUpPassword.getText().toString(), null, null, null, null, null, null, null, null, null, null, null, null, null);
             registrarUsuario(usuario);
             databaseReference.child("IdUsuario").child("valor").setValue(id+1);

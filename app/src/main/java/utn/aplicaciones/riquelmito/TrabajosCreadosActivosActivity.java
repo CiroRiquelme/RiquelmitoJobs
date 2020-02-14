@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -33,6 +34,7 @@ import utn.aplicaciones.riquelmito.domain.Trabajo;
 import utn.aplicaciones.riquelmito.utilidades.TrabajoDesdeEmpleadorAdapter;
 
 public class TrabajosCreadosActivosActivity extends AppCompatActivity {
+    private ProgressBar pbOfertasActivasWaitting;
     private RecyclerView recyclerView;
     private TrabajoDesdeEmpleadorAdapter adapter;
     private RecyclerView.LayoutManager manager;
@@ -51,6 +53,7 @@ public class TrabajosCreadosActivosActivity extends AppCompatActivity {
 
         inicializarFirebase();
 
+        pbOfertasActivasWaitting = findViewById(R.id.pbOfertasActivasWaitting);
         recyclerView = (RecyclerView) findViewById(R.id.rvOfertasActivas);
         manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
@@ -89,6 +92,8 @@ public class TrabajosCreadosActivosActivity extends AppCompatActivity {
                 });
 
                 recyclerView.setAdapter(adapter);
+
+                pbOfertasActivasWaitting.setVisibility(View.GONE);
             }
 
             @Override

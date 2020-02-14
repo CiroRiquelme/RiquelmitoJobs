@@ -37,4 +37,50 @@ public enum Rubro {
         }
 
     }
+
+    public String rubroAIdentificador(){
+        switch (this){
+            case ATENCION_AL_PUBLICO:
+                return "ATENCION_AL_PUBLICO";
+            case COMUNICACIONES:
+                return "COMUNICACIONES";
+            case CONSTRUCCION:
+                return "CONSTRUCCION";
+            case ELECTRICIDAD:
+                return "ELECTRICIDAD";
+            case INFORMATICA:
+                return "INFORMATICA";
+            case RRHH:
+                return "RRHH";
+            case SALUD:
+                return "SALUD";
+            case TRANSPORTE:
+                return "TRANSPORTE";
+            default:
+                return null;
+        }
+    }
+
+    public static Rubro identificadorARubro(String identificador){
+        switch (identificador){
+            case "ATENCION_AL_PUBLICO":
+                return ATENCION_AL_PUBLICO;
+            case "COMUNICACIONES":
+                return COMUNICACIONES;
+            case "CONSTRUCCION":
+                return CONSTRUCCION;
+            case "ELECTRICIDAD":
+                return ELECTRICIDAD;
+            case "INFORMATICA":
+                return INFORMATICA;
+            case "RRHH":
+                return RRHH;
+            case "SALUD":
+                return SALUD;
+            case "TRANSPORTE":
+                return TRANSPORTE;
+            default:
+                return null;
+        }
+    }
 }

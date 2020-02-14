@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,7 @@ import utn.aplicaciones.riquelmito.domain.Trabajo;
 import utn.aplicaciones.riquelmito.utilidades.TrabajoDesdePostulanteAdapter;
 
 public class TrabajosPostuladosActivity extends AppCompatActivity {
+    private ProgressBar pbTrabajosPostuladosWaitting;
     private RecyclerView recyclerView;
     private TrabajoDesdePostulanteAdapter adapter;
     private RecyclerView.LayoutManager manager;
@@ -29,6 +31,7 @@ public class TrabajosPostuladosActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        pbTrabajosPostuladosWaitting = findViewById(R.id.pbTrabajosPostuladosWaitting);
         recyclerView = (RecyclerView) findViewById(R.id.rvTrabajosPostulados);
         manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
@@ -42,6 +45,8 @@ public class TrabajosPostuladosActivity extends AppCompatActivity {
         });
 
         recyclerView.setAdapter(adapter);
+
+
     }
 
     public void goToInfoTrabajoDesdeTrabajosPostulados(Trabajo trabajo){

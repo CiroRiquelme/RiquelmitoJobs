@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +28,7 @@ import utn.aplicaciones.riquelmito.domain.Usuario;
 import utn.aplicaciones.riquelmito.utilidades.PostulantesAdapter;
 
 public class UsuariosPostuladosATrabajoActivity extends AppCompatActivity {
+    private ProgressBar rvUsuariosPostuladosATrabajoWaitting;
     private RecyclerView recyclerView;
     private PostulantesAdapter adapter;
     private RecyclerView.LayoutManager manager;
@@ -45,6 +46,8 @@ public class UsuariosPostuladosATrabajoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_usuarios_postulados_a_trabajo);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        rvUsuariosPostuladosATrabajoWaitting = findViewById(R.id.pbUsuariosPostuladosATrabajoWaitting);
 
         inicializarFirebase();
 
@@ -93,6 +96,7 @@ public class UsuariosPostuladosATrabajoActivity extends AppCompatActivity {
                     });
 
                     recyclerView.setAdapter(adapter);
+                    rvUsuariosPostuladosATrabajoWaitting.setVisibility(View.GONE);
                 }
 
                 @Override

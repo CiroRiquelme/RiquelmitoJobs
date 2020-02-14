@@ -6,9 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -20,6 +23,7 @@ import utn.aplicaciones.riquelmito.domain.AdministradorDeSesion;
 import utn.aplicaciones.riquelmito.domain.Sexo;
 import utn.aplicaciones.riquelmito.domain.Usuario;
 import utn.aplicaciones.riquelmito.utilidades.AdministradorDeCargaDeInterfaces;
+import utn.aplicaciones.riquelmito.utilidades.ConexionSQLiteHelper;
 
 public class PerfilUsuarioPostulanteActivity extends AppCompatActivity {
     private final int LONG_MIN_NOMBRE = 2;    //Longitud mínima del nombre y apellido
@@ -51,6 +55,8 @@ public class PerfilUsuarioPostulanteActivity extends AppCompatActivity {
         etPerfPostulTelefono = findViewById(R.id.etPerfPostulTelefono);;
         etPerfPostulEmail = findViewById(R.id.etPerfPostulEmail);;
 
+        spnPerfPostulSexo.setAdapter(new ArrayAdapter<Sexo>(this, android.R.layout.simple_selectable_list_item, Sexo.values()));
+
         llenarCampos();
     }
 
@@ -74,7 +80,7 @@ public class PerfilUsuarioPostulanteActivity extends AppCompatActivity {
         }
         if(AdministradorDeSesion.postulante.getSexo() != null)
             for(int i = 0; i < cantidadItemsSpnSexo; i++){
-                if((String) spnPerfPostulSexo.getItemAtPosition(i) == AdministradorDeSesion.postulante.getSexo().toString()){
+                if((Sexo) spnPerfPostulSexo.getItemAtPosition(i) == AdministradorDeSesion.postulante.getSexo()){
                     spnPerfPostulSexo.setSelection(i);
                     break;
                 }
@@ -150,8 +156,130 @@ public class PerfilUsuarioPostulanteActivity extends AppCompatActivity {
 
         if(operacionValida){
             //Si no hubieron errores
+            boolean hayCambios = false;
+            StringBuffer sentenciaSet = new StringBuffer();
+            String nacimientoViejo = AdministradorDeCargaDeInterfaces.dateToString(AdministradorDeSesion.postulante.getNacimiento());
+            String nacimientoNuevo = etPerfPostulNacimiento.getText().toString();
 
-            //TODO: Actualizar los valores modificados (o en su defecto todos) de la DB interna, de firestore y de la variable global
+            if( ! etPerfPostulNombre.getText().toString().equals(AdministradorDeSesion.postulante.getNombre()) ){
+                //Actualizar nombre
+                AdministradorDeSesion.postulante.setNombre(etPerfPostulNombre.getText().toString());
+                if(sentenciaSet.length() > 0)
+                    sentenciaSet.append(',');
+                sentenciaSet.append("nombre='"+etPerfPostulNombre.getText()+'\'');
+                hayCambios = true;
+            }
+
+            if( ! etPerfPostulApellido.getText().toString().equals(AdministradorDeSesion.postulante.getApellido()) ){
+                //Actualizar apellido
+                AdministradorDeSesion.postulante.setApellido(etPerfPostulApellido.getText().toString());
+                if(sentenciaSet.length() > 0)
+                    sentenciaSet.append(',');
+                sentenciaSet.append("apellido='"+etPerfPostulApellido.getText()+'\'');
+                hayCambios = true;
+            }
+
+            if( ! etPerfPostulDNI.getText().toString().equals(AdministradorDeSesion.postulante.getDni()+"") ){
+                //Actualizar dni
+                AdministradorDeSesion.postulante.setDni(Integer.valueOf(etPerfPostulDNI.getText().toString()));
+                if(sentenciaSet.length() > 0)
+                    sentenciaSet.append(',');
+                sentenciaSet.append("dni="+etPerfPostulDNI.getText());
+                hayCambios = true;
+            }
+
+            if( ! nacimientoNuevo.equals(nacimientoViejo) ){
+                //Actualizar nacimiento
+                AdministradorDeSesion.postulante.setNacimiento(AdministradorDeCargaDeInterfaces.stringToDate(nacimientoNuevo));
+                if(sentenciaSet.length() > 0)
+                    sentenciaSet.append(',');
+                sentenciaSet.append("nacimiento='"+nacimientoNuevo+'\'');
+                hayCambios = true;
+            }
+
+            if( ! ( (Sexo) spnPerfPostulSexo.getSelectedItem()).equals(AdministradorDeSesion.postulante.getSexo()) ){
+                //Actualizar sexo
+                AdministradorDeSesion.postulante.setSexo((Sexo) spnPerfPostulSexo.getSelectedItem());
+                if(sentenciaSet.length() > 0)
+                    sentenciaSet.append(',');
+                sentenciaSet.append("sexo='"+((Sexo) spnPerfPostulSexo.getSelectedItem()).sexoAIdentificador()+'\'');
+                hayCambios = true;
+            }
+
+            if( ! spnPerfPostulProvincia.getSelectedItem().toString().equals(AdministradorDeSesion.postulante.getProvincia()) ){
+                //Actualizar provincia
+                AdministradorDeSesion.postulante.setProvincia(spnPerfPostulProvincia.getSelectedItem().toString());
+                if(sentenciaSet.length() > 0)
+                    sentenciaSet.append(',');
+                sentenciaSet.append("provincia='"+spnPerfPostulProvincia.getSelectedItem().toString()+'\'');
+                hayCambios = true;
+            }
+
+            if( ! etPerfPostulCiudad.getText().toString().equals(AdministradorDeSesion.postulante.getCiudad()) ){
+                //Actualizar ciudad
+                AdministradorDeSesion.postulante.setCiudad(etPerfPostulCiudad.getText().toString());
+                if(sentenciaSet.length() > 0)
+                    sentenciaSet.append(',');
+                sentenciaSet.append("ciudad='"+etPerfPostulCiudad.getText()+'\'');
+                hayCambios = true;
+            }
+
+            if( ! etPerfPostulTelefono.getText().toString().equals(AdministradorDeSesion.postulante.getTelefono()) ){
+                //Actualizar telefono
+                AdministradorDeSesion.postulante.setTelefono(etPerfPostulTelefono.getText().toString());
+                if(sentenciaSet.length() > 0)
+                    sentenciaSet.append(',');
+                sentenciaSet.append("telefono='"+etPerfPostulTelefono.getText()+'\'');
+                hayCambios = true;
+            }
+
+            if( ! etPerfPostulEmail.getText().toString().equals(AdministradorDeSesion.postulante.getEmail()) ){
+                //Actualizar email
+                AdministradorDeSesion.postulante.setEmail(etPerfPostulEmail.getText().toString());
+                if(sentenciaSet.length() > 0)
+                    sentenciaSet.append(',');
+                sentenciaSet.append("email='"+etPerfPostulEmail.getText()+'\'');
+                hayCambios = true;
+            }
+
+            //Si hay cambios respecto a los datos guardados entonces actualiza las bases de datos en una única ocasión
+            if(hayCambios){
+                //Actualiza base de datos local
+                ConexionSQLiteHelper conn = new ConexionSQLiteHelper(getApplicationContext(), "bd_usuarios", null, 1);
+                SQLiteDatabase dbb = conn.getWritableDatabase();
+                dbb.execSQL("UPDATE USUARIO SET "+sentenciaSet+" WHERE idPostulante="+AdministradorDeSesion.postulante.getIdPostulante());
+                dbb.close();
+
+                //Actualiza base de datos Firebase
+                AdministradorDeSesion.actualizarUsuarioActualFirebase();
+
+                //Mensaje de se han guardado los cambios
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle(this.getString(R.string.title_dialog_cambios_guardados))
+                        .setMessage(this.getString(R.string.dialogo_cambios_guardados))
+                        .setNeutralButton(R.string.opcion_ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //No es necesario hacer nada
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+            else{
+                //Mensaje de no hay modificaciones para guardar
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle(this.getString(R.string.title_dialog_no_hay_cambios))
+                        .setMessage(this.getString(R.string.dialogo_no_hay_cambios))
+                        .setNeutralButton(R.string.opcion_ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //No es necesario hacer nada
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
         }
         else{
             //Mostrar dialogo de advertencias

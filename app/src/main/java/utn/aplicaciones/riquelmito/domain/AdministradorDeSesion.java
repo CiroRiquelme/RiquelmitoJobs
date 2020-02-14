@@ -6,10 +6,18 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
+import utn.aplicaciones.riquelmito.MainActivity;
+import utn.aplicaciones.riquelmito.MenuEmpleadorActivity;
+import utn.aplicaciones.riquelmito.MenuPostulanteActivity;
 import utn.aplicaciones.riquelmito.utilidades.ConexionSQLiteHelper;
 
 public class AdministradorDeSesion {
@@ -32,7 +40,7 @@ public class AdministradorDeSesion {
             //Toast.makeText(context,"Valor de BD: " + cursor.getString(0), Toast.LENGTH_LONG).show();
             postulante.setIdPostulante(cursor.getInt(0));
             postulante.setEmail(cursor.getString(1));
-            postulante.setContraseña(cursor.getString(2));
+            postulante.setContrasenia(cursor.getString(2));
             postulante.setNombre(cursor.getString(3));
             postulante.setApellido(cursor.getString(4));
             postulante.setDni(cursor.getInt(5));
@@ -41,18 +49,9 @@ public class AdministradorDeSesion {
             Date nacim = new SimpleDateFormat("dd/MM/yyyy").parse(nacimString);
             postulante.setNacimiento(nacim);
 
-            Sexo s;
-            if(cursor.getString(7).equals("Femenino")){
-                s = Sexo.FEMENINO;
-                postulante.setSexo(s);
-            }else if((cursor.getString(7).equals("Masculino"))){
-                s = Sexo.MASCULINO;
-                postulante.setSexo(s);
-            }
-            else{
-                s = Sexo.OTRO;
-                postulante.setSexo(s);
-            }
+            if(cursor.getString(7) != null)
+                postulante.setSexo( Sexo.identificadorASexo(cursor.getString(7)) ); ;
+            
             postulante.setProvincia(cursor.getString(8));
             postulante.setCiudad(cursor.getString(9));
             postulante.setTelefono(cursor.getString(10));
@@ -61,6 +60,10 @@ public class AdministradorDeSesion {
             postulante.setExperiencia(cursor.getString(13));
             postulante.setFormacion(cursor.getString(14));
             postulante.setIdiomas(cursor.getString(15));
+            if(cursor.getString(16) != null)
+                postulante.setTipoUsuario(TipoDeUsuario.identificadorATipoUsuario( cursor.getString(16) ));
+            if(cursor.getString(17) != null)
+                postulante.setQuienVeMiCV(QuienVeMiCV.identificadorAQuienvemicv(cursor.getString(17)));
         }
         else{
             Toast.makeText(context,"Perdedor!!!", Toast.LENGTH_LONG).show();
@@ -70,9 +73,35 @@ public class AdministradorDeSesion {
 
     }
 
+    public static void actualizarUsuarioActualFirebase(){
+        DatabaseReference databaseReference;
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        String key = databaseReference.child("Usuario").push().getKey();
+        Usuario usr = AdministradorDeSesion.postulante;
+        Map<String, Object> postValues = usr.toMap();
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/Usuario/" + AdministradorDeSesion.postulante.getIdPostulante() + "/", postValues);
+
+        databaseReference.updateChildren(childUpdates);
+    }
+
 
     public static void cerrarSesion() {
         //TODO: Este metodo debe borrar todos los datos de usuario guardados
+    }
+
+    public static  Class getCurrentMenu(){
+        if(postulante == null)
+            return MainActivity.class;
+
+        if(postulante.getTipoUsuario() == TipoDeUsuario.EMPLEADO)
+            return MenuPostulanteActivity.class;
+        if(postulante.getTipoUsuario() == TipoDeUsuario.EMPLEADOR)
+            return MenuEmpleadorActivity.class;
+
+        return MainActivity.class;
     }
 
 }

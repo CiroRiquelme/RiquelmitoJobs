@@ -7,6 +7,7 @@ import utn.aplicaciones.riquelmito.R;
 public enum Sexo {
     FEMENINO,MASCULINO,OTRO;
 
+
     @NonNull
     @Override
     public String toString() {
@@ -18,6 +19,30 @@ public enum Sexo {
             case OTRO:
             default:
                 return AdministradorDeSesion.context.getString(R.string.sexo_otro);
+        }
+    }
+
+    public String sexoAIdentificador(){
+        switch (this){
+            case FEMENINO:
+                return "FEMENINO";
+            case MASCULINO:
+                return "MASCULINO";
+            case OTRO:
+            default:
+                return "OTRO";
+        }
+    }
+
+    public static Sexo identificadorASexo(String identificador){
+        switch (identificador){
+            case "FEMENINO":
+                return FEMENINO;
+            case "MASCULINO":
+                return MASCULINO;
+            case "OTRO":
+            default:
+                return OTRO;
         }
     }
 }

@@ -71,12 +71,10 @@
             android:layout_height="wrap_content"
             android:text="@string/perfil_prof_adjuntar_cv" />
 
-        <Button
-            android:id="@+id/button22"
+        <Spinner
+            android:id="@+id/spnPerfProfQuienVeMiCV"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="goToSubirCV"
-            android:text="@string/perfil_prof_adjuntar_cv" />
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btnPerfProfQuienVeMiCV"
@@ -90,6 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:background="@color/colorAccent"
+            android:onClick="actualizarPerfilProfesional"
             android:text="@string/opcion_actualizar" />
     </LinearLayout>
 </ScrollView>

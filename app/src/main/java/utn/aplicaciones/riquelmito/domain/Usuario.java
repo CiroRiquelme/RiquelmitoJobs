@@ -1,13 +1,17 @@
 package utn.aplicaciones.riquelmito.domain;
+import com.google.firebase.database.Exclude;
+
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class Usuario implements Serializable {
     private Integer idPostulante;
     private String email;
-    private String contraseña;
+    private String contrasenia;
     private String nombre;
     private String apellido;
     private Integer dni;
@@ -25,15 +29,15 @@ public class Usuario implements Serializable {
     String experiencia;
     String formacion;
     String idiomas;
-    //TODO: Quién puede ver mi CV
+    QuienVeMiCV quienVeMiCV = QuienVeMiCV.TODOS;
 
     public Usuario() {
     }
 
-    public Usuario(Integer idPostulante, String email, String contraseña, String nombre, String apellido, Integer dni, Date nacimiento, Sexo sexo, String provincia, String ciudad, String telefono, Double lat, Double lng, String experiencia, String formacion, String idiomas) {
+    public Usuario(Integer idPostulante, String email, String contrasenia, String nombre, String apellido, Integer dni, Date nacimiento, Sexo sexo, String provincia, String ciudad, String telefono, Double lat, Double lng, String experiencia, String formacion, String idiomas) {
         this.idPostulante = idPostulante;
         this.email = email;
-        this.contraseña = contraseña;
+        this.contrasenia = contrasenia;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -69,6 +73,7 @@ public class Usuario implements Serializable {
         return nacimiento;
     }
 
+    @Exclude
     public Integer getEdad(){
         return 1000;
     }   //TODO Devolver la edad real
@@ -97,7 +102,7 @@ public class Usuario implements Serializable {
 
     public String getEmail() { return email; }
 
-    public String getContraseña() { return contraseña; }
+    public String getContrasenia() { return contrasenia; }
 
     public Integer getDni() { return dni; }
 
@@ -109,6 +114,8 @@ public class Usuario implements Serializable {
 
     public String getIdiomas() { return idiomas; }
 
+    public QuienVeMiCV getQuienVeMiCV() { return quienVeMiCV; }
+
     public TipoDeUsuario getTipoUsuario() { return tipoUsuario; }
 
     public void setIdPostulante(Integer idPostulante) {
@@ -119,8 +126,8 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
     public void setNombre(String nombre) {
@@ -165,6 +172,35 @@ public class Usuario implements Serializable {
 
     public void setIdiomas(String idiomas) {
         this.idiomas = idiomas;
+    }
+
+    public void setTipoUsuario(TipoDeUsuario tipoUsuario) { this.tipoUsuario = tipoUsuario; }
+
+    public  void setQuienVeMiCV(QuienVeMiCV quien) { this.quienVeMiCV = quien; }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("idPostulante", idPostulante);
+        result.put("email", email);
+        result.put("contrasenia", contrasenia);
+        result.put("nombre", nombre);
+        result.put("apellido", apellido);
+        result.put("dni", dni);
+        result.put("nacimiento", nacimiento);
+        result.put("sexo", sexo);
+        result.put("tipoUsuario", tipoUsuario);
+        result.put("provincia", provincia);
+        result.put("ciudad", ciudad);
+        result.put("telefono", telefono);
+        result.put("lat", lat);
+        result.put("lng", lng);
+        result.put("experiencia", experiencia);
+        result.put("formacion", formacion);
+        result.put("idiomas", idiomas);
+        result.put("quienVeMiCV", quienVeMiCV);
+
+        return result;
     }
 
 }
