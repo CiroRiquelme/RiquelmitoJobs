@@ -1,5 +1,6 @@
 package utn.aplicaciones.riquelmito;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
@@ -8,7 +9,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -24,12 +34,23 @@ public class MainActivity extends AppCompatActivity {
 
     ConexionSQLiteHelper conn;
 
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+
+    private EditText etSignInEmail;
+    private EditText etSignInPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inciar_sesion);
 
         AdministradorDeSesion.context = getApplicationContext();
+
+        etSignInEmail = findViewById(R.id.etSignInEmail);
+        etSignInPassword = findViewById(R.id.etSignInPassword);
+
+        inicializarFirebase();
 
     }
 
@@ -41,22 +62,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToMenu(View view){
         DateFormat nacimiento = new SimpleDateFormat("dd/mm/yyyy");
-        try {
-            //AdministradorDeSesion.postulante = new Usuario(7, "prpitoracing@gmail.com", "racing", "José", "Argento", 777777, nacimiento.parse("21/03/1962"), Sexo.MASCULINO, "Buenos Aires", "Capital Federal", "123456789", -34.7702, -58.4327, "Vendedor de zapatos hace 30 años", "Secundario completo", "Español y Guaraní antiguo");
-            AdministradorDeSesion.postulante = new Usuario(7, "prpitoracing@gmail.com", "racing", "José", "Argento", 777777, nacimiento.parse("21/03/1962"), Sexo.MASCULINO, "Buenos Aires", "Capital Federal", "123456789", 0., 0., "Vendedor de zapatos hace 30 años", "Secundario completo", "Español y Guaraní antiguo");
-            //guardarUsuario(AdministradorDeSesion.postulante);
-            asda(AdministradorDeSesion.postulante);
-            //Intent menu = new Intent(this, MenuNotificacionesActivity.class);
-            /*Intent menu = new Intent(this, MenuPostulanteTemporal.class);
-            startActivity(menu);
-            finish();*/
-            //TODO: desmarcar lo siguiente. Verificar tambien que se setee el tipo de usuario
-            Intent menu = new Intent(this, AdministradorDeSesion.getCurrentMenu());
-            startActivity(menu);
-            finish();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        //AdministradorDeSesion.postulante = new Usuario(7, "prpitoracing@gmail.com", "racing", "José", "Argento", 777777, nacimiento.parse("21/03/1962"), Sexo.MASCULINO, "Buenos Aires", "Capital Federal", "123456789", -34.7702, -58.4327, "Vendedor de zapatos hace 30 años", "Secundario completo", "Español y Guaraní antiguo");
+        //AdministradorDeSesion.postulante = new Usuario(7, "prpitoracing@gmail.com", "racing", "José", "Argento", 777777, nacimiento.parse("21/03/1962"), Sexo.MASCULINO, "Buenos Aires", "Capital Federal", "123456789", 0., 0., "Vendedor de zapatos hace 30 años", "Secundario completo", "Español y Guaraní antiguo");
+        //guardarUsuario(AdministradorDeSesion.postulante);
+        AdministradorDeSesion.postulante = null;
+        buscarUsuario();
     }
 
     //TODO borrar funcion
@@ -294,6 +304,72 @@ public class MainActivity extends AppCompatActivity {
             SQLiteDatabase db = conn.getWritableDatabase();
             String insertarUsuario = "INSERT INTO USUARIO (" + insertInto + ") " + "VALUES ("+ values +")";
             db.execSQL(insertarUsuario);
+        }
+    }
+
+    private void inicializarFirebase(){
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
+    }
+
+    private void buscarUsuario(){
+
+        Query query = databaseReference.child("Usuario").orderByChild("email").equalTo(etSignInEmail.getText().toString());
+
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if(dataSnapshot.exists()){
+                    Usuario user = new Usuario();
+
+                    for(DataSnapshot ds: dataSnapshot.getChildren()) {
+                        user = ds.getValue(Usuario.class);
+                    }
+
+                    if(etSignInPassword.getText().toString().equals(user.getContrasenia())){
+                        AdministradorDeSesion.postulante = user;
+
+                        AceptarInicioSesion();
+
+
+                    }
+                    else{
+                        //TODO agregar mensaje
+                        Toast.makeText(MainActivity.this,"La contraseña no es correcta", Toast.LENGTH_LONG).show();
+                    }
+
+                }
+                else {
+                    //TODO agregar mensaje
+                    Toast.makeText(MainActivity.this,"El usuario indicado no se encuentra registrado", Toast.LENGTH_LONG).show();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+        });
+
+        AdministradorDeSesion.postulante = null;
+
+    }
+
+    private void AceptarInicioSesion(){
+        if(AdministradorDeSesion.postulante != null){
+            Toast.makeText(MainActivity.this,"Cont: "+AdministradorDeSesion.postulante.getContrasenia(), Toast.LENGTH_LONG).show();
+            asda(AdministradorDeSesion.postulante);
+            //TODO: desmarcar lo siguiente. Verificar tambien que se setee el tipo de usuario
+            Intent menu = new Intent(this, AdministradorDeSesion.getCurrentMenu());
+            startActivity(menu);
+            finish();
+        }
+        else{
+            Toast.makeText(MainActivity.this,"Usuario nulo", Toast.LENGTH_LONG).show();
         }
     }
 
