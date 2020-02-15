@@ -9,6 +9,7 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -17,7 +18,7 @@
         <ImageView
             android:id="@+id/ivSignInLogoApp"
             android:layout_width="250dp"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
             app:srcCompat="@drawable/logo_7" />
         <!--android:src="@drawable/comunicaciones" />-->
@@ -37,6 +38,7 @@
             android:ems="10"
             android:hint="@string/login_email"
             android:inputType="textEmailAddress"
+            android:text="aaa@aaa.com"
             android:textColor="@android:color/darker_gray" />
 
         <TextView
@@ -54,12 +56,14 @@
             android:ems="10"
             android:hint="@string/login_contrasenia"
             android:inputType="textPassword"
+            android:text="aaa"
             android:textColor="@android:color/darker_gray" />
 
         <Button
             android:id="@+id/btnSignInIniciar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:onClick="goToMenu"
             android:text="@string/login_iniciar_sesion" />
 
@@ -101,5 +105,16 @@
             android:text="@string/singup_crear_cuenta" />
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pbSignInWaitting"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circleman"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

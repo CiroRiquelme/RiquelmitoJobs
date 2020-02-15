@@ -10,8 +10,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -29,6 +31,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import utn.aplicaciones.riquelmito.domain.AdministradorDeSesion;
 import utn.aplicaciones.riquelmito.domain.TipoDeUsuario;
 import utn.aplicaciones.riquelmito.domain.Usuario;
 import utn.aplicaciones.riquelmito.utilidades.AdministradorDeCargaDeInterfaces;
@@ -40,9 +43,14 @@ public class CrearCuentaActivity extends AppCompatActivity {
     private EditText etSingUpPassword;
     private EditText etSingUpPasswordRe;
     private Spinner spnSingUpTipoUser;
+    private ProgressBar pbSingUpWaitting;
 
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
+
+    private boolean operacionValida = true;
+    private StringBuffer mensajeError = new StringBuffer();
+    private boolean pasadaInicial;
 
     private List<Integer> listIdUsuario = new ArrayList<Integer>();
     ArrayAdapter<Integer> arrayAdapterIdUsuario;
@@ -60,6 +68,8 @@ public class CrearCuentaActivity extends AppCompatActivity {
         etSingUpPasswordRe = (EditText) findViewById(R.id.etSingUpPasswordRe);
         spnSingUpTipoUser = (Spinner) findViewById(R.id.spnSingUpTipoUser);
         spnSingUpTipoUser.setAdapter(new ArrayAdapter(this, android.R.layout.simple_selectable_list_item, TipoDeUsuario.values() ));
+        pbSingUpWaitting = (ProgressBar) findViewById(R.id.pbSingUpWaitting);
+        pbSingUpWaitting.setVisibility(View.GONE);
 
         inicializarFirebase();
 
@@ -73,14 +83,30 @@ public class CrearCuentaActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                stopWaitting();
+                AlertDialog.Builder builder = new AlertDialog.Builder(CrearCuentaActivity.this);
+                builder.setTitle(CrearCuentaActivity.this.getString(R.string.title_dialog_sin_conexion))
+                        .setMessage(CrearCuentaActivity.this.getString(R.string.dialogo_sin_conexion))
+                        .setNeutralButton(R.string.opcion_ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //No es necesario hacer nada
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
     }
 
     public void crearCuentaClick(View view){
-        boolean operacionValida = true;
-        StringBuffer mensajeError = new StringBuffer();
+        startWaitting();
+
+        //Cuando se crea un nuevo usuario se ejecuta por segunda vez el 'ValueEventListener' y hace un segundo intento por crear un nuevo usuario.
+        //Para solucionár eso agregué la variable 'pasadaInicial' para saber si es la primera (=true) o la segunda (=false) pasada
+        pasadaInicial = true;
+        operacionValida = true;
+        mensajeError = new StringBuffer();
 
         //Verifica que el formato de email sea valido
         if( !AdministradorDeCargaDeInterfaces.esEmailValido(etSingUpEmail.getText().toString()) ){
@@ -108,12 +134,15 @@ public class CrearCuentaActivity extends AppCompatActivity {
         }
 
         //Verifica que el email no esté siendo usado por un usuario ya registrado
-        //TODO
-        if( userEmailYaRegistrado(etSingUpEmail.getText().toString()) ){
-            mensajeError.append(this.getString(R.string.dialogo_error_email_ya_registrado));
-            mensajeError.append( '\n' );
-            operacionValida = false;
-        }
+        userEmailYaRegistrado(etSingUpEmail.getText().toString());
+    }
+
+    //Debido a que la operación de verificar si el email ya está siendo usado por un usuario ya registrado se ejecuta en un hilo
+    //diferente, tuvimos que separar la verificación de datos en 2 funciones diferentes: crearCuentaClick() que se ejecuta al dar click
+    //en registrar y terminarDeCrearCuenta() que se ejecuta recien despues de que se verifique que el email no esté siendo usado
+    //En esta función se registra realmente el nuevo usuario en Firebase siempre y cuando haya pasado la verificación correctamente
+    private void terminarDeCrearCuenta(){
+        pasadaInicial = false;
 
         if(operacionValida){
             if(id==-1){
@@ -122,15 +151,31 @@ public class CrearCuentaActivity extends AppCompatActivity {
             }
 
             //Si no hubieron errores
-            final Context cont = this;
-
             Usuario usuario = new Usuario(id+1, etSingUpEmail.getText().toString(), etSingUpPassword.getText().toString(), null, null, null, null, null, null, null, null, null, null, null, null, null);
             registrarUsuario(usuario);
             databaseReference.child("IdUsuario").child("valor").setValue(id+1);
+
+            stopWaitting();
+
+            //Mostrar dialogo de registro exitoso
+            AlertDialog.Builder builder = new AlertDialog.Builder(CrearCuentaActivity.this);
+            builder.setTitle(this.getString(R.string.title_dialog_se_registro_usuario))
+                    .setMessage(this.getString(R.string.dialogo_se_registro_usuario))
+                    .setNeutralButton(R.string.opcion_ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            //Al hacer click en OK vuelve al menú de inicio de sesión
+                            finish();
+                        }
+                    });
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
         else{
+            stopWaitting();
+
             //Mostrar dialogo de advertencias
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(CrearCuentaActivity.this);
             builder.setTitle(this.getString(R.string.title_dialogo_campos_invalidos))
                     .setMessage(mensajeError)
                     .setNeutralButton(R.string.opcion_ok, new DialogInterface.OnClickListener() {
@@ -148,9 +193,45 @@ public class CrearCuentaActivity extends AppCompatActivity {
         return  null;
     }
 
-    private boolean userEmailYaRegistrado(String email){
-        //TODO verificar que el 'email' no esté siendo usado por un usuario ya registrado
-        return false;
+    //Verifica que el email no esté siendo usado por un usuario ya registrado
+    private void userEmailYaRegistrado(String email){
+        Query query = databaseReference.child("Usuario").orderByChild("email").equalTo(etSingUpEmail.getText().toString());
+
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(! pasadaInicial)
+                    return;
+
+                if(dataSnapshot.exists()){
+                    mensajeError.append(CrearCuentaActivity.this.getString(R.string.dialogo_error_email_ya_registrado));
+                    mensajeError.append( '\n' );
+                    operacionValida = false;
+                }
+                else {
+                    Toast.makeText(CrearCuentaActivity.this,"El usuario indicado no se encuentra registrado", Toast.LENGTH_LONG).show();
+                }
+
+                terminarDeCrearCuenta();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                stopWaitting();
+                AlertDialog.Builder builder = new AlertDialog.Builder(CrearCuentaActivity.this);
+                builder.setTitle(CrearCuentaActivity.this.getString(R.string.title_dialog_sin_conexion))
+                        .setMessage(CrearCuentaActivity.this.getString(R.string.dialogo_sin_conexion))
+                        .setNeutralButton(R.string.opcion_ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //No es necesario hacer nada
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+
+        });
     }
 
     private void inicializarFirebase(){
@@ -162,6 +243,20 @@ public class CrearCuentaActivity extends AppCompatActivity {
     private void registrarUsuario(Usuario usuario){
         databaseReference.child("Usuario").child(usuario.getIdPostulante().toString()).setValue(usuario);
     }
+
+    //Pone el circulo de cargando en visible y evita que el usuario interaccione con la aplicación mientras se carga su solicitud
+    private void startWaitting(){
+        pbSingUpWaitting.setVisibility(View.VISIBLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+
+    //Quita el circulo de cargando en oculto y permite nuevamente que el usuario interaccione con la aplicación
+    private void stopWaitting(){
+        pbSingUpWaitting.setVisibility(View.GONE);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+
 
     //Esta función permite que el botón de 'volver atrás' de la barra superior funcione
     public boolean onOptionsItemSelected(MenuItem item) {

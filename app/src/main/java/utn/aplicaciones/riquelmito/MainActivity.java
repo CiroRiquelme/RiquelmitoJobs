@@ -9,7 +9,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText etSignInEmail;
     private EditText etSignInPassword;
+    private ProgressBar pbSignInWaitting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
         etSignInEmail = findViewById(R.id.etSignInEmail);
         etSignInPassword = findViewById(R.id.etSignInPassword);
+        pbSignInWaitting = findViewById(R.id.pbSignInWaitting);
+        pbSignInWaitting.setVisibility(View.GONE);
 
         inicializarFirebase();
 
@@ -57,10 +62,11 @@ public class MainActivity extends AppCompatActivity {
     public void goToSingUp(View view) {
         Intent singUp = new Intent(this, CrearCuentaActivity.class);
         startActivity(singUp);
-        finish();
     }
 
     public void goToMenu(View view){
+        startWaitting();
+
         DateFormat nacimiento = new SimpleDateFormat("dd/mm/yyyy");
         //AdministradorDeSesion.postulante = new Usuario(7, "prpitoracing@gmail.com", "racing", "José", "Argento", 777777, nacimiento.parse("21/03/1962"), Sexo.MASCULINO, "Buenos Aires", "Capital Federal", "123456789", -34.7702, -58.4327, "Vendedor de zapatos hace 30 años", "Secundario completo", "Español y Guaraní antiguo");
         //AdministradorDeSesion.postulante = new Usuario(7, "prpitoracing@gmail.com", "racing", "José", "Argento", 777777, nacimiento.parse("21/03/1962"), Sexo.MASCULINO, "Buenos Aires", "Capital Federal", "123456789", 0., 0., "Vendedor de zapatos hace 30 años", "Secundario completo", "Español y Guaraní antiguo");
@@ -69,43 +75,8 @@ public class MainActivity extends AppCompatActivity {
         buscarUsuario();
     }
 
-    //TODO borrar funcion
+
     public void guardarUsuario(Usuario usuario){
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
-        int idPostulante = usuario.getIdPostulante();
-        String email = usuario.getEmail();
-        String contrasenia = usuario.getContrasenia();
-        String nombre = usuario.getNombre();
-        String apellido = usuario.getApellido();
-        int dni = usuario.getDni();
-        String nacimiento = dateFormat.format(usuario.getNacimiento());
-        String sexo = usuario.getSexo().sexoAIdentificador();
-        String provincia = usuario.getProvincia();
-        String ciudad = usuario.getCiudad();
-        String telefono = usuario.getTelefono();
-        String lat = usuario.getLat().toString();
-        String lng = usuario.getLng().toString();
-        String experiencia = usuario.getExperiencia();
-        String formacion = usuario.getFormacion();
-        String idiomas = usuario.getIdiomas();
-        String tipoDeUsuario = usuario.getTipoUsuario().tipoUsuarioAIdentificador();
-        String quienVeMiCv = usuario.getQuienVeMiCV().quienvemicvAIdentificador();
-
-        conn = new ConexionSQLiteHelper(getApplicationContext(), "bd_usuarios", null, 1);
-        SQLiteDatabase db = conn.getWritableDatabase();
-        String insertarUsuario = "INSERT INTO USUARIO (idPostulante, email, contrasenia," +
-                "nombre, apellido, dni, nacimiento, sexo, provincia, ciudad," +
-                "telefono, lat, lng, experiencia, formacion, idiomas, tipoUsuario) " +
-                "VALUES ("+idPostulante+", '"+email+"', '"+contrasenia+"', '"+nombre+"', '"+apellido+"', "+
-        dni+", '"+nacimiento+"', '"+sexo+"', '"+provincia+"', '"+ciudad+"', '"+telefono+"', "+
-        lat+", "+lng+", '"+experiencia+"', '"+formacion+"', '"+idiomas+"', '"+tipoDeUsuario+"', '"+quienVeMiCv+"')";
-        db.execSQL(insertarUsuario);
-    }
-
-
-    //TODO cambiar nombre de funcion a guardarUsuario
-    public void asda(Usuario usuario){
         StringBuffer insertInto = new StringBuffer();
         StringBuffer values = new StringBuffer();
 
@@ -362,8 +333,10 @@ public class MainActivity extends AppCompatActivity {
     private void AceptarInicioSesion(){
         if(AdministradorDeSesion.postulante != null){
             Toast.makeText(MainActivity.this,"Cont: "+AdministradorDeSesion.postulante.getContrasenia(), Toast.LENGTH_LONG).show();
-            asda(AdministradorDeSesion.postulante);
-            //TODO: desmarcar lo siguiente. Verificar tambien que se setee el tipo de usuario
+            guardarUsuario(AdministradorDeSesion.postulante);
+
+            stopWaitting();
+
             Intent menu = new Intent(this, AdministradorDeSesion.getCurrentMenu());
             startActivity(menu);
             finish();
@@ -371,6 +344,19 @@ public class MainActivity extends AppCompatActivity {
         else{
             Toast.makeText(MainActivity.this,"Usuario nulo", Toast.LENGTH_LONG).show();
         }
+    }
+
+    //Pone el circulo de cargando en visible y evita que el usuario interaccione con la aplicación mientras se carga su solicitud
+    private void startWaitting(){
+        pbSignInWaitting.setVisibility(View.VISIBLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+
+    //Quita el circulo de cargando en oculto y permite nuevamente que el usuario interaccione con la aplicación
+    private void stopWaitting(){
+        pbSignInWaitting.setVisibility(View.GONE);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 
 }

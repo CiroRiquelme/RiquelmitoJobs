@@ -1,20 +1,31 @@
 package utn.aplicaciones.riquelmito;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 import utn.aplicaciones.riquelmito.domain.DiasLaborales;
 import utn.aplicaciones.riquelmito.domain.HorarioLaboral;
 import utn.aplicaciones.riquelmito.domain.Rubro;
+import utn.aplicaciones.riquelmito.domain.Suscripcion;
 import utn.aplicaciones.riquelmito.domain.Trabajo;
 import utn.aplicaciones.riquelmito.utilidades.TrabajoDesdePostulanteAdapter;
 
@@ -23,6 +34,13 @@ public class TrabajosPostuladosActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TrabajoDesdePostulanteAdapter adapter;
     private RecyclerView.LayoutManager manager;
+
+
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+
+    private ArrayList<Integer> idsTrabajosPostulados = new ArrayList<Integer>();
+    private ArrayList<Trabajo> trabajosPostulados = new ArrayList<Trabajo>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +54,9 @@ public class TrabajosPostuladosActivity extends AppCompatActivity {
         manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
 
-        adapter = new TrabajoDesdePostulanteAdapter( this, cargarTrabajosDePrueba() );
-        adapter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToInfoTrabajoDesdeTrabajosPostulados( adapter.getListaTrabajos().get(recyclerView.getChildAdapterPosition(view)) );
-            }
-        });
+        inicializarFirebase();
 
-        recyclerView.setAdapter(adapter);
-
-
+        cargarTrabajosDePrueba();
     }
 
     public void goToInfoTrabajoDesdeTrabajosPostulados(Trabajo trabajo){
@@ -60,22 +70,80 @@ public class TrabajosPostuladosActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //TODO: Eliminar este método una vez que se termine de probar
-    private ArrayList<Trabajo> cargarTrabajosDePrueba(){
-        ArrayList<Trabajo> arre = new ArrayList<Trabajo>();
 
-        arre.add( new Trabajo(Rubro.ATENCION_AL_PUBLICO,"Recepcionista","Una descripción","Un perfil de empleado.","Alguna experiencia del usuario O.O", DiasLaborales.LUN_VIE,HorarioLaboral.DISCONTINUO,17000, -34.6080556,-58.3702778));
-        arre.add( new Trabajo(Rubro.COMUNICACIONES,"Asdsasd asdsa assda as","Una descripción","Un perfil de empleado.","Alguna experiencia del usuario O.O", DiasLaborales.LUN_SAB,HorarioLaboral.DIURNO,35000, -34.6080556,-58.3702778));
-        arre.add( new Trabajo(Rubro.CONSTRUCCION,"Albañil","Una descripción","Un perfil de empleado.","Alguna experiencia del usuario O.O", DiasLaborales.MART_SAB,HorarioLaboral.ROTATIVO,17000, -34.6080556,-58.3702778));
-        arre.add( new Trabajo(Rubro.ELECTRICIDAD,"Electricista ...","Una descripción","Un perfil de empleado.","Alguna experiencia del usuario O.O", DiasLaborales.MART_DOM,HorarioLaboral.MEDIA_ROTATIVA,17000, -34.6080556,-58.3702778));
-        arre.add( new Trabajo(Rubro.INFORMATICA,"Recepcionista","Una descripción","Un perfil de empleado.","Alguna experiencia del usuario O.O", DiasLaborales.FERIAD_DOM,HorarioLaboral.NOCTURNO,17000, -34.6080556,-58.3702778));
-        arre.add( new Trabajo(Rubro.RRHH,"Recepcionista","Una descripción","Un perfil de empleado.","Alguna experiencia del usuario O.O", DiasLaborales.FERIAD_FINSEMANA,HorarioLaboral.MEDIA_MATUTINA,17000, -34.6080556,-58.3702778));
-        arre.add( new Trabajo(Rubro.SALUD,"Recepcionista","Una descripción","Un perfil de empleado.","Alguna experiencia del usuario O.O", DiasLaborales.A_TURNOS,HorarioLaboral.MEDIA_VESPERTINA,17000, -34.6080556,-58.3702778));
-        arre.add( new Trabajo(Rubro.TRANSPORTE,"Recepcionista","Una descripción","Un perfil de empleado.","Alguna experiencia del usuario O.O", DiasLaborales.LUN_VIE,HorarioLaboral.MEDIA_NOCTURNA,17000, -34.6080556,-58.3702778));
+    private void cargarTrabajosDePrueba() {
+        Query query = databaseReference.child("Suscripcion").orderByChild("idPostulante").equalTo(11);      //TODO cambiar por id de usuario actual
 
-        return arre;
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+
+                    Suscripcion suscripcion;
+                    for(DataSnapshot ds: dataSnapshot.getChildren()) {
+
+                        suscripcion = ds.getValue(Suscripcion.class);
+                        idsTrabajosPostulados.add(suscripcion.getIdTrabajo());
+                    }
+
+                    cargarTrabajosDesdeListaIdsDeTrabajos();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
+    private void cargarTrabajosDesdeListaIdsDeTrabajos(){
+        for(Integer id : idsTrabajosPostulados){
+            Query query = databaseReference.child("Trabajo").orderByChild("idTrabajo").equalTo(id);
+
+            query.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()){
+
+                        Trabajo trabajoSuscripto;
+                        for(DataSnapshot ds: dataSnapshot.getChildren()) {
+
+                            trabajoSuscripto = ds.getValue(Trabajo.class);
+                            trabajosPostulados.add(trabajoSuscripto);
+                        }
+
+                        actualizarRecyclerView();
+                    }
+
+                    if(idsTrabajosPostulados.size() == trabajosPostulados.size()){      //TODO ver si funciona efectivamente
+                        pbTrabajosPostuladosWaitting.setVisibility(View.GONE);
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+    }
+
+    private void actualizarRecyclerView(){
+        adapter = new TrabajoDesdePostulanteAdapter( this, trabajosPostulados );
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToInfoTrabajoDesdeTrabajosPostulados( adapter.getListaTrabajos().get(recyclerView.getChildAdapterPosition(view)) );
+            }
+        });
+
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void inicializarFirebase(){
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
+    }
 
     //Esta función permite que el botón de 'volver atrás' de la barra superior funcione
     public boolean onOptionsItemSelected(MenuItem item) {

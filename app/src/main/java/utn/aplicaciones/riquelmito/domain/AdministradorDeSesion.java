@@ -46,12 +46,14 @@ public class AdministradorDeSesion {
             postulante.setDni(cursor.getInt(5));
             String nacimString = new String();
             nacimString = cursor.getString(6);
-            Date nacim = new SimpleDateFormat("dd/MM/yyyy").parse(nacimString);
-            postulante.setNacimiento(nacim);
+            if(nacimString != null){
+                Date nacim = new SimpleDateFormat("dd/MM/yyyy").parse(nacimString);
+                postulante.setNacimiento(nacim);
+            }
 
             if(cursor.getString(7) != null)
                 postulante.setSexo( Sexo.identificadorASexo(cursor.getString(7)) ); ;
-            
+
             postulante.setProvincia(cursor.getString(8));
             postulante.setCiudad(cursor.getString(9));
             postulante.setTelefono(cursor.getString(10));

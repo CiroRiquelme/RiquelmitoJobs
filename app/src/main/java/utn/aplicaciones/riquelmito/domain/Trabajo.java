@@ -128,6 +128,10 @@ public class Trabajo implements Serializable {
         return lng;
     }
 
+    public void setIdTrabajo(Integer id){
+        idTrabajo = id;
+    }
+
     public void setIdEmpleador(Integer idEmpleador) { this.idEmpleador = idEmpleador; }
 
     public void setIdsPostulantes(List<Integer> idsPostulantes) {

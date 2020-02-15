@@ -9,8 +9,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -38,7 +40,6 @@ public class CrearTrabajoActivity extends AppCompatActivity {
     //
     public static int REQUEST_CODE_SELECCIONAR_UBICACION = 77;
 
-    //TODO verificar si falta alguno
     private Spinner spnCrearTrabRubro;
     private EditText etCrearTrabCargo;
     private EditText mltCrearTrabDescripcion;
@@ -47,6 +48,7 @@ public class CrearTrabajoActivity extends AppCompatActivity {
     private Spinner spnCrearTrabHorario;
     private Spinner spnCrearTrabDiasSelecc;
     private EditText etCrearTrabSalario;
+    private ProgressBar pbCrearTrabWaitting;
 
     private Double latTemporal = AdministradorDeSesion.postulante.getLat();
     private Double lngTemporal = AdministradorDeSesion.postulante.getLng();
@@ -71,6 +73,8 @@ public class CrearTrabajoActivity extends AppCompatActivity {
         spnCrearTrabHorario = (Spinner) findViewById(R.id.spnCrearTrabHorario);
         spnCrearTrabDiasSelecc = (Spinner) findViewById(R.id.spnCrearTrabDiasSelecc);
         etCrearTrabSalario = (EditText) findViewById(R.id.etCrearTrabSalario);
+        pbCrearTrabWaitting = findViewById(R.id.pbCrearTrabWaitting);
+        pbCrearTrabWaitting.setVisibility(View.GONE);
 
         spnCrearTrabRubro.setAdapter(new ArrayAdapter(this, android.R.layout.simple_selectable_list_item, Rubro.values() ));
         spnCrearTrabHorario.setAdapter(new ArrayAdapter(this, android.R.layout.simple_selectable_list_item, HorarioLaboral.values() ));
@@ -88,13 +92,14 @@ public class CrearTrabajoActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                //TODO
             }
         });
     }
 
 
     public void crearTrabajoClick(View view) {
+        startWaitting();
+
         boolean operacionValida = true;
         StringBuffer mensajeError = new StringBuffer();
 
@@ -173,7 +178,7 @@ public class CrearTrabajoActivity extends AppCompatActivity {
                 return;
             }
 
-            //TODO: Mostrar mensaje cuando se ha logrado guardar los cambios en la "base de datos"
+            //Crear el nuevo trabajo
             Trabajo trabajo = new Trabajo(id, (Rubro) spnCrearTrabRubro.getSelectedItem(), etCrearTrabCargo.getText().toString(), mltCrearTrabDescripcion.getText().toString(),
                     mltCrearTrabPerfilEmpl.getText().toString(),mltCrearTrabExperiencia.getText().toString(),(DiasLaborales) spnCrearTrabDiasSelecc.getSelectedItem(),
                     (HorarioLaboral) spnCrearTrabHorario.getSelectedItem(), Integer.parseInt(etCrearTrabSalario.getText().toString()), latTemporal, lngTemporal);
@@ -181,8 +186,26 @@ public class CrearTrabajoActivity extends AppCompatActivity {
 
             registrarTrabajo(trabajo);
             databaseReference.child("IdTrabajo").child("valor").setValue(id+1);
+
+            stopWaitting();
+
+            //Mostrar dialogo de advertencias
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(this.getString(R.string.title_dialog_trabajo_guardado))
+                    .setMessage(this.getString(R.string.dialogo_trabajo_guardado))
+                    .setNeutralButton(R.string.opcion_ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            //Cierra la actividad y vuelve al menú de usuario
+                            CrearTrabajoActivity.this.finish();
+                        }
+                    });
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
         else{
+            stopWaitting();
+
             //Mostrar dialogo de advertencias
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(this.getString(R.string.title_dialogo_campos_invalidos))
@@ -225,6 +248,19 @@ public class CrearTrabajoActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+    }
+
+    //Pone el circulo de cargando en visible y evita que el usuario interaccione con la aplicación mientras se carga su solicitud
+    private void startWaitting(){
+        pbCrearTrabWaitting.setVisibility(View.VISIBLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+
+    //Quita el circulo de cargando en oculto y permite nuevamente que el usuario interaccione con la aplicación
+    private void stopWaitting(){
+        pbCrearTrabWaitting.setVisibility(View.GONE);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 
 
