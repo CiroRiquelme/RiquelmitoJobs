@@ -151,7 +151,7 @@ public class CrearCuentaActivity extends AppCompatActivity {
             }
 
             //Si no hubieron errores
-            Usuario usuario = new Usuario(id+1, etSingUpEmail.getText().toString(), etSingUpPassword.getText().toString(), null, null, null, null, null, null, null, null, null, null, null, null, null);
+            Usuario usuario = new Usuario(id+1, etSingUpEmail.getText().toString(), etSingUpPassword.getText().toString(), (TipoDeUsuario) spnSingUpTipoUser.getSelectedItem());
             registrarUsuario(usuario);
             databaseReference.child("IdUsuario").child("valor").setValue(id+1);
 

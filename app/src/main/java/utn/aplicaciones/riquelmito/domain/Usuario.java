@@ -53,6 +53,13 @@ public class Usuario implements Serializable {
         this.idiomas = idiomas;
     }
 
+    public Usuario(Integer idPostulante, String email, String contrasenia, TipoDeUsuario tipoUsuario) {
+        this.idPostulante = idPostulante;
+        this.email = email;
+        this.contrasenia = contrasenia;
+        this.tipoUsuario = tipoUsuario;
+    }
+
     public void setLat(Double lat) {
         this.lat = lat;
     }
