@@ -23,6 +23,7 @@
     <string name="perfil_apellido">Apellido</string>
     <string name="perfil_dni">DNI</string>
     <string name="perfil_fecha_nacimiento">Fecha de nacimiento</string>
+    <string name="perfil_hint_fecha_nacimiento">DD/MM/AAAA</string>
     <string name="perfil_sexo">Sexo</string>
     <string name="perfil_provincia">Provincia</string>
     <string name="perfil_hint_provincia">Provincia de residencia</string>

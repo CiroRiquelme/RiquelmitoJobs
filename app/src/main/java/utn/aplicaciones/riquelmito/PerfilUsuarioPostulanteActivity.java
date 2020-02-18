@@ -73,7 +73,7 @@ public class PerfilUsuarioPostulanteActivity extends AppCompatActivity {
             etPerfPostulNombre.setText(AdministradorDeSesion.postulante.getNombre());
         if(AdministradorDeSesion.postulante.getApellido() != null)
             etPerfPostulApellido.setText(AdministradorDeSesion.postulante.getApellido());
-        if(AdministradorDeSesion.postulante.getDni() != null)
+        if(AdministradorDeSesion.postulante.getDni() != null &&  AdministradorDeSesion.postulante.getDni() != 0)
             etPerfPostulDNI.setText(AdministradorDeSesion.postulante.getDni().toString());
         if(AdministradorDeSesion.postulante.getNacimiento() != null){
             etPerfPostulNacimiento.setText(AdministradorDeCargaDeInterfaces.dateToString(AdministradorDeSesion.postulante.getNacimiento()));

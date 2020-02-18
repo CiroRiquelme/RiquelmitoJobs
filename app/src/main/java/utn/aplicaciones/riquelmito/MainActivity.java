@@ -313,6 +313,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 else {
+                    stopWaitting();
                     //TODO agregar mensaje
                     Toast.makeText(MainActivity.this,"El usuario indicado no se encuentra registrado", Toast.LENGTH_LONG).show();
                 }
