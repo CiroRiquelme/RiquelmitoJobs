@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -17,10 +20,25 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import utn.aplicaciones.riquelmito.domain.QuienVeMiCV;
 import utn.aplicaciones.riquelmito.domain.Trabajo;
 import utn.aplicaciones.riquelmito.domain.Usuario;
+import utn.aplicaciones.riquelmito.utilidades.AdministradorDeCargaDeInterfaces;
 
 public class InfoPostulanteActivity extends AppCompatActivity {
+
+    ImageView ivInfoPostulanteIconoSexo;
+    TextView tvInfoPostulanteNombre;
+    TextView tvInfoPostulanteResidencia;
+    TextView tvInfoPostulanteSexoEdad;
+    TextView tvInfoPostulanteExperiencia;
+    TextView tvInfoPostulanteFormacion;
+    TextView tvInfoPostulanteIdioma;
+    TextView tvInfoPostulanteEmail;
+    TextView tvInfoPostulanteContrasenia;
+    TextView tvInfoPostulanteTelefono;
+    TextView tvInfoPostulanteDni;
+    Button btnInfoPostulanteDescargarCv;
 
     private Usuario postulante;
 
@@ -34,6 +52,20 @@ public class InfoPostulanteActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //Cargar elementos
+        ivInfoPostulanteIconoSexo = findViewById(R.id.ivInfoPostulanteIconoSexo);
+        tvInfoPostulanteNombre = findViewById(R.id.tvInfoPostulanteNombre);
+        tvInfoPostulanteResidencia = findViewById(R.id.tvInfoPostulanteResidencia);
+        tvInfoPostulanteSexoEdad = findViewById(R.id.tvInfoPostulanteSexoEdad);
+        tvInfoPostulanteExperiencia = findViewById(R.id.tvInfoPostulanteExperiencia);
+        tvInfoPostulanteFormacion = findViewById(R.id.tvInfoPostulanteFormacion);
+        tvInfoPostulanteIdioma = findViewById(R.id.tvInfoPostulanteIdioma);
+        tvInfoPostulanteEmail = findViewById(R.id.tvInfoPostulanteEmail);
+        tvInfoPostulanteContrasenia = findViewById(R.id.tvInfoPostulanteContrasenia);
+        tvInfoPostulanteTelefono = findViewById(R.id.tvInfoPostulanteTelefono);
+        tvInfoPostulanteDni = findViewById(R.id.tvInfoPostulanteDni);
+        btnInfoPostulanteDescargarCv = findViewById(R.id.btnInfoPostulanteDescargarCv);
+
         //Cargar detalles del trabajo
         Bundle bundleReseptor = getIntent().getExtras();
         if(bundleReseptor!=null)
@@ -43,7 +75,32 @@ public class InfoPostulanteActivity extends AppCompatActivity {
     }
 
     private void cargarDatosVistaDesdePostulante() {
-        //TODO: cargar datos
+
+        ivInfoPostulanteIconoSexo.setImageResource(AdministradorDeCargaDeInterfaces.getIdIconoSexo(this, postulante));
+        tvInfoPostulanteNombre.setText(AdministradorDeCargaDeInterfaces.getFilaNombreUsuario(this, postulante));
+        tvInfoPostulanteResidencia.setText(AdministradorDeCargaDeInterfaces.getFilaRecidencia(this, postulante));
+        tvInfoPostulanteSexoEdad.setText(AdministradorDeCargaDeInterfaces.getFilaSexoEdad(this, postulante));
+        if(postulante.getExperiencia() != null)
+            tvInfoPostulanteExperiencia.setText(postulante.getExperiencia());
+        if(postulante.getFormacion() != null)
+            tvInfoPostulanteFormacion.setText(postulante.getFormacion());
+        if(postulante.getIdiomas() != null)
+            tvInfoPostulanteIdioma.setText(postulante.getIdiomas());
+        if(postulante.getEmail() != null)
+            tvInfoPostulanteEmail.setText(postulante.getEmail());
+        if(postulante.getContrasenia() != null)
+            tvInfoPostulanteContrasenia.setText(postulante.getContrasenia());
+        if(postulante.getTelefono() != null)
+            tvInfoPostulanteTelefono.setText(postulante.getTelefono());
+        if(postulante.getDni() != null && postulante.getDni() != 0)
+            tvInfoPostulanteDni.setText(postulante.getDni().toString());
+
+        //Solo se puede ver el botón de descagar CV si así lo decidió el usuario
+        if(postulante.getQuienVeMiCV() != null){
+            if(postulante.getQuienVeMiCV() == QuienVeMiCV.SOLO_YO){
+                btnInfoPostulanteDescargarCv.setVisibility(View.GONE);
+            }
+        }
     }
 
 

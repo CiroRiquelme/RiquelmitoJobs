@@ -178,6 +178,7 @@
     <string name="idiomas_chino">Chino Mandarín</string>
     <string name="idiomas_espaniol">Español</string>
     <string name="idiomas_frances">Francés</string>
+    <string name="idiomas_guarani">Guaraní antiguo</string>
     <string name="idiomas_ingles">Inglés</string>
     <string name="idiomas_italiano">Italiano</string>
     <string name="idiomas_japones">Japonés</string>
@@ -210,6 +211,8 @@
     <string name="fila_anios_postulante">años.</string>
     <string name="fila_sexo_postulante">Sexo:</string>
     <string name="fila_ciudad_postulante">Ciudad:</string>
+    <string name="fila_nombre_postulante_desconocido">Wild Riquelmito appeared!</string>
+    <string name="fila_ubicacion_desconocida">No hay datos de ubcación en la Pokédex</string>
 
 
     <!--***************DIALOGOS DE ERROR***************-->

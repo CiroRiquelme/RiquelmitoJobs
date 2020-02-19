@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 import utn.aplicaciones.riquelmito.R;
 import utn.aplicaciones.riquelmito.domain.AdministradorDeSesion;
 import utn.aplicaciones.riquelmito.domain.Trabajo;
+import utn.aplicaciones.riquelmito.domain.Usuario;
 
 public class AdministradorDeCargaDeInterfaces {
 
@@ -157,6 +158,7 @@ public class AdministradorDeCargaDeInterfaces {
     }
 
 
+    //Devuelve la fila de fecha de creación de un trabajo que se usa en las filas de los RecyclerView de trabajo
     public static StringBuffer getFilaFechaAlta(Context cont, Trabajo trabajo){
         StringBuffer filaFechaAlta = new StringBuffer();
 
@@ -169,6 +171,88 @@ public class AdministradorDeCargaDeInterfaces {
         filaFechaAlta.append("hs");
 
         return filaFechaAlta;
+    }
+
+
+    public static int getIdIconoSexo (Context cont, Usuario usuario){
+        if(usuario.getSexo() == null)
+            return R.drawable.sexo_otro;
+
+        switch(usuario.getSexo()){
+            case MASCULINO:
+                return R.drawable.sexo_masculino;
+            case FEMENINO:
+                return R.drawable.sexo_femenino;
+            default:
+                return R.drawable.sexo_otro;
+        }
+    }
+
+    public static StringBuffer getFilaNombreUsuario(Context cont, Usuario postulante){
+        StringBuffer filaNombre = new StringBuffer();
+
+        if(postulante.getApellido() != null)
+            filaNombre.append(postulante.getApellido());
+
+        if(postulante.getNombre() != null){
+            if(filaNombre.length() > 0)
+                filaNombre.append(',');
+            filaNombre.append(postulante.getNombre());
+        }
+
+        if(filaNombre.length() == 0){
+            filaNombre.append(cont.getString(R.string.fila_nombre_postulante_desconocido));
+        }
+
+        return filaNombre;
+    }
+
+    public static StringBuffer getFilaRecidencia(Context cont, Usuario postulante){
+        StringBuffer filaRecidencia = new StringBuffer();
+
+        if(postulante.getCiudad() != null)
+            filaRecidencia.append(postulante.getCiudad());
+
+        if(postulante.getProvincia() != null){
+            if(filaRecidencia.length() == 0){
+                filaRecidencia.append(postulante.getProvincia());
+            }
+            else{
+                filaRecidencia.append('(');
+                filaRecidencia.append(postulante.getProvincia());
+                filaRecidencia.append(')');
+            }
+        }
+
+        if(filaRecidencia.length() == 0){
+            filaRecidencia.append(cont.getString(R.string.fila_ubicacion_desconocida));
+        }
+
+        return filaRecidencia;
+    }
+
+    public static StringBuffer getFilaSexoEdad(Context cont, Usuario postulante){
+        StringBuffer filaSexoEdad = new StringBuffer();
+
+        filaSexoEdad.append(cont.getString(R.string.fila_sexo_postulante));
+        filaSexoEdad.append(' ');
+        if(postulante.getSexo() != null)
+            filaSexoEdad.append(postulante.getSexo().toString());
+        else
+            filaSexoEdad.append('-');
+        filaSexoEdad.append(';');
+        filaSexoEdad.append(' ');
+        filaSexoEdad.append(cont.getString(R.string.fila_edad_postulante));
+        filaSexoEdad.append(' ');
+        if(postulante.getEdad() != null && postulante.getEdad() != 0){
+            filaSexoEdad.append(postulante.getEdad());
+            filaSexoEdad.append(' ');
+            filaSexoEdad.append(cont.getString(R.string.fila_anios_postulante));
+        }
+        else
+            filaSexoEdad.append('-');
+
+        return filaSexoEdad;
     }
 
     /***

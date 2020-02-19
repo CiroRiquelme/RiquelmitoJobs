@@ -12,11 +12,202 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
+
+
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivInfoPostulanteIconoSexo"
+                android:layout_width="@dimen/image_view_square_icon"
+                android:layout_height="@dimen/image_view_square_icon"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/sexo_otro"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvInfoPostulanteNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Apellido, Nombre"
+                android:textSize="@dimen/label_title"
+                app:layout_constraintStart_toEndOf="@+id/ivInfoPostulanteIconoSexo"
+                app:layout_constraintTop_toTopOf="@+id/ivInfoPostulanteIconoSexo" />
+
+            <TextView
+                android:id="@+id/tvInfoPostulanteResidencia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Ciudad, Provincia"
+                android:textSize="@dimen/label_text"
+                app:layout_constraintStart_toStartOf="@+id/tvInfoPostulanteNombre"
+                app:layout_constraintTop_toBottomOf="@+id/tvInfoPostulanteNombre" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/divider22"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:id="@+id/tvInfoPostulanteSexoEdad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:text="Sexo: - ; Edad: - años"
+            android:textSize="@dimen/label_text" />
+
+        <TextView
+            android:id="@+id/textView36"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_subtible_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:text="Experiencia"
+            android:textSize="@dimen/label_subtitle" />
+
+        <TextView
+            android:id="@+id/tvInfoPostulanteExperiencia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:layout_marginBottom="@dimen/margin_bottom_label_dato"
+            android:text="-"
+            android:textSize="@dimen/label_text" />
+
+        <TextView
+            android:id="@+id/textView38"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_subtible_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:text="Formación"
+            android:textSize="@dimen/label_subtitle" />
+
+        <TextView
+            android:id="@+id/tvInfoPostulanteFormacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:layout_marginBottom="@dimen/margin_bottom_label_dato"
+            android:text="-"
+            android:textSize="@dimen/label_text" />
+
+        <TextView
+            android:id="@+id/textView40"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_subtible_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:text="Idiomas"
+            android:textSize="@dimen/label_subtitle" />
+
+        <TextView
+            android:id="@+id/tvInfoPostulanteIdioma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:layout_marginBottom="@dimen/margin_bottom_label_dato"
+            android:text="-"
+            android:textSize="@dimen/label_text" />
+
+        <TextView
+            android:id="@+id/textView41"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_subtible_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:text="Email de contacto"
+            android:textSize="@dimen/label_subtitle" />
+
+        <TextView
+            android:id="@+id/tvInfoPostulanteEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:layout_marginBottom="@dimen/margin_bottom_label_dato"
+            android:text="-"
+            android:textSize="@dimen/label_text" />
+
+        <TextView
+            android:id="@+id/textView42"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_subtible_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:text="Contraseña secreta"
+            android:textSize="@dimen/label_subtitle" />
+
+        <TextView
+            android:id="@+id/tvInfoPostulanteContrasenia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:layout_marginBottom="@dimen/margin_bottom_label_dato"
+            android:text="-"
+            android:textSize="@dimen/label_text" />
+
+        <TextView
+            android:id="@+id/textView43"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_subtible_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:text="Teléfono de contacto"
+            android:textSize="@dimen/label_subtitle" />
+
+        <TextView
+            android:id="@+id/tvInfoPostulanteTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:layout_marginBottom="@dimen/margin_bottom_label_dato"
+            android:text="-"
+            android:textSize="@dimen/label_text" />
+
+        <TextView
+            android:id="@+id/textView44"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_subtible_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:text="DNI"
+            android:textSize="@dimen/label_subtitle" />
+
+        <TextView
+            android:id="@+id/tvInfoPostulanteDni"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_label_dato"
+            android:layout_marginEnd="@dimen/margin_end_label_dato"
+            android:layout_marginBottom="@dimen/margin_bottom_label_dato"
+            android:text="-"
+            android:textSize="@dimen/label_text" />
+
         <Button
-            android:id="@+id/button21"
+            android:id="@+id/btnInfoPostulanteDescargarCv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="goToDescargarCV"
             android:text="@string/info_postulante_descargar_cv" />
+
     </LinearLayout>
 </ScrollView>

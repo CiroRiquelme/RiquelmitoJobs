@@ -115,7 +115,7 @@ public class TrabajosPostuladosActivity extends AppCompatActivity {
                         actualizarRecyclerView();
                     }
 
-                    if(idsTrabajosPostulados.size() == trabajosPostulados.size()){      //TODO ver si funciona efectivamente
+                    if(idsTrabajosPostulados.size() == trabajosPostulados.size()){
                         pbTrabajosPostuladosWaitting.setVisibility(View.GONE);
                     }
                 }

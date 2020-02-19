@@ -118,7 +118,6 @@ public class InfoTrabajoDesdePostulanteActivity extends AppCompatActivity {
             return;
         }
         //TODO no mostrar botón de suscribirse si ya se está suscripto
-        //TODO tambien agregar el id del usuario que se suscribe a la lista de usuarios suscriptos del Trabajo (en Firebase)
         Suscripcion suscripcion = new Suscripcion( idProximaSuscripcion, trabajo.getIdTrabajo(), AdministradorDeSesion.postulante.getIdPostulante(), trabajo.getIdEmpleador() );
         registrarSuscripcion(suscripcion);
         databaseReference.child("IdSuscripcion").child("valor").setValue(idProximaSuscripcion+1);

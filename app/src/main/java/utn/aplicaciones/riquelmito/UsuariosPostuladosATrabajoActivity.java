@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import utn.aplicaciones.riquelmito.domain.AdministradorDeSesion;
+import utn.aplicaciones.riquelmito.domain.Suscripcion;
 import utn.aplicaciones.riquelmito.domain.Trabajo;
 import utn.aplicaciones.riquelmito.domain.Usuario;
 import utn.aplicaciones.riquelmito.utilidades.PostulantesAdapter;
@@ -56,7 +58,7 @@ public class UsuariosPostuladosATrabajoActivity extends AppCompatActivity {
         if(bundleReseptor!=null)
             trabajo = (Trabajo) bundleReseptor.getSerializable("trabajo");
         if(trabajo!=null)
-            cargarPostulantes();
+            cargarIdsPostulantes();
 
         //Cargar RecyclerView, Manager y Adapter
         recyclerView = (RecyclerView) findViewById(R.id.rvUsuariosPostuladosATrabajo);
@@ -68,35 +70,55 @@ public class UsuariosPostuladosATrabajoActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
+    private void cargarIdsPostulantes(){
+        Query query = databaseReference.child("Suscripcion").orderByChild("idTrabajo").equalTo(11);     //TODO: cambiar por id de trabajo actual (trabajo.getIdTrabajo() o algo así)
 
-    private void cargarPostulantes() {
-        idsPostulantes = trabajo.getIdsPostulantes();
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
 
+                    Suscripcion suscripcion;
+                    for(DataSnapshot ds: dataSnapshot.getChildren()) {
+
+                        suscripcion = ds.getValue(Suscripcion.class);
+                        idsPostulantes.add(suscripcion.getIdPostulante());
+                    }
+
+                    cargarPostulantesDesdeListaIdsDePostulantes();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+    private void cargarPostulantesDesdeListaIdsDePostulantes() {
         for(Integer idPostul : idsPostulantes){
             Query query = databaseReference.child("Usuario").orderByChild("idPostulante").equalTo(idPostul);
 
             query.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                     if(dataSnapshot.exists()){
+
                         Usuario postulante;
                         for(DataSnapshot ds: dataSnapshot.getChildren()) {
-                            postulante = ds.getValue(Usuario.class);
 
+                            postulante = ds.getValue(Usuario.class);
                             listaPostulantes.add(postulante);
+
+                            actualizarRecyclerView();
                         }
                     }
-                    adapter = new PostulantesAdapter( AdministradorDeSesion.context,  listaPostulantes);
-                    adapter.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            goToInfoPostulante( adapter.getListaPostulantes().get(recyclerView.getChildAdapterPosition(view)) );
-                        }
-                    });
 
-                    recyclerView.setAdapter(adapter);
-                    rvUsuariosPostuladosATrabajoWaitting.setVisibility(View.GONE);
+                    if(idsPostulantes.size() == listaPostulantes.size()){
+                        rvUsuariosPostuladosATrabajoWaitting.setVisibility(View.GONE);
+                    }
+
                 }
 
                 @Override
@@ -106,6 +128,18 @@ public class UsuariosPostuladosATrabajoActivity extends AppCompatActivity {
             });
         }
 
+    }
+
+    private void actualizarRecyclerView(){
+        adapter = new PostulantesAdapter( AdministradorDeSesion.context,  listaPostulantes);
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToInfoPostulante( adapter.getListaPostulantes().get(recyclerView.getChildAdapterPosition(view)) );
+            }
+        });
+
+        recyclerView.setAdapter(adapter);
     }
 
     private void goToInfoPostulante(Usuario postulante){
