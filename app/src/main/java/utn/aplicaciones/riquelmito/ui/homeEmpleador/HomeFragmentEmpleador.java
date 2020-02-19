@@ -23,13 +23,6 @@ public class HomeFragmentEmpleador extends Fragment {
         homeViewModelEmpleador =
                 ViewModelProviders.of(this).get(HomeViewModelEmpleador.class);
         View root = inflater.inflate(R.layout.fragment_home_empleador, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModelEmpleador.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
         return root;
     }
 }

@@ -27,6 +27,10 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
+import java.text.ParseException;
+
+import utn.aplicaciones.riquelmito.domain.AdministradorDeSesion;
+
 public class MenuEmpleadorActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -94,6 +98,13 @@ public class MenuEmpleadorActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        try {
+            AdministradorDeSesion.buscarUsuario();
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
