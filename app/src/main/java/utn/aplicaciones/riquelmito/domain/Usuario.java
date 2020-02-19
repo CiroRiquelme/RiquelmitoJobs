@@ -1,12 +1,17 @@
 package utn.aplicaciones.riquelmito.domain;
+import android.util.Log;
+
 import com.google.firebase.database.Exclude;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import utn.aplicaciones.riquelmito.utilidades.AdministradorDeCargaDeInterfaces;
 
 public class Usuario implements Serializable {
     private Integer idPostulante;
@@ -82,8 +87,16 @@ public class Usuario implements Serializable {
 
     @Exclude
     public Integer getEdad(){
-        return 1000;
-    }   //TODO Devolver la edad real
+        if(nacimiento == null)
+            return 0;
+
+        Calendar cal = Calendar.getInstance();
+        Date dateNow = cal.getTime();
+        long days = TimeUnit.MILLISECONDS.toDays(dateNow.getTime() - nacimiento.getTime());
+        int years = (int) (( days - days/1460 ) / 365);   //Saco los días extra de los años bisiestos (una aproximación al menos)
+
+        return years;
+    }
 
     public Sexo getSexo() {
         return sexo;

@@ -41,7 +41,6 @@ public class Trabajo implements Serializable {
         this.horario = horario;
         this.salario = salario;
         idsPostulantes = new ArrayList<>();
-        //TODO: sacar los ids de postulantes por defecto
         idsPostulantes.add(22);
         idsPostulantes.add(11);
     }

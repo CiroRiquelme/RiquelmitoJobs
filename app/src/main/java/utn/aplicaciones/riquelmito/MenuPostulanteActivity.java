@@ -1,5 +1,6 @@
 package utn.aplicaciones.riquelmito;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -69,9 +71,18 @@ public class MenuPostulanteActivity extends AppCompatActivity {
                         drawer.closeDrawer(GravityCompat.START);    //Cierra el NavigationView
                         break;
                     case R.id.nav_trabajos_de_interes:
-                        activity = new Intent(MenuPostulanteActivity.this, TrabajosDeInteresActivity.class);
-                        startActivity(activity);
-                        drawer.closeDrawer(GravityCompat.START);    //Cierra el NavigationView
+                    case R.id.nav_preferencias_postulante:
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MenuPostulanteActivity.this);
+                        builder.setTitle(MenuPostulanteActivity.this.getString(R.string.title_dialogo_funcionalidad_no_desarrollada))
+                                .setMessage(MenuPostulanteActivity.this.getString(R.string.dialogo_funcionalidad_no_desarrollada))
+                                .setNeutralButton(R.string.opcion_ok, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        //No es necesario hacer nada
+                                    }
+                                });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                         break;
                     case R.id.nav_edit_perfil_usuario:
                         activity = new Intent(MenuPostulanteActivity.this, PerfilUsuarioPostulanteActivity.class);
@@ -82,9 +93,6 @@ public class MenuPostulanteActivity extends AppCompatActivity {
                         activity = new Intent(MenuPostulanteActivity.this, PerfilProfesionalActivity.class);
                         startActivity(activity);
                         drawer.closeDrawer(GravityCompat.START);    //Cierra el NavigationView
-                        break;
-                    case R.id.nav_preferencias_postulante:
-                        //TODO: Dirigir al fragment tools si es necesario
                         break;
                     case R.id.nav_cerrar_sesion:
                         activity = new Intent(MenuPostulanteActivity.this, MainActivity.class);

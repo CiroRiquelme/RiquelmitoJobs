@@ -117,6 +117,8 @@
     <string name="title_dialog_sin_conexion">Sin conexión con el servidor</string>
     <string name="title_dialog_se_registro_usuario">Nuevo Riquelmito a la vista</string>
     <string name="title_dialog_trabajo_guardado">Propuesta de rabajo guardada</string>
+    <string name="title_dialog_email_no_registrado">Email y/o contraseña invalidos</string>
+    <string name="title_dialog_contrasenia_incorrecta">Email y/o contraseña invalidos</string>
 
     <!--GoogleMaps-->
     <string name="marker_detail_lating">(%1$.2f, %2$.2f)</string>
@@ -234,6 +236,8 @@
     <string name="dialogo_sin_conexion">No se pudo establecer conexión con el servidor. Verifique que tenga acceso a internet e intente nuevamente</string>
     <string name="dialogo_se_registro_usuario">Se registró el nuevo usuario con éxito\n\n¡Ya eres todo un Riquelmito!</string>
     <string name="dialogo_trabajo_guardado">Se agrego la nueva propuesta de trabajo con éxito</string>
+    <string name="dialogo_email_no_registrado">Más bien email no registrado (guiño guiño)</string>
+    <string name="dialogo_contrasenia_incorrecta">Más bien contraseña invalida (guiño guiño)</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
@@ -257,7 +261,7 @@
     <string name="action_settings">Settings</string>
 
 
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_trabajos_cercanos_ausuario">Map</string>
     <string name="title_activity_menu_empleador">MenuEmpleadorActivity</string>

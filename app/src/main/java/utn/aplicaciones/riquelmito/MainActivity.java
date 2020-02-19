@@ -1,9 +1,11 @@
 package utn.aplicaciones.riquelmito;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -307,15 +309,38 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                     else{
-                        //TODO agregar mensaje
-                        Toast.makeText(MainActivity.this,"La contraseña no es correcta", Toast.LENGTH_LONG).show();
+                        stopWaitting();
+
+                        //Mensaje de "La contraseña no es correcta"
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                        builder.setTitle(MainActivity.this.getString(R.string.title_dialog_contrasenia_incorrecta))
+                                .setMessage(MainActivity.this.getString(R.string.dialogo_contrasenia_incorrecta))
+                                .setNeutralButton(R.string.opcion_ok, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        //No es necesario hacer nada
+                                    }
+                                });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     }
 
                 }
                 else {
                     stopWaitting();
-                    //TODO agregar mensaje
-                    Toast.makeText(MainActivity.this,"El usuario indicado no se encuentra registrado", Toast.LENGTH_LONG).show();
+
+                    //Mensaje de "El usuario indicado no se encuentra registrado"
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle(MainActivity.this.getString(R.string.title_dialog_email_no_registrado))
+                            .setMessage(MainActivity.this.getString(R.string.dialogo_email_no_registrado))
+                            .setNeutralButton(R.string.opcion_ok, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    //No es necesario hacer nada
+                                }
+                            });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                 }
 
             }

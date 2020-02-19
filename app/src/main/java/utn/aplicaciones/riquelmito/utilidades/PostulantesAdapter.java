@@ -54,8 +54,6 @@ public class PostulantesAdapter extends RecyclerView.Adapter implements View.OnC
             hold.tvFilaPostulanteNombre.setText( tituloFila );
         }
         else{
-            //TODO Descomentar la linea de abajo y eliminar la de más abajo
-            //hold.tvFilaPostulanteNombre.setText(cont.getString(R.string.desconocido));
             hold.tvFilaPostulanteNombre.setText("Id usuario: " + postulante.getIdPostulante());
         }
 

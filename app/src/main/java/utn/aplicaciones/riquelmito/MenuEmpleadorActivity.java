@@ -70,6 +70,7 @@ public class MenuEmpleadorActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_ofertas_cerradas:
                     case R.id.nav_edit_perfil_empleador:
+                    case R.id.nav_preferencias_empleador:
                         AlertDialog.Builder builder = new AlertDialog.Builder(MenuEmpleadorActivity.this);
                         builder.setTitle(MenuEmpleadorActivity.this.getString(R.string.title_dialogo_funcionalidad_no_desarrollada))
                                 .setMessage(MenuEmpleadorActivity.this.getString(R.string.dialogo_funcionalidad_no_desarrollada))
@@ -81,9 +82,6 @@ public class MenuEmpleadorActivity extends AppCompatActivity {
                                 });
                         AlertDialog dialog = builder.create();
                         dialog.show();
-                        break;
-                    case R.id.nav_preferencias_empleador:
-                        //TODO: Dirigir al fragment tools si es necesario
                         break;
                     case R.id.nav_cerrar_sesion:
                         activity = new Intent(MenuEmpleadorActivity.this, MainActivity.class);

@@ -104,7 +104,7 @@ public class InfoTrabajoDesdePostulanteActivity extends AppCompatActivity {
             tvInfoTrabPostulantePerfilEmpleado.setText(trabajo.getPerfilEmpleado());
         if(trabajo.getExperienciaEmpleado()!=null)
             tvInfoTrabPostulanteExperiencia.setText(trabajo.getExperienciaEmpleado());
-        if(trabajo.getIdsPostulantes().contains( AdministradorDeSesion.postulante.getIdPostulante() )){
+        if(trabajo.getIdsPostulantes().contains( AdministradorDeSesion.postulante.getIdPostulante() )){     //TODO cambiar para que se ajuste a nueva estructura
             //Si el postulante ya está postulado => no aparece la opción de postulación
             btnInfoTrabPostulantePostular.setVisibility(View.GONE);
             //TODO decidir si se permitirá des-postularse
@@ -117,7 +117,7 @@ public class InfoTrabajoDesdePostulanteActivity extends AppCompatActivity {
             Toast.makeText(this, "Espere hasta que la página inicie",Toast.LENGTH_LONG).show();
             return;
         }
-        //TODO no mostrar botón de suscribirse si ya se está suscripto
+
         Suscripcion suscripcion = new Suscripcion( idProximaSuscripcion, trabajo.getIdTrabajo(), AdministradorDeSesion.postulante.getIdPostulante(), trabajo.getIdEmpleador() );
         registrarSuscripcion(suscripcion);
         databaseReference.child("IdSuscripcion").child("valor").setValue(idProximaSuscripcion+1);

@@ -275,7 +275,7 @@ public class AdministradorDeCargaDeInterfaces {
     public static String dateToString(Date date){
         try{
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            return dateFormat.format(AdministradorDeSesion.postulante.getNacimiento());
+            return dateFormat.format(date);
         }
         catch (Exception e){
             return null;
