@@ -20,14 +20,6 @@
             android:layout_height="wrap_content"
             android:spinnerMode="dialog" />
 
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
-
         <TextView
             android:id="@+id/textView34"
             android:layout_width="match_parent"

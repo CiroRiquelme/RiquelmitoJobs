@@ -71,7 +71,7 @@ public class UsuariosPostuladosATrabajoActivity extends AppCompatActivity {
     }
 
     private void cargarIdsPostulantes(){
-        Query query = databaseReference.child("Suscripcion").orderByChild("idTrabajo").equalTo(11);     //TODO: cambiar por id de trabajo actual (trabajo.getIdTrabajo() o algo así)
+        Query query = databaseReference.child("Suscripcion").orderByChild("idTrabajo").equalTo(trabajo.getIdTrabajo());
 
         query.addValueEventListener(new ValueEventListener() {
             @Override

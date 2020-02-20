@@ -14,4 +14,6 @@
     <color name="trabjoPinMapa">#e06666</color>
     <color name="usuarioPinMapa">#2b78e4</color>
     <color name="login_accent_color">#FF9A52</color>
+    <color name="map_stroke">#FF0000</color>
+    <color name="map_fill">#6633BBFF</color>
 </resources>

@@ -69,7 +69,7 @@
             android:id="@+id/textView20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/perfil_prof_adjuntar_cv" />
+            android:text="@string/perfil_prof_quien_ve_mi_cv" />
 
         <Spinner
             android:id="@+id/spnPerfProfQuienVeMiCV"
@@ -77,10 +77,11 @@
             android:layout_height="wrap_content" />
 
         <Button
-            android:id="@+id/btnPerfProfQuienVeMiCV"
+            android:id="@+id/btnPerfProfAdjuntarCv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/perfil_prof_quien_ve_mi_cv" />
+            android:onClick="goToSubirCV"
+            android:text="@string/perfil_prof_adjuntar_cv" />
 
         <Button
             android:id="@+id/button25"

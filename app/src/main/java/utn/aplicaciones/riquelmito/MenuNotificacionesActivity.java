@@ -79,9 +79,7 @@ public class MenuNotificacionesActivity extends AppCompatActivity {
         if(requestCode==1 && resultCode==RESULT_OK){
             Uri uri = data.getData();
 
-            //TODO en lugar de uri.getLasPathSegment poner id de usuarioq
-            //StorageReference filePath = mStorage.child("cv").child(uri.getLastPathSegment());
-            StorageReference filePath = mStorage.child("cv").child("7777777");
+            StorageReference filePath = mStorage.child("cv").child(AdministradorDeSesion.postulante.getIdPostulante().toString());
 
             filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>(){
                 @Override
@@ -97,7 +95,7 @@ public class MenuNotificacionesActivity extends AppCompatActivity {
     public void botonMostrarDocumento(View view){
 
         storageReference = firebaseStorage.getInstance().getReference();
-        //TODO buscar "cv/"+ idUsuario.toString()
+        //buscar "cv/"+ idUsuario.toString()
         StorageReference ref = storageReference.child("cv/1833");
         //final Context contextoActual = this;
 
@@ -105,7 +103,7 @@ public class MenuNotificacionesActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Uri uri) {
                 String url = uri.toString();
-                //TODO en fileName poner "cv-"+ idUsuario.toString()
+                //en fileName poner "cv-"+ idUsuario.toString()
                 downloadFiles(MenuNotificacionesActivity.this, "Mobile", ".pdf", Environment.DIRECTORY_DOWNLOADS, url);
             }
         }).addOnFailureListener(new OnFailureListener() {

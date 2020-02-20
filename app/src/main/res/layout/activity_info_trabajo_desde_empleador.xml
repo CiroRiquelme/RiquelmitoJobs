@@ -144,10 +144,11 @@
 
         <Button
             android:id="@+id/button410"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
+            android:background="@color/colorAccent"
             android:onClick="goToUsuariosPostuladosAltrabajo"
             android:text="@string/info_trabajo_ver_postulantes"
             android:textAlignment="center" />

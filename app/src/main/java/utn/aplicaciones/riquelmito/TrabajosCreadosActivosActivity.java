@@ -66,7 +66,7 @@ public class TrabajosCreadosActivosActivity extends AppCompatActivity {
 
 
     private void cargarTrabajos(){
-        Query query = databaseReference.child("Trabajo").orderByChild("idEmpleador").equalTo(7);//TODO equalTo(AdministradorDeSesion.postulante.getIdPostulante());
+        Query query = databaseReference.child("Trabajo").orderByChild("idEmpleador").equalTo(AdministradorDeSesion.postulante.getIdPostulante());
 
         query.addValueEventListener(new ValueEventListener() {
             @Override

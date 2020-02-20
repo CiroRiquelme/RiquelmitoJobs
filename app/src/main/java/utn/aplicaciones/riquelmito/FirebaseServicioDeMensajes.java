@@ -24,6 +24,9 @@ import com.google.firebase.messaging.RemoteMessage;
 
 import utn.aplicaciones.riquelmito.domain.AdministradorDeSesion;
 
+/***
+ * Esta clase servía para implementar los topicos de las notificaciones push
+ */
 public class FirebaseServicioDeMensajes extends FirebaseMessagingService {
 
     public static int NOTIFICATION_ID = 1;
@@ -41,7 +44,7 @@ public class FirebaseServicioDeMensajes extends FirebaseMessagingService {
             String title = remoteMessage.getNotification().getTitle();
             String body = remoteMessage.getNotification().getBody();
 
-            //TODO ver si se cambia esto de FCM_CHANNEL_ID, 14:20 de https://www.youtube.com/watch?v=Fb9y06G6MWg
+            //ver si se cambia esto de FCM_CHANNEL_ID, 14:20 de https://www.youtube.com/watch?v=Fb9y06G6MWg
             Notification notification = new NotificationCompat.Builder(this, "FCM_CHANNEL_ID")
                     .setSmallIcon(R.mipmap.app_logo)
                     .setContentTitle(title)

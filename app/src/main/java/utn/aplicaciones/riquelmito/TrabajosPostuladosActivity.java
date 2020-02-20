@@ -22,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import utn.aplicaciones.riquelmito.domain.AdministradorDeSesion;
 import utn.aplicaciones.riquelmito.domain.DiasLaborales;
 import utn.aplicaciones.riquelmito.domain.HorarioLaboral;
 import utn.aplicaciones.riquelmito.domain.Rubro;
@@ -72,7 +73,7 @@ public class TrabajosPostuladosActivity extends AppCompatActivity {
 
 
     private void cargarTrabajosDePrueba() {
-        Query query = databaseReference.child("Suscripcion").orderByChild("idPostulante").equalTo(11);      //TODO cambiar por id de usuario actual
+        Query query = databaseReference.child("Suscripcion").orderByChild("idPostulante").equalTo(AdministradorDeSesion.postulante.getIdPostulante());
 
         query.addValueEventListener(new ValueEventListener() {
             @Override

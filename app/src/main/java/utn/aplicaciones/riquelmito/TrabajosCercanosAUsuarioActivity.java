@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,9 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -36,6 +40,8 @@ public class TrabajosCercanosAUsuarioActivity extends FragmentActivity implement
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private ArrayList<Trabajo> listaTrabajos = new ArrayList<Trabajo>();;
+
+    private DatosTrabajosCercanosAUsuarioDTO parametros;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,15 +70,13 @@ public class TrabajosCercanosAUsuarioActivity extends FragmentActivity implement
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        //TODO posicionar cámara en otro lado
         LatLng posicionUsuario = new LatLng(AdministradorDeSesion.postulante.getLat(), AdministradorDeSesion.postulante.getLng());
-        mMap.addMarker(new MarkerOptions().position(posicionUsuario).title("Posición de usuario"));
-        ///////
+        mMap.addMarker(new MarkerOptions().position(posicionUsuario).title("Posición de usuario").icon(BitmapDescriptorFactory.fromResource(R.drawable.riquelmito_quiet)));
 
         //Cargar parámetros
         Bundle bundleReseptor = getIntent().getExtras();
 
-        DatosTrabajosCercanosAUsuarioDTO parametros = new DatosTrabajosCercanosAUsuarioDTO();
+        parametros = new DatosTrabajosCercanosAUsuarioDTO();
         if(bundleReseptor!=null) {
             parametros= (DatosTrabajosCercanosAUsuarioDTO) bundleReseptor.getSerializable("parametrosBusqueda");
 
@@ -102,19 +106,28 @@ public class TrabajosCercanosAUsuarioActivity extends FragmentActivity implement
 
                             float distance = locationTrabajo.distanceTo(locationUsuario);
 
-                            //TODO agregar al if "&& trabajo.getRubro=="RubroSeleccionadoPorUsuario""
                             if(distance < radioBusqueda*1000){
-                                //TODO agregar trabajo a Arraylist y retornarlo
-                                listaTrabajos.add(trabajo);
+                                if(trabajo.getRubro() == null){
+                                    if( trabajo.getSalario() >= parametros.getSalario() || trabajo.getSalario().equals(0) ){
+                                        listaTrabajos.add(trabajo);
+                                    }
+                                }
+                                else{
+                                    if( trabajo.getRubro().equals(parametros.getRubro()) ){
+                                        if( trabajo.getSalario() >= parametros.getSalario() || trabajo.getSalario().equals(0) ){
+                                            listaTrabajos.add(trabajo);
+                                        }
+                                    }
+                                }
                             }
                         }
+
                     }
 
                     for(Trabajo trabajo: listaTrabajos){
                         LatLng posicion = new LatLng(trabajo.getLat(), trabajo.getLng());
 
-                        Marker marcador = mMap.addMarker(new MarkerOptions().position(posicion).title(trabajo.getCargo()).snippet("id: "+trabajo.getIdTrabajo()+"\nSalario: "+trabajo.getSalario()+"\nDescripción del cargo: "+trabajo.getDescripcionCargo()+"\nExperiencia requerida"+trabajo.getExperienciaEmpleado()+"\nPerfil del empleado: "+trabajo.getPerfilEmpleado()));
-                        //marcador.setTag(trabajo.getIdTrabajo());
+                        Marker marcador = mMap.addMarker(new MarkerOptions().position(posicion).title(trabajo.getCargo()).snippet("id: "+trabajo.getIdTrabajo()+"\nSalario: "+trabajo.getSalario()+"\nDescripción del cargo: "+trabajo.getDescripcionCargo()+"\nExperiencia requerida"+trabajo.getExperienciaEmpleado()+"\nPerfil del empleado: "+trabajo.getPerfilEmpleado()).icon(BitmapDescriptorFactory.fromResource(R.drawable.riquelbus)));
                         marcador.setTag(trabajo);
                     }
                 }
@@ -126,7 +139,16 @@ public class TrabajosCercanosAUsuarioActivity extends FragmentActivity implement
 
         }
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(posicionUsuario));
+        //Agrego circulo
+        CircleOptions circleOpt = new CircleOptions().center(posicionUsuario)
+                .radius(parametros.getRadioDeBusqueda()*1000)
+                .strokeColor(0xff33bbff)
+                .strokeWidth(5)
+                .fillColor(0x6633bbff);
+        Circle circle = mMap.addCircle(circleOpt);
+        circle.isVisible();
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posicionUsuario, getZoomLevelFromCircle(circle)));
 
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
@@ -138,6 +160,18 @@ public class TrabajosCercanosAUsuarioActivity extends FragmentActivity implement
             }
         });
 
+
+
+    }
+
+    public float getZoomLevelFromCircle(Circle circle) {
+        float zoomLevel=0;
+        if (circle != null){
+            double radius = circle.getRadius();
+            double scale = radius / 500;
+            zoomLevel =(int) (16 - Math.log(scale) / Math.log(2));
+        }
+        return zoomLevel -.5f;
     }
 
     private void goToInfoTrabajoDesdePostulanteActivity(Trabajo trabajo){

@@ -37,6 +37,7 @@ public class BuscarTrabajoActivity extends AppCompatActivity {
     private Spinner spnBuscTrabRubro;
     private SeekBar sbBuscTrabDistancia;
     private TextView tvBuscTrabDistancia;
+    private Spinner spnBuscTrabSalario;
 
     ConexionSQLiteHelper conn;
 
@@ -51,6 +52,7 @@ public class BuscarTrabajoActivity extends AppCompatActivity {
         spnBuscTrabRubro.setAdapter(new ArrayAdapter(this, android.R.layout.simple_selectable_list_item, Rubro.values() ));
         sbBuscTrabDistancia = findViewById(R.id.sbBuscTrabDistancia);
         tvBuscTrabDistancia = findViewById(R.id.tvBuscTrabDistancia);
+        spnBuscTrabSalario = findViewById(R.id.spnBuscTrabSalario);
 
         sbBuscTrabDistancia.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -95,9 +97,10 @@ public class BuscarTrabajoActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TrabajosCercanosAUsuarioActivity.class);
 
         DatosTrabajosCercanosAUsuarioDTO parametros = new DatosTrabajosCercanosAUsuarioDTO();
-        //TODO obtener parámetros de los elementos de la pantalla
         Double longitud = Double.valueOf(sbBuscTrabDistancia.getProgress());
         parametros.setRadioDeBusqueda(longitud);
+        parametros.setRubro((Rubro) spnBuscTrabRubro.getSelectedItem());
+        parametros.setSalario(Integer.valueOf(spnBuscTrabSalario.getSelectedItem().toString()));
 
         //Pasa los parámetros de búsuqeda a siguiente actividad
         Bundle bundle = new Bundle();
