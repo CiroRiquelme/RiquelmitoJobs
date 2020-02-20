@@ -18,8 +18,8 @@ public class Trabajo implements Serializable {
     private DiasLaborales dias;
     private HorarioLaboral horario;
     private Integer salario = 0;
-    private Double lat = 0.0;
-    private Double lng = 0.0;
+    private Double lat = -34.667737;
+    private Double lng = -58.3682195;
     private Date fechaAlta;
     private Date fechaCierre;
     public List<Integer> idsPostulantes;

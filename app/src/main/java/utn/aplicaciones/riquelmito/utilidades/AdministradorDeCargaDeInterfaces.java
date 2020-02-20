@@ -195,8 +195,10 @@ public class AdministradorDeCargaDeInterfaces {
             filaNombre.append(postulante.getApellido());
 
         if(postulante.getNombre() != null){
-            if(filaNombre.length() > 0)
+            if(filaNombre.length() > 0){
                 filaNombre.append(',');
+                filaNombre.append(' ');
+            }
             filaNombre.append(postulante.getNombre());
         }
 

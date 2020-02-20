@@ -26,14 +26,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.TextView;
 
 import java.text.ParseException;
 
 import utn.aplicaciones.riquelmito.domain.AdministradorDeSesion;
+import utn.aplicaciones.riquelmito.utilidades.AdministradorDeCargaDeInterfaces;
 
 public class MenuEmpleadorActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +45,7 @@ public class MenuEmpleadorActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         final DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        final NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view_empleador);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home_empleador, R.id.nav_tools_empleador)
@@ -96,6 +99,12 @@ public class MenuEmpleadorActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView navTitle = (TextView) headerView.findViewById(R.id.tvNavHeaderEmpleadorTitulo);
+        navTitle.setText(AdministradorDeCargaDeInterfaces.getFilaNombreUsuario(this, AdministradorDeSesion.postulante));
+        TextView navSubtitle = (TextView) headerView.findViewById(R.id.tvNavHeaderEmpleadorSubtitulo);
+        navSubtitle.setText(getString(R.string.navigation_view_subtitle));
 
         try {
             AdministradorDeSesion.buscarUsuario();

@@ -71,23 +71,52 @@ public class InfoTrabajoDesdePostulanteActivity extends AppCompatActivity {
         if(bundleReseptor!=null)
             trabajo = (Trabajo) bundleReseptor.getSerializable("trabajo");
 
-        if(trabajo!=null)
+        if(trabajo!=null) {
             cargarDatosVistaDesdeTrabajo();
 
-        //Obtiene el valor del ID de la suscripción que tendrá en caso de suscribirse a este Trabajo
-        databaseReference.child("IdSuscripcion").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    idProximaSuscripcion = Integer.parseInt( dataSnapshot.child("valor").getValue().toString() );
+            databaseReference.child("Suscripcion").orderByChild("idTrabajo").equalTo(trabajo.getIdTrabajo()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        Suscripcion suscripcion;
+
+                        for(DataSnapshot ds: dataSnapshot.getChildren()) {
+                            suscripcion = ds.getValue(Suscripcion.class);
+
+                            if(suscripcion.idPostulante.equals(AdministradorDeSesion.postulante.getIdPostulante())){
+                                btnInfoTrabPostulantePostular.setVisibility(View.GONE);
+                                return;
+                            }
+                        }
+
+                        btnInfoTrabPostulantePostular.setVisibility(View.VISIBLE);
+                    }
+                    else{
+                        btnInfoTrabPostulantePostular.setVisibility(View.VISIBLE);
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+
+            //Obtiene el valor del ID de la suscripción que tendrá en caso de suscribirse a este Trabajo
+            databaseReference.child("IdSuscripcion").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        idProximaSuscripcion = Integer.parseInt(dataSnapshot.child("valor").getValue().toString());
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
 
 
@@ -104,11 +133,6 @@ public class InfoTrabajoDesdePostulanteActivity extends AppCompatActivity {
             tvInfoTrabPostulantePerfilEmpleado.setText(trabajo.getPerfilEmpleado());
         if(trabajo.getExperienciaEmpleado()!=null)
             tvInfoTrabPostulanteExperiencia.setText(trabajo.getExperienciaEmpleado());
-        if(trabajo.getIdsPostulantes().contains( AdministradorDeSesion.postulante.getIdPostulante() )){     //TODO cambiar para que se ajuste a nueva estructura
-            //Si el postulante ya está postulado => no aparece la opción de postulación
-            btnInfoTrabPostulantePostular.setVisibility(View.GONE);
-            //TODO decidir si se permitirá des-postularse
-        }
     }
 
 

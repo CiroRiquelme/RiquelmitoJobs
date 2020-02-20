@@ -27,8 +27,8 @@ public class Usuario implements Serializable {
     String provincia;
     String ciudad;
     String telefono;
-    Double lat = 0.0;
-    Double lng = 0.0;
+    Double lat = -34.667737;
+    Double lng = -58.3682195;
 
     //Perfíl profesional
     String experiencia;
