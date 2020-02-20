@@ -203,6 +203,13 @@
             android:textSize="@dimen/label_text" />
 
         <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="goToConsultarUbicacionPostulante"
+            android:text="@string/info_trabajo_consultar_ubicacion" />
+
+        <Button
             android:id="@+id/btnInfoPostulanteDescargarCv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -42,13 +42,13 @@ public class MenuEmpleadorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_empleador);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar_empleador);
         setSupportActionBar(toolbar);
         final DrawerLayout drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view_empleador);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home_empleador, R.id.nav_tools_empleador)
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home_postulante, R.id.nav_tools_empleador)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -89,7 +89,7 @@ public class MenuEmpleadorActivity extends AppCompatActivity {
                     case R.id.nav_cerrar_sesion:
                         activity = new Intent(MenuEmpleadorActivity.this, MainActivity.class);
                         startActivity(activity);
-                        drawer.closeDrawer(GravityCompat.START);    //Cierra el NavigationView
+                        AdministradorDeSesion.cerrarSesion();
                         finish();
                         break;
                     default:

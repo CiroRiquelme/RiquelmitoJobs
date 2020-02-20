@@ -132,6 +132,7 @@
             android:id="@+id/button408"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="goToConsultarUbicacionTrabDesdeEmpleador"
             android:text="@string/info_trabajo_consultar_ubicacion" />
 
         <View

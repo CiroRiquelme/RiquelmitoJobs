@@ -87,6 +87,9 @@ public class UsuariosPostuladosATrabajoActivity extends AppCompatActivity {
 
                     cargarPostulantesDesdeListaIdsDePostulantes();
                 }
+                else{
+                    rvUsuariosPostuladosATrabajoWaitting.setVisibility(View.GONE);
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

@@ -12,6 +12,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -56,9 +57,9 @@ public class SeleccionarUbicacionTrabajoActivity extends AppCompatActivity imple
 
         // Add a marker in posicionUsuario and move the camera
         LatLng posicionUsuario = new LatLng(AdministradorDeSesion.postulante.getLat(), AdministradorDeSesion.postulante.getLng());
-        mMap.addMarker(new MarkerOptions().position(posicionUsuario).title("Posición inicial de Usuario"));
+        mMap.addMarker(new MarkerOptions().position(posicionUsuario).title("Posición inicial de Usuario").icon(BitmapDescriptorFactory.fromResource(R.drawable.riquelmito_quiet)));
         LatLng nuevaPosicionUsuario = new LatLng(AdministradorDeSesion.postulante.getLat(), AdministradorDeSesion.postulante.getLng()-1);
-        nuevaPosicion = mMap.addMarker(new MarkerOptions().position(nuevaPosicionUsuario).title("Nueva posición de Usuario").draggable(true));
+        nuevaPosicion = mMap.addMarker(new MarkerOptions().position(nuevaPosicionUsuario).title("Nueva posición de Usuario").icon(BitmapDescriptorFactory.fromResource(R.drawable.riquelmito_running)).draggable(true));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(posicionUsuario));
         this.latActual = AdministradorDeSesion.postulante.getLat();
         this.lngActual = AdministradorDeSesion.postulante.getLng();

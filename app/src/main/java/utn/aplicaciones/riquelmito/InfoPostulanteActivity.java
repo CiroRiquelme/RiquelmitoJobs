@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DownloadManager;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -144,5 +145,17 @@ public class InfoPostulanteActivity extends AppCompatActivity {
 
         downloadManager.enqueue(request);
 
+    }
+
+    public  void goToConsultarUbicacionPostulante(View view){
+        Intent intent = new Intent(this, ConsultarUbicacionActivity.class);
+
+        Bundle bundle = new Bundle();
+        bundle.putDouble("lat", postulante.getLat());
+        bundle.putDouble("lng", postulante.getLng());
+
+        intent.putExtras(bundle);
+
+        startActivity(intent);
     }
 }

@@ -74,11 +74,11 @@ public class TrabajosCercanosAUsuarioActivity extends FragmentActivity implement
         mMap.addMarker(new MarkerOptions().position(posicionUsuario).title("Posición de usuario").icon(BitmapDescriptorFactory.fromResource(R.drawable.riquelmito_quiet)));
 
         //Cargar parámetros
-        Bundle bundleReseptor = getIntent().getExtras();
+        Bundle bundleReceptor = getIntent().getExtras();
 
         parametros = new DatosTrabajosCercanosAUsuarioDTO();
-        if(bundleReseptor!=null) {
-            parametros= (DatosTrabajosCercanosAUsuarioDTO) bundleReseptor.getSerializable("parametrosBusqueda");
+        if(bundleReceptor!=null) {
+            parametros= (DatosTrabajosCercanosAUsuarioDTO) bundleReceptor.getSerializable("parametrosBusqueda");
 
             final double radioBusqueda = parametros.radioDeBusqueda;
 

@@ -275,6 +275,8 @@ public class MainActivity extends AppCompatActivity {
         if (insertInto.length() > 0) {
             conn = new ConexionSQLiteHelper(getApplicationContext(), "bd_usuarios", null, 1);
             SQLiteDatabase db = conn.getWritableDatabase();
+            String insertarDistancia = "DELETE FROM USUARIO";
+            db.execSQL(insertarDistancia);
             String insertarUsuario = "INSERT INTO USUARIO (" + insertInto + ") " + "VALUES ("+ values +")";
             db.execSQL(insertarUsuario);
         }
@@ -358,7 +360,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void AceptarInicioSesion(){
         if(AdministradorDeSesion.postulante != null){
-            Toast.makeText(MainActivity.this,"Cont: "+AdministradorDeSesion.postulante.getContrasenia(), Toast.LENGTH_LONG).show();
             guardarUsuario(AdministradorDeSesion.postulante);
 
             stopWaitting();

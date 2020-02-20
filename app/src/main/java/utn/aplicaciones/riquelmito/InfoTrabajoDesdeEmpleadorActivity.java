@@ -77,6 +77,18 @@ public class InfoTrabajoDesdeEmpleadorActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public  void goToConsultarUbicacionTrabDesdeEmpleador(View view){
+        Intent intent = new Intent(this, ConsultarUbicacionActivity.class);
+
+        Bundle bundle = new Bundle();
+        bundle.putDouble("lat", trabajo.getLat());
+        bundle.putDouble("lng", trabajo.getLng());
+
+        intent.putExtras(bundle);
+
+        startActivity(intent);
+    }
+
 
     //Esta función permite que el botón de 'volver atrás' de la barra superior funcione
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -155,6 +156,18 @@ public class InfoTrabajoDesdePostulanteActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+    }
+
+    public  void goToConsultarUbicacionTrabDesdePostulante(View view){
+        Intent intent = new Intent(this, ConsultarUbicacionActivity.class);
+
+        Bundle bundle = new Bundle();
+        bundle.putDouble("lat", trabajo.getLat());
+        bundle.putDouble("lng", trabajo.getLng());
+
+        intent.putExtras(bundle);
+
+        startActivity(intent);
     }
 
 

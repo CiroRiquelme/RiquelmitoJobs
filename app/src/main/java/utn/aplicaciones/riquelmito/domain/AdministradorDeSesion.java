@@ -91,7 +91,15 @@ public class AdministradorDeSesion {
 
 
     public static void cerrarSesion() {
-        //TODO: Este metodo debe borrar todos los datos de usuario guardados
+        //Borra el usuario de la variable global
+        AdministradorDeSesion.postulante = null;
+
+        //Borra elementos (usuarios) de la base de datos interna
+        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(context, "bd_usuarios", null,1);
+        SQLiteDatabase db = conn.getWritableDatabase();
+
+        String insertarDistancia = "DELETE FROM USUARIO";
+        db.execSQL(insertarDistancia);
     }
 
     public static  Class getCurrentMenu(){

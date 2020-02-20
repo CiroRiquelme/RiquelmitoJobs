@@ -140,6 +140,7 @@
                 android:id="@+id/button23"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
                 android:onClick="crearTrabajoClick"
                 android:text="@string/title_activity_crear_trabajo" />
 
