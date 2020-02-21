@@ -18,14 +18,15 @@
             android:layout_marginTop="4dp"
             android:contentDescription="Icono de rubro del trabajo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/desconocido" />
 
         <TextView
             android:id="@+id/tvFilaTrabPostulanteRubro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="asdfsdf"
+            android:text="Algún Rubro"
             android:textSize="@dimen/label_title"
             app:layout_constraintStart_toEndOf="@+id/ivFilaTrabPostulanteIconoTrabajo"
             app:layout_constraintTop_toTopOf="@+id/ivFilaTrabPostulanteIconoTrabajo" />
@@ -35,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="sdfsdf"
+            android:text="Cargo de algún rubro"
             android:textSize="@dimen/label_text"
             app:layout_constraintStart_toStartOf="@+id/tvFilaTrabPostulanteRubro"
             app:layout_constraintTop_toBottomOf="@+id/tvFilaTrabPostulanteRubro" />
@@ -59,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="4dp"
-            android:text="asdasd"
+            android:text="Horario: -"
             android:textSize="@dimen/label_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -68,7 +69,7 @@
             android:id="@+id/tvFilaTrabPostulanteSalario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="asdasd"
+            android:text="Salario:  -"
             android:textSize="@dimen/label_text"
             app:layout_constraintStart_toStartOf="@+id/tvFilaTrabPostulanteHorario"
             app:layout_constraintTop_toBottomOf="@+id/tvFilaTrabPostulanteHorario" />
