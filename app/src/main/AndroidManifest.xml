@@ -34,23 +34,30 @@
 
         <activity
             android:name=".ConsultarUbicacionActivity"
-            android:label="@string/title_activity_consultar_ubicacion"></activity>
+            android:label="@string/title_activity_consultar_ubicacion"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".MenuEmpleadorActivity"
             android:label="@string/title_activity_menu_empleador"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MenuPostulanteActivity"
             android:label="@string/title_activity_menu_postulante"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SeleccionarUbicacionTrabajoActivity" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait" />
+        <activity android:name=".SeleccionarUbicacionTrabajoActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".InfoPostulanteActivity"
-            android:label="@string/title_activity_info_postulante" />
+            android:label="@string/title_activity_info_postulante"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".InfoTrabajoDesdeEmpleadorActivity"
-            android:label="@string/title_activity_info_trabajo" />
-        <activity android:name=".MenuNotificacionesActivity" />
+            android:label="@string/title_activity_info_trabajo"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MenuNotificacionesActivity"
+            android:screenOrientation="portrait" />
 
         <service android:name=".FirebaseServicioDeMensajes">
             <intent-filter>
@@ -60,7 +67,8 @@
 
         <activity
             android:name=".TrabajosCercanosAUsuarioActivity"
-            android:label="@string/title_activity_trabajos_cercanos_ausuario" />
+            android:label="@string/title_activity_trabajos_cercanos_ausuario"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".InfoTrabajoDesdePostulanteActivity"
             android:label="@string/title_activity_info_trabajo"
