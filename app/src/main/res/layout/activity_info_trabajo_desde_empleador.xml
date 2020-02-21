@@ -21,7 +21,7 @@
                 android:layout_height="@dimen/image_view_square_icon"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
-                android:src="@drawable/atencion_al_publico"
+                android:src="@drawable/desconocido"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="TextView"
+                android:text="Algún rubro"
                 android:textSize="@dimen/label_title"
                 app:layout_constraintStart_toEndOf="@+id/ivInfoTrabEmpleadorIconoTrabajo"
                 app:layout_constraintTop_toTopOf="@+id/ivInfoTrabEmpleadorIconoTrabajo" />
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="TextView"
+                android:text="Algún cargo"
                 android:textSize="@dimen/label_text"
                 app:layout_constraintStart_toStartOf="@+id/tvInfoTrabEmpleadorRubro"
                 app:layout_constraintTop_toBottomOf="@+id/tvInfoTrabEmpleadorRubro" />
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_start_label_dato"
             android:layout_marginEnd="@dimen/margin_end_label_dato"
-            android:text="Lunes - Viernes; Horario: Diurno"
+            android:text="Lunes - Viernes; Horario: -"
             android:textSize="@dimen/label_text" />
 
         <TextView
@@ -68,7 +68,7 @@
             android:layout_marginStart="@dimen/margin_start_label_dato"
             android:layout_marginEnd="@dimen/margin_end_label_dato"
             android:layout_marginBottom="@dimen/margin_bottom_label_dato"
-            android:text="Sueldo Mínimo: $15000"
+            android:text="Sueldo Mínimo: $ -"
             android:textSize="@dimen/label_text" />
 
         <TextView
@@ -87,7 +87,7 @@
             android:layout_marginStart="@dimen/margin_start_label_dato"
             android:layout_marginEnd="@dimen/margin_end_label_dato"
             android:layout_marginBottom="@dimen/margin_bottom_label_dato"
-            android:text="Asistente de enfermería en centro de recuperación de victimas de accidentes vehiculares."
+            android:text="-"
             android:textSize="@dimen/label_text" />
 
         <TextView
@@ -106,7 +106,7 @@
             android:layout_marginStart="@dimen/margin_start_label_dato"
             android:layout_marginEnd="@dimen/margin_end_label_dato"
             android:layout_marginBottom="@dimen/margin_bottom_label_dato"
-            android:text="Tolerante, amable, responsable, capaz de levantar pesos elevados."
+            android:text="-"
             android:textSize="@dimen/label_text" />
 
         <TextView
@@ -125,7 +125,7 @@
             android:layout_marginStart="@dimen/margin_start_label_dato"
             android:layout_marginEnd="@dimen/margin_end_label_dato"
             android:layout_marginBottom="@dimen/margin_bottom_label_dato"
-            android:text="1 año de trabajo previo como enfermero de cuidados médicos o quirúrgicos."
+            android:text="-"
             android:textSize="@dimen/label_text" />
 
         <Button
