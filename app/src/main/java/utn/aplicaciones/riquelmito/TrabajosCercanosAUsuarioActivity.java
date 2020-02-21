@@ -127,7 +127,7 @@ public class TrabajosCercanosAUsuarioActivity extends FragmentActivity implement
                     for(Trabajo trabajo: listaTrabajos){
                         LatLng posicion = new LatLng(trabajo.getLat(), trabajo.getLng());
 
-                        Marker marcador = mMap.addMarker(new MarkerOptions().position(posicion).title(trabajo.getCargo()).snippet("id: "+trabajo.getIdTrabajo()+"\nSalario: "+trabajo.getSalario()+"\nDescripción del cargo: "+trabajo.getDescripcionCargo()+"\nExperiencia requerida"+trabajo.getExperienciaEmpleado()+"\nPerfil del empleado: "+trabajo.getPerfilEmpleado()).icon(BitmapDescriptorFactory.fromResource(R.drawable.riquelbus)));
+                        Marker marcador = mMap.addMarker(new MarkerOptions().position(posicion).title(trabajo.getCargo()).snippet("Salario: $"+trabajo.getSalario()).icon(BitmapDescriptorFactory.fromResource(R.drawable.riquelbus)));
                         marcador.setTag(trabajo);
                     }
                 }
@@ -160,7 +160,7 @@ public class TrabajosCercanosAUsuarioActivity extends FragmentActivity implement
             }
         });
 
-
+        mMap.getUiSettings().setRotateGesturesEnabled(false);   //Deshabilita el giro del mapa
 
     }
 

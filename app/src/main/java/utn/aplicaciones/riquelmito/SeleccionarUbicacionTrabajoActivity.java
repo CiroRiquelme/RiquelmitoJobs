@@ -58,14 +58,15 @@ public class SeleccionarUbicacionTrabajoActivity extends AppCompatActivity imple
         // Add a marker in posicionUsuario and move the camera
         LatLng posicionUsuario = new LatLng(AdministradorDeSesion.postulante.getLat(), AdministradorDeSesion.postulante.getLng());
         mMap.addMarker(new MarkerOptions().position(posicionUsuario).title("Posición inicial de Usuario").icon(BitmapDescriptorFactory.fromResource(R.drawable.riquelmito_quiet)));
-        LatLng nuevaPosicionUsuario = new LatLng(AdministradorDeSesion.postulante.getLat(), AdministradorDeSesion.postulante.getLng()-1);
+        LatLng nuevaPosicionUsuario = new LatLng(AdministradorDeSesion.postulante.getLat(), AdministradorDeSesion.postulante.getLng()+0.0005f);
         nuevaPosicion = mMap.addMarker(new MarkerOptions().position(nuevaPosicionUsuario).title("Nueva posición de Usuario").icon(BitmapDescriptorFactory.fromResource(R.drawable.riquelmito_running)).draggable(true));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(posicionUsuario));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posicionUsuario,13.5f));
         this.latActual = AdministradorDeSesion.postulante.getLat();
         this.lngActual = AdministradorDeSesion.postulante.getLng();
 
         googleMap.setOnMarkerDragListener(this);
 
+        mMap.getUiSettings().setRotateGesturesEnabled(false);   //Deshabilita el giro del mapa
     }
 
     @Override

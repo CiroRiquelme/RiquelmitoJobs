@@ -53,6 +53,7 @@ public class ConsultarUbicacionActivity extends FragmentActivity implements OnMa
         // Add a marker in Sydney and move the camera
         LatLng actual = new LatLng(lat, lng);
         mMap.addMarker(new MarkerOptions().position(actual).title("Posición Actual").icon(BitmapDescriptorFactory.fromResource(R.drawable.wally)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(actual,10));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(actual,13.6f));
+        mMap.getUiSettings().setRotateGesturesEnabled(false);   //Deshabilita el giro del mapa
     }
 }

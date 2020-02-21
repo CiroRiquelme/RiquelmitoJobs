@@ -1,8 +1,10 @@
 package utn.aplicaciones.riquelmito;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -73,13 +75,27 @@ public class SeleccionarUbicacionPostulanteActivity extends AppCompatActivity im
         // Add a marker in posicionUsuario and move the camera
         LatLng posicionUsuario = new LatLng(AdministradorDeSesion.postulante.getLat(), AdministradorDeSesion.postulante.getLng());
         mMap.addMarker(new MarkerOptions().position(posicionUsuario).title("Posición inicial de Usuario").icon(BitmapDescriptorFactory.fromResource(R.drawable.riquelmito_quiet)));
-        LatLng nuevaPosicionUsuario = new LatLng(AdministradorDeSesion.postulante.getLat(), AdministradorDeSesion.postulante.getLng()-1);
+        LatLng nuevaPosicionUsuario = new LatLng(AdministradorDeSesion.postulante.getLat(), AdministradorDeSesion.postulante.getLng()+0.005);
         nuevaPosicion = mMap.addMarker(new MarkerOptions().position(nuevaPosicionUsuario).title("Nueva posición de Usuario").draggable(true).icon(BitmapDescriptorFactory.fromResource(R.drawable.riquelmito_running)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(posicionUsuario));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posicionUsuario,13.5f));
         this.latActual = AdministradorDeSesion.postulante.getLat();
         this.lngActual = AdministradorDeSesion.postulante.getLng();
 
         googleMap.setOnMarkerDragListener(this);
+
+        mMap.getUiSettings().setRotateGesturesEnabled(false);   //Deshabilita el giro del mapa
+
+        //Mostrar dialogo de cómo usar
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(this.getString(R.string.dialogo_cambiar_ubicacion_postulante))
+                .setNeutralButton(R.string.opcion_ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //No hacer nada
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
 
     }
 
