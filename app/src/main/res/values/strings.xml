@@ -34,7 +34,7 @@
     <string name="perfil_hint_telefono">Nro de teléfono</string>
     <string name="perfil_mail_publico">E-mail público</string>
     <string name="perfil_hint_mail_publico">mail@domain.com</string>
-    <string name="perfil_seleccionar_ubicacion">Seleccionár ubicación</string>
+    <string name="perfil_seleccionar_ubicacion">Seleccionar ubicación</string>
 
 
     <!--activity_perfil_profesional-->
@@ -111,7 +111,7 @@
 
     <!--Titulos de dialogos-->
     <string name="title_dialogo_campos_invalidos">Campos inválidos</string>
-    <string name="title_dialogo_seleccionar_idiomas">Seleccionár Idiomas</string>
+    <string name="title_dialogo_seleccionar_idiomas">Seleccionar Idiomas</string>
     <string name="title_dialogo_funcionalidad_no_desarrollada">Funcionalidad no desarrollada</string>
     <string name="title_dialog_no_hay_cambios">No se detectaron modificaciones</string>
     <string name="title_dialog_cambios_guardados">Cambios guardados</string>
@@ -136,7 +136,7 @@
     <string name="menu_configurar_notificaciones">Configurar notificaciones</string>
     <string name="menu_preferencias">Preferencias</string>
     <string name="menu_seleccionar_ubicacion_postulante">Seleccionar ubicación postulante</string>
-    <string name="menu_cerrar_sesion">Cerrár sesión</string>
+    <string name="menu_cerrar_sesion">Cerrar sesión</string>
 
     <!--NavigationDrawers-->
     <string name="menu_gallery">Gallery</string>
