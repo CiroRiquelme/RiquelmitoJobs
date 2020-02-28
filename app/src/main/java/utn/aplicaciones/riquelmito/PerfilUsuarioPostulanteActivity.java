@@ -115,7 +115,7 @@ public class PerfilUsuarioPostulanteActivity extends AppCompatActivity {
         if(etPerfPostulApellido.getText().length() < LONG_MIN_NOMBRE){
             mensajeError.append(this.getString(R.string.dialogo_error_longitud_minima_campo_1));
             mensajeError.append( ' ' );
-            mensajeError.append(R.string.perfil_nombre);
+            mensajeError.append(this.getString(R.string.perfil_nombre));
             mensajeError.append( ' ' );
             mensajeError.append(this.getString(R.string.dialogo_error_longitud_minima_campo_2));
             mensajeError.append( ' ' );
@@ -129,7 +129,7 @@ public class PerfilUsuarioPostulanteActivity extends AppCompatActivity {
         if(etPerfPostulNombre.getText().length() < LONG_MIN_NOMBRE){
             mensajeError.append(this.getString(R.string.dialogo_error_longitud_minima_campo_1));
             mensajeError.append( ' ' );
-            mensajeError.append(R.string.perfil_apellido);
+            mensajeError.append(this.getString(R.string.perfil_apellido));
             mensajeError.append( ' ' );
             mensajeError.append(this.getString(R.string.dialogo_error_longitud_minima_campo_2));
             mensajeError.append( ' ' );
@@ -179,7 +179,7 @@ public class PerfilUsuarioPostulanteActivity extends AppCompatActivity {
                 hayCambios = true;
             }
 
-            if( ! etPerfPostulDNI.getText().toString().equals(AdministradorDeSesion.postulante.getDni()+"") ){
+            if( ! etPerfPostulDNI.getText().toString().equals(AdministradorDeSesion.postulante.getDni()+"") && etPerfPostulDNI.getText().length()>0){
                 //Actualizar dni
                 AdministradorDeSesion.postulante.setDni(Integer.valueOf(etPerfPostulDNI.getText().toString()));
                 if(sentenciaSet.length() > 0)
@@ -261,6 +261,7 @@ public class PerfilUsuarioPostulanteActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 //No es necesario hacer nada
+                                finish();
                             }
                         });
                 AlertDialog dialog = builder.create();
