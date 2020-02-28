@@ -117,9 +117,9 @@
     <string name="title_dialog_cambios_guardados">Cambios guardados</string>
     <string name="title_dialog_sin_conexion">Sin conexión con el servidor</string>
     <string name="title_dialog_se_registro_usuario">Nuevo Riquelmito a la vista</string>
-    <string name="title_dialog_trabajo_guardado">Propuesta de rabajo guardada</string>
-    <string name="title_dialog_email_no_registrado">Email y/o contraseña invalidos</string>
-    <string name="title_dialog_contrasenia_incorrecta">Email y/o contraseña invalidos</string>
+    <string name="title_dialog_trabajo_guardado">Propuesta de trabajo guardada</string>
+    <string name="title_dialog_email_no_registrado">Email y/o contraseña inválidos</string>
+    <string name="title_dialog_contrasenia_incorrecta">Email y/o contraseña inválidos</string>
 
     <!--GoogleMaps-->
     <string name="marker_detail_lating">(%1$.2f, %2$.2f)</string>
@@ -219,7 +219,7 @@
 
 
     <!--***************DIALOGOS DE ERROR***************-->
-    <string name="dialogo_error_formato_email_invalido">-El formato de Email no es valido.</string>
+    <string name="dialogo_error_formato_email_invalido">-El formato de Email no es válido.</string>
     <string name="dialogo_error_contrasenias_distintas">-Las contraseñas ingresadas deben ser iguales.</string>
     <string name="dialogo_error_longitud_contrasenia_insuficiente1">-La contraseña debe tener al menos.</string>
     <string name="dialogo_error_longitud_contrasenia_insuficiente2">caracteres.</string>
@@ -231,14 +231,14 @@
     <string name="dialogo_error_longitud_minima_campo_2"> debe ser de al menos </string>
     <string name="dialogo_error_longitud_minima_campo_3"> caracteres.</string>
     <string name="dialogo_error_fecha_nacimiento_incorrecta">-La fecha de nacimiento debe tener el formato \'DD/MM/AAAA\'.</string>
-    <string name="dialogo_funcionalidad_no_desarrollada">Esta funcionalidad aún no ha sido desarrollada y talvez no sea desarrollada en el futuro</string>
+    <string name="dialogo_funcionalidad_no_desarrollada">Esta funcionalidad aún no ha sido desarrollada y tal vez no sea desarrollada en el futuro</string>
     <string name="dialogo_cambios_guardados">Los cambios se han guardado satisfactoriamente</string>
     <string name="dialogo_no_hay_cambios">No se ha detectado ningún cambio en sus datos</string>
     <string name="dialogo_sin_conexion">No se pudo establecer conexión con el servidor. Verifique que tenga acceso a internet e intente nuevamente</string>
     <string name="dialogo_se_registro_usuario">Se registró el nuevo usuario con éxito\n\n¡Ya eres todo un Riquelmito!</string>
-    <string name="dialogo_trabajo_guardado">Se agrego la nueva propuesta de trabajo con éxito</string>
+    <string name="dialogo_trabajo_guardado">Se agregó la nueva propuesta de trabajo con éxito</string>
     <string name="dialogo_email_no_registrado">Más bien email no registrado (guiño guiño)</string>
-    <string name="dialogo_contrasenia_incorrecta">Más bien contraseña invalida (guiño guiño)</string>
+    <string name="dialogo_contrasenia_incorrecta">Más bien contraseña inválida (guiño guiño)</string>
     <string name="dialogo_cambiar_ubicacion_postulante">Mantenga presionado el Riquelmito corriendo y deslice para marcar su nueva ubicación</string>
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
